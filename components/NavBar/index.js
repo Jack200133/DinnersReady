@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text, Pressable, SafeAreaView} from 'react-native';
 import styles from './style';
 
 import NavButton from '../NavButtons';
@@ -12,13 +12,13 @@ const NavBar = (props) => {
     const alacena = require('../../assets/images/home.png');
 
     return (
-        <View style = {styles.container}>
+        <SafeAreaView style = {styles.container}>
            <NavButton url={alacena}/>
            <NavButton url={newrecipe}/>
            <NavButton url={home}/>
            <NavButton url={bookmarks}/>
            <NavButton url={profile}/>
-        </View>
+        </SafeAreaView>
     );
 };
 
