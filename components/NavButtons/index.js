@@ -13,7 +13,7 @@ const NavButton = (props) => {
             <ImageBackground
             //source={"./assets/roxy1.PNG"}
             source={props.url}
-            resizeMode="cover"
+            resizeMode="contain"
             style={styles.back}
           >
             <Pressable style = {styles.button}
