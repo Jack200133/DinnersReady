@@ -21,15 +21,23 @@ function addIngredients(props) {
         <IconBar image={Existentes} color={'#f36c6c'}/>
       </View>
 
-      <ImageBackground source={require("../assets/images/fondo.png")} style={styles.background}>
+      <ImageBackground source={require("../assets/images/fondo.png")} style={styles.background} imageStyle={{opacity:0.2}}>
         
-        <View style={styles.padContainer}>
-            
-            <ScrollView style={styles.scrollCont}>
-              <Text style={styles.text}>Agregar ingredientes</Text>
-            </ScrollView>
+        
 
+        <View style={styles.padContainer}>
+
+          <View style ={styles.introContainer}>
+                <Text style={{fontSize: 40,color: 'black'}}> Agregar nuevos ingredientes</Text>
+                <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
+          </View>
+            
+          <ScrollView style={styles.scrollCont}>
+            <Text style={styles.text}>Vegetales</Text>
+          </ScrollView>
+          
         </View>
+
       </ImageBackground>
 
       <NavBar/>
@@ -69,6 +77,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     color: 'white'
+  },
+  introContainer:{
+    paddingLeft: 20,
+    marginBottom: 20
   }
 });
 
