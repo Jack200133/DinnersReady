@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, ScrollView  } from 'react-native';
 
 import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
@@ -22,7 +22,14 @@ function addIngredients(props) {
       </View>
 
       <ImageBackground source={require("../assets/images/fondo.png")} style={styles.background}>
-        <View style={styles.container}/>
+        
+        <View style={styles.padContainer}>
+            
+            <ScrollView style={styles.scrollCont}>
+              <Text style={styles.text}>Agregar ingredientes</Text>
+            </ScrollView>
+
+        </View>
       </ImageBackground>
 
       <NavBar/>
@@ -39,11 +46,29 @@ const styles = StyleSheet.create({
       width:'100%',
       height:'100%',
       flex: 1, 
-      justifyContent: "center" 
+      justifyContent: "center"
   },
   iconContainer:{
     flexDirection:'row',
     justifyContent: 'space-evenly',
+  },
+  padContainer: {
+    flex:1,
+    paddingHorizontal: 10,
+    paddingTop: 10,
+    paddingBottom: 20
+  },
+  scrollCont: {
+    flex:1,
+    backgroundColor: '#6F6861',
+    borderRadius: 30,
+    borderColor: 'black',
+    borderWidth: 2,
+    padding: 30
+  },
+  text: {
+    fontSize: 30,
+    color: 'white'
   }
 });
 
