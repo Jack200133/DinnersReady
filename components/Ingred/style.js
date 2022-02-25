@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const styles = (color) => StyleSheet.create({
+const styles =  StyleSheet.create({
     container: {
         marginTop:20,
         paddingBottom:0,
@@ -9,7 +9,7 @@ const styles = (color) => StyleSheet.create({
         justifyContent:'space-evenly',
         height: 25,
         paddingHorizontal: 10,
-        backgroundColor: color,
+        backgroundColor: '#EEE9E9',
         borderRadius: 30
         
     }

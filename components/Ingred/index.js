@@ -4,10 +4,10 @@ import {View,Text} from 'react-native';
 import styles from './style';
 import NavButton from '../NavButtons';
 
-const Ingred = ({ text, color }) => {
+const Ingred = ({ text}) => {
     
     return (
-        <View style = {styles(color).container}>
+        <View style = {styles.container}>
             <Text>{text}</Text>
         </View>
     );

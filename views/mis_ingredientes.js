@@ -26,20 +26,22 @@ function Mis_ingredientes(props) {
         <ImageBackground source={require('../assets/images/fondo.png')}
               resizeMode="cover"
               style={styles.back}
-              imageStyle={{opacity: 0.5}}>
+              imageStyle={{opacity: 0.2}}>
           <View style={styles.padContainer}>
             <ScrollView style={styles.scrollCont}>
               <Text style={styles.text}>Mis Ingredientes</Text>
               <View style={styles.iconContainer}>
-                <Ingred text={'Zanahoria'} color={'#EEE9E9'}/>
-                <Ingred text={'Pepino'} color={'#EEE9E9'}/>
-                <Ingred text={'Tomate'} color={'#EEE9E9'}/>
+                <Ingred text={'Zanahoria'} />
+                <Ingred text={'Pepino'}/>
+                <Ingred text={'Tomate'}/>
+                <Ingred text={'Brocoli'}/>
+                <Ingred text={'Elote'}/>
+                <Ingred text={'Papa'}/>
+                <Ingred text={'Arroz'}/>
+                <Ingred text={'Frijol'}/>
+                <Ingred text={'Queso'}/>
               </View>
-              <View style={styles.iconContainer}>
-                <Ingred text={'Brocoli'} color={'#EEE9E9'}/>
-                <Ingred text={'Elote'} color={'#EEE9E9'}/>
-                <Ingred text={'Papa'} color={'#EEE9E9'}/>
-              </View>
+              
 
 
             </ScrollView>
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
   iconContainer:{
     flexDirection:'row',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap'
   },
   back:{
     width: '100%',
