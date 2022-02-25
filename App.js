@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-import RecipeScreen from './views/recipe';
+import Mis_ingredientes from './views/mis_ingredientes';
 
 export default function App() {
   return (
-    <RecipeScreen/>
+    <Mis_ingredientes/>
   );
 }
 
