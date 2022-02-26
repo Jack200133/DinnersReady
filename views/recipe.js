@@ -1,24 +1,114 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, ScrollView } from 'react-native';
+import React , { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
+TextInput, KeyboardAvoidingView, Picker } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
+import { render } from 'react-dom';
 
-function RecipeScreen(props) {
+export default function RecipeScreen(props) {
 
+  const [image, setImage] = useState(null);
+  const [text, onChangeText] = React.useState("Useless Text");
+  const [number, onChangeNumber] = React.useState(null);
+  const [desc, onChangeDesc] = React.useState(null);
+  const [country, setCountry] = useState('Unknown');
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  const img = require('../assets/images/add-image.png');
+
+  
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
       <ImageBackground source={require('../assets/images/fondo.png')}
             resizeMode="cover"
-            style={styles.back}>
+            style={styles.back}
+            imageStyle={{opacity: 0.2}}>
         <View style={styles.padContainer}>
-          <ScrollView style={styles.scrollCont}>
+          <ScrollView style={styles.scrollCont} contentContainerStyle={styles.scrollContainer}>
             <Text style={styles.text}>Ingresa tu nueva receta</Text>
+            <View style={styles.imagePicker}>
+              <Pressable style={styles.button} onPress={pickImage}>
+              {
+                  image ? <Image resizeMode='cover' style={{width: '100%', height: '100%'}} 
+                  source = {{uri: image}}/> :
+                  <Image resizeMode='contain' style={styles.addImage} 
+                  source = {img}/>
+              }
+              </Pressable>
+            </View>
+            <Text style={styles.titles}>Titulo de receta</Text>
+            <TextInput
+              style={styles.input}
+              onChangeText={onChangeNumber}
+              value={number}
+              placeholder="Ingresa el título..."
+              keyboardType="default"
+            />
+            <Text style={styles.titles}>Descripción</Text>
+            <TextInput
+              style={styles.inputDesc}
+              onChangeText={onChangeDesc}
+              value={number}
+              multiline={true}
+              placeholder="Ingresa la descripción de la receta..."
+              keyboardType="default"
+            />
+            <Text style={styles.titles}>Tus ingredientes</Text>
+            <View style={styles.AddItem}>
+              <Pressable>
+                <Text>+ Añade ingredientes</Text> 
+              </Pressable>
+            </View>
+            <Text style={styles.titles}>Pasos a seguir</Text>
+            <TextInput
+              style={styles.inputDesc}
+              onChangeText={onChangeDesc}
+              value={number}
+              multiline={true}
+              placeholder="Ingresa los pasos de la receta..."
+              keyboardType="default"
+            />
+            <Text style={styles.titles}>Dificultad de la receta</Text>
+            <View style={styles.difficulty}>
+              <Pressable>
+                <Text>Dificultad</Text> 
+              </Pressable>
+            </View>
+            <Text style={styles.titles}>Categorías</Text>
+            <TextInput
+              style={styles.cat}
+              onChangeText={onChangeDesc}
+              value={number}
+              multiline={true}
+              placeholder="Ingresa las categorías de tu receta..."
+              keyboardType="default"
+            />
+            <View style={styles.publish}>
+              <Pressable>
+                <Text style={{fontSize: 18}}>Publicar receta</Text> 
+              </Pressable>
+            </View>
+            <View style={{ height: 70 }} />
           </ScrollView>
         </View>
       </ImageBackground>
       <NavBar/>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -29,7 +119,7 @@ const styles = StyleSheet.create({
   padContainer: {
     flex:1,
     paddingHorizontal: 10,
-    paddingTop: 180,
+    paddingTop: 120,
     paddingBottom: 20
   },
   back:{
@@ -37,21 +127,119 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1, 
     justifyContent: "center",
-    opacity: 0.3
   },
   scrollCont: {
     flex:1,
-    backgroundColor: 'white',
+    backgroundColor: '#6F6861',
     borderRadius: 30,
     borderColor: 'black',
     borderWidth: 2,
-    padding: 30
+    padding: 30,
+  },
+  scrollContainer:{
+
   },
   text: {
-    fontFamily: 'PFD',
     fontSize: 30,
-    color: 'black'
+    color: 'white',
+  },
+  addRecipe: {
+    marginTop: 10,
+    fontSize: 15,
+    color: 'black',
+    alignSelf: 'center'
+  },
+  imagePicker: {
+    width: '95%',
+    height: 165,
+    alignSelf: 'center',
+    backgroundColor: '#CECECE',
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addImage: {
+    width: '25%',
+    height: '25%'
+  },
+  button: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  titles: {paddingTop: 20,
+    fontSize: 25,
+    color: 'white',
+  },
+  input:{
+    borderWidth: 1,
+    marginTop: 5,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 40,
+    paddingHorizontal: 15,
+    backgroundColor: '#EEE9E9'
+  },
+  inputDesc:{
+    borderWidth: 1,
+    marginTop: 5,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 170,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: '#EEE9E9'
+  },
+  AddItem:{
+    borderWidth: 1,
+    marginTop: 5,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 30,
+    width: 160,
+    paddingHorizontal:7,
+    paddingVertical: 5,
+    backgroundColor: '#CECECE'
+  },
+  difficulty:{
+    borderWidth: 1,
+    marginTop: 5,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 40,
+    width: '100%',
+    paddingHorizontal:15,
+    paddingVertical: 5,
+    backgroundColor: '#EEE9E9',
+    justifyContent:'center'
+  },
+  cat:{
+    borderWidth: 1,
+    marginTop: 5,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 130,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: '#EEE9E9'
+  },
+  publish:{
+    height: 60,
+    width: '80%',
+    backgroundColor: '#f36c6c',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 30,
+    marginTop: 50,
+    alignSelf: 'center'
   }
 });
 
-export default RecipeScreen;
+//export default RecipeScreen;
