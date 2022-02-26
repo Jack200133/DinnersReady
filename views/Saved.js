@@ -1,14 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 
-import StyledButton from "../components/StyledButton";
 import NavBar from "../components/NavBar";
-import TitleBar from '../components/TitleBar';
+import SearchBart from '../components/NavSearch';
 
-function SavedScreen(props) {
+function SavedScreen() {
   return (
     <View style={styles.container}>
-      <TitleBar/>
+      <SearchBart/>
       <Text>Hola desde SAVED</Text>
 
       <View style={styles.container} />
