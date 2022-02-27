@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, ScrollView  } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, ScrollView, Image  } from 'react-native';
 
 import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
+import Ingred from '../components/Ingred';
 
 function addIngredients(props) {
 
@@ -34,10 +35,35 @@ function addIngredients(props) {
             
           <ScrollView style={styles.scrollCont}>
             <Text style={styles.text}>Vegetales</Text>
+
+            <View style={styles.iconContainer}>
+
+              <Ingred text={'Zanahoria'}/>
+              <Ingred text={'Pepino'}/>
+              <Ingred text={'Tomate'}/>
+              <Ingred text={'Elote'}/>
+              <Ingred text={'Papa'}/>
+              <Ingred text={'Brocoli'}/>
+
+            </View>
           </ScrollView>
           
         </View>
 
+        <View style={styles.padContainer}>
+
+          <View style={styles.ingredView}>
+            <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>Carne</Text>
+            <Image style={styles.arrow} source={require('../assets/images/arrow.png')}></Image>
+          </View>
+
+          <View style={styles.ingredView}>
+            <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>Frutas</Text>
+            <Image style={styles.arrow} source={require('../assets/images/arrow.png')}></Image>
+          </View>
+
+        </View>
+        
       </ImageBackground>
 
       <NavBar/>
@@ -59,12 +85,13 @@ const styles = StyleSheet.create({
   iconContainer:{
     flexDirection:'row',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap'
   },
   padContainer: {
     flex:1,
     paddingHorizontal: 10,
-    paddingTop: 10,
-    paddingBottom: 20
+    paddingTop: 5,
+    paddingBottom: 10
   },
   scrollCont: {
     flex:1,
@@ -81,6 +108,22 @@ const styles = StyleSheet.create({
   introContainer:{
     paddingLeft: 20,
     marginBottom: 20
+  },
+  ingredView: {
+    alignItems:'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#EEEEEE',
+    height: 50,
+    borderRadius: 30,
+    marginBottom:10,
+  },
+  arrow:{
+    justifyContent: 'flex-end',
+    alignSelf:'center',
+    width: '25%',
+    height: '40%', 
+    resizeMode: 'contain',
   }
 });
 
