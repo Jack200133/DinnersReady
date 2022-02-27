@@ -5,7 +5,7 @@ import styles from './style';
 import NavButton from '../NavButtons';
 
 const NavBar = (props) => {
-    const home = require('../../assets/images/home.png');
+    const home = require('../../assets/images/recetaw.png');
     const profile = require('../../assets/images/perfil.png');
     const bookmarks = require('../../assets/images/bookmark.png');
     const newrecipe = require('../../assets/images/newrecipe.png');
