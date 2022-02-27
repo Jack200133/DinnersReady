@@ -8,7 +8,16 @@ function SavedScreen() {
   return (
     <View style={styles.container}>
       <SearchBart/>
-      <Text>Hola desde SAVED</Text>
+      <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
+            <ScrollView style={styles.scrollCont}>
+                <View style={styles.NavegationPost}>
+                    <PubItem image={Hamburguesa} NameRecipe={"Hamburguesa"} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                </View>
+            </ScrollView>
+      </ImageBackground>
 
       <View style={styles.container} />
       <NavBar />
