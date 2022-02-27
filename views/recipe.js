@@ -38,13 +38,14 @@ export default function RecipeScreen(props) {
             resizeMode="cover"
             style={styles.back}
             imageStyle={{opacity: 0.2}}>
+        <View style={styles.top}></View>
         <View style={styles.padContainer}>
           <ScrollView style={styles.scrollCont} contentContainerStyle={styles.scrollContainer}>
             <Text style={styles.text}>Ingresa tu nueva receta</Text>
             <View style={styles.imagePicker}>
               <Pressable style={styles.button} onPress={pickImage}>
               {
-                  image ? <Image resizeMode='cover' style={{width: '100%', height: '100%'}} 
+                  image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} 
                   source = {{uri: image}}/> :
                   <Image resizeMode='contain' style={styles.addImage} 
                   source = {img}/>
@@ -100,7 +101,7 @@ export default function RecipeScreen(props) {
             />
             <View style={styles.publish}>
               <Pressable>
-                <Text style={{fontSize: 18}}>Publicar receta</Text> 
+                <Text style={{fontSize: 18, color: '#EEE9E9'}}>Publicar receta</Text> 
               </Pressable>
             </View>
             <View style={{ height: 70 }} />
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   padContainer: {
     flex:1,
     paddingHorizontal: 10,
-    paddingTop: 120,
+    paddingTop: 20,
     paddingBottom: 20
   },
   back:{
@@ -153,14 +154,16 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 165,
     alignSelf: 'center',
-    backgroundColor: '#CECECE',
+    backgroundColor: '#EEE9E9',
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 30
   },
   addImage: {
     width: '25%',
-    height: '25%'
+    height: '25%',
+    borderRadius: 30
   },
   button: {
     width: '100%',
@@ -235,9 +238,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#f36c6c',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 30,
     marginTop: 50,
+    alignSelf: 'center',
+  },
+  top:{
+    height: 90,
+    width: '100%',
+    backgroundColor: '#f36c6c',
+    justifyContent: 'center',
+    alignItems: 'center',
     alignSelf: 'center'
   }
 });
