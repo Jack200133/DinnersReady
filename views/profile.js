@@ -15,7 +15,7 @@ function ProfileScreen(props) {
           <Image source={require('../assets/images/chef.jpg')} style = {styles.profilepic}></Image>
           <View style={styles.usernombre}>
             <Text style = {styles.usernamettitle}>Juan Ignacio Ramirez</Text>
-            <Text style = {styles.descripcion}>Soy un chef graduado de la academia de cocina Le Cordon Bleu en Peru, listo para compartir contigo todo lo que se.</Text>
+            <Text style = {styles.descripcion}>Soy un chef graduado de la academia de cocina Le Cordon Bleu en Perú, listo para compartir contigo todo lo que se.</Text>
           </View>
         </View>
         <View style={styles.userbox1}>
@@ -107,15 +107,18 @@ const styles = StyleSheet.create({
     width:'65%'
   },
   usernamettitle:{
-    fontSize:12
+    fontSize:15,
+    fontWeight:'bold'
+    
   },
   descripcion:{
-    fontSize:10
+    fontSize:12
   },
   misrecetas:{
     alignSelf:'center',
     fontSize: 20,
-    color: 'black'
+    color: 'black',
+    fontWeight:'bold'
   },
   recetas:{
     fontSize: 25,
