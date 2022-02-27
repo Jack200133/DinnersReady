@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   scrollCont: {
     flex:1,
-    backgroundColor: '#EEE9E9',
+    backgroundColor: '#6F6861',
     borderWidth: 1,
     borderRadius:10,
     padding: 30,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   userbox: {
     flex:1,
-    backgroundColor: '#EEE9E9',
+    backgroundColor: '#6F6861',
     justifyContent:'center',
     flexDirection:'row',
     borderRadius: 30,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginRight:5
   },userbox1: {
     flex:4,
-    backgroundColor: '#EEE9E9',
+    backgroundColor: '#6F6861',
     flexDirection:'column',
     borderRadius: 30,
     borderColor: 'black',
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize: 30,
-    color: 'black'
+    color: 'white'
   },
   profilepic: {
     height:100,
@@ -108,21 +108,23 @@ const styles = StyleSheet.create({
   },
   usernamettitle:{
     fontSize:15,
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color:'white'
     
   },
   descripcion:{
-    fontSize:12
+    fontSize:12,
+    color:'white'
   },
   misrecetas:{
     alignSelf:'center',
     fontSize: 20,
-    color: 'black',
+    color: 'white',
     fontWeight:'bold'
   },
   recetas:{
-    fontSize: 25,
-    color: 'black'
+    fontSize: 20,
+    color: 'white'
   }
 });
 
