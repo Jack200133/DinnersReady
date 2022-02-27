@@ -21,6 +21,7 @@ const SearchBart = () => {
             inputStyle={Styles.bar}
             searchIcon = 'white'
             containerStyle =  {Styles.bar}
+            underlineColorAndroid = 'white'
 
         />
     </SafeAreaView>
