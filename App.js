@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-import HomeAlacena from './views/HomeAlacena';
+import RecipeScreen from './views/recipe';
 
 export default function App() {
   return (
-    <HomeAlacena/>
+    <RecipeScreen/>
   );
 }
 
