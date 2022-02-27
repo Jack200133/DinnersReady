@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, ScrollView, Image  } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, ImageBackground, ScrollView, Image  } from 'react-native';
 
-import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
-import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
 import Ingred from '../components/Ingred';
+import TitleBar from '../components/TitleBar';
 
 function addIngredients(props) {
 
@@ -13,10 +12,9 @@ function addIngredients(props) {
   const Existentes = require('../assets/images/existentes.png');
 
   return (
-    <View style={styles.container}>
-
+    <SafeAreaView style={styles.container}>
+      
       <TitleBar/>
-
       <View style={styles.iconContainer}>
         <IconBar image={Agregar} color={'#F5ACAC'}/>
         <IconBar image={Existentes} color={'#f36c6c'}/>
@@ -68,7 +66,7 @@ function addIngredients(props) {
 
       <NavBar/>
 
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -99,7 +97,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderColor: 'black',
     borderWidth: 2,
-    padding: 30
+    padding: 30,
+    height: '100%'
   },
   text: {
     fontSize: 30,

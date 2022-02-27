@@ -9,10 +9,13 @@ const Styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         justifyContent: 'center',
-        backgroundColor: '#f36c6c' 
+        backgroundColor: '#f36c6c'
     },
     bar:{
         backgroundColor: 'transparent',
+        flexDirection: 'row',
+        flex:1,
+        justifyContent: 'flex-start'
         
     }
 });
