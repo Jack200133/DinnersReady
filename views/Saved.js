@@ -1,15 +1,23 @@
 import React from "react";
-import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, ScrollView } from "react-native";
 
-import StyledButton from "../components/StyledButton";
 import NavBar from "../components/NavBar";
-import TitleBar from '../components/TitleBar';
+import SearchBart from '../components/NavSearch';
 
-function SavedScreen(props) {
+function SavedScreen() {
   return (
     <View style={styles.container}>
-      <TitleBar/>
-      <Text>Hola desde SAVED</Text>
+      <SearchBart/>
+      <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
+            <ScrollView style={styles.scrollCont}>
+                <View style={styles.NavegationPost}>
+                    <PubItem image={Hamburguesa} NameRecipe={"Hamburguesa"} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                </View>
+            </ScrollView>
+      </ImageBackground>
 
       <View style={styles.container} />
       <NavBar />
