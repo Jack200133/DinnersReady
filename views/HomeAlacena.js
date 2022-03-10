@@ -6,19 +6,20 @@ import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
 import PubItem from '../components/PubItem';
+import SearchBart from '../components/NavSearch';
 
 
 function HomeAlacena(props) {
 
   const Alacena_Recipe = require('../assets/images/casitan.png');
   const Market_Recipe = require('../assets/images/cart.png');
-  const Hamburguesa = require('../assets/images/hamburguesa_temporal.webp');
+  const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
 
 
   return (
     <View style={styles.container}>
 
-      <TitleBar/>
+      <SearchBart/>
 
       <View style={styles.iconContainer}>
         <IconBar image={Alacena_Recipe} color={'#F5ACAC'}/>

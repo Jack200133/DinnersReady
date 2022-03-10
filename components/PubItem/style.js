@@ -14,23 +14,24 @@ const styles = StyleSheet.create({
 
     },
     back:{
-        width: '100%',
-        height: '100%',
+        width: '90%',
+        height: 190,
         flex: 1, 
         justifyContent: "center",
         resizeMode:"contain",
         marginVertical:10,
+        alignSelf:'center'
         
       },
     Title:{
-        flex: 1, 
+        flex: 2, 
         justifyContent:"center",
         marginLeft:40,
         fontWeight:'bold'
         
     },
     Descripcion:{
-        flex: 1, 
+        flex: 2, 
         justifyContent:"center",
         marginLeft:40,
         
