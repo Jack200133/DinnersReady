@@ -11,7 +11,7 @@ const SearchBart = () => {
   return (
     <SafeAreaView style = {Styles.container}>
         <SearchBar
-            placeholder="Search"
+            placeholder="Buscar..."
             onChangeText={onChangeSearch}
             value={searchQuery}
             leftIconContainerStyle = {Styles.bar}
@@ -22,7 +22,8 @@ const SearchBart = () => {
             searchIcon = 'white'
             containerStyle =  {Styles.bar}
             underlineColorAndroid = 'white'
-
+            style = {Styles.barra}
+            
         />
         
     </SafeAreaView>
