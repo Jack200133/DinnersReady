@@ -6,7 +6,7 @@ import SearchBart from '../components/NavSearch';
 import PubItem from '../components/PubItem';
 
 function SavedScreen() {
-  const Hamburguesa = require('../assets/images/hamburguesa_temporal.webp');
+  const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   return (
     <View style={styles.container}>
       <SearchBart/>
@@ -17,9 +17,6 @@ function SavedScreen() {
                 </View>
             </ScrollView>
       </ImageBackground>
-
-
-      <NavBar />
     </View>
   );
 }

@@ -37,8 +37,6 @@ function HomeAlacena(props) {
             </ScrollView>
       </ImageBackground>
 
-      <NavBar/>
-
     </View>
   );
 }

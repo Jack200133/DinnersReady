@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     back:{
         width: '90%',
         height: 190,
-        flex: 1, 
         justifyContent: "center",
         resizeMode:"contain",
         marginVertical:10,

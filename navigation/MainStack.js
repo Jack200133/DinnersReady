@@ -2,9 +2,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {View, Text, Pressable, ImageBackground, Image} from 'react-native';
+
 import React from 'react'
+
 import Mis_ingredientes from '../views/mis_ingredientes'
 import RecipeScreen from '../views/recipe'
+import HomeAlacena from '../views/HomeAlacena'
+import SavedScreen from '../views/Saved'
+import ProfileScreen from '../views/profile'
+import Ingredients from '../views/ingredients';
+
 import styles from './styles'
 
 
@@ -26,37 +33,76 @@ function MyTabs(){
                 }
             }}>
             <Tab.Screen 
+                name = 'MyIng' 
+                component = {Ingredients}
+                options = {{
+                    tabBarLabel: '',
+                    headerShown: false,
+                    tabBarIcon: ()=>(
+                        <Image source={alacena}
+                            resizeMode="contain"
+                            style = {{
+                                width: 40,
+                                height:40,
+                            }}
+                        />
+                    )
+                }}/>
+            <Tab.Screen 
                 name = 'Recipe' 
                 component = {RecipeScreen}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ({focused}) =>(
-                        focused ? 
-                        <Image source={home}
+                        <Image source={newrecipe}
                         resizeMode="contain"
                         style = {{
                             width: 40,
                             height:40,
-                        }}
-                        /> :
-                        <Image source={profile}
-                        resizeMode="contain"
-                        style = {{
-                            width: 40,
-                            height:40,
-                        }}
-                        />
+                        }}/>
                     )
                 }}/>
             <Tab.Screen 
-                name = 'MyIng' 
-                component = {Mis_ingredientes}
+                name = 'home' 
+                component = {HomeAlacena}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ()=>(
-                        <Image source={require('../assets/images/ingredW.png')}
+                        <Image source={home}
+                            resizeMode="contain"
+                            style = {{
+                                width: 40,
+                                height:40,
+                            }}
+                        />
+                    )
+                }}/>
+             <Tab.Screen 
+                name = 'bookmarks' 
+                component = {SavedScreen}
+                options = {{
+                    tabBarLabel: '',
+                    headerShown: false,
+                    tabBarIcon: ()=>(
+                        <Image source={bookmarks}
+                            resizeMode="contain"
+                            style = {{
+                                width: 40,
+                                height:40,
+                            }}
+                        />
+                    )
+                }}/>
+            <Tab.Screen 
+                name = 'profile' 
+                component = {ProfileScreen}
+                options = {{
+                    tabBarLabel: '',
+                    headerShown: false,
+                    tabBarIcon: ()=>(
+                        <Image source={profile}
                             resizeMode="contain"
                             style = {{
                                 width: 40,
