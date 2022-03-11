@@ -34,7 +34,7 @@ export default function NavIngredients(){
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ()=>(
-                        <Image source={Agregar}
+                        <Image source={Existentes}
                             resizeMode="contain"
                             style = {{
                                 width: 40,
@@ -50,7 +50,7 @@ export default function NavIngredients(){
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ({focused}) =>(
-                        <Image source={Existentes}
+                        <Image source={Agregar}
                         resizeMode="contain"
                         style = {{
                             width: 40,

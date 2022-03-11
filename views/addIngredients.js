@@ -14,11 +14,7 @@ function addIngredients(props) {
   return (
     <SafeAreaView style={styles.container}>
       
-      <TitleBar/>
-      <View style={styles.iconContainer}>
-        <IconBar image={Agregar} color={'#F5ACAC'}/>
-        <IconBar image={Existentes} color={'#f36c6c'}/>
-      </View>
+     
 
       <ImageBackground source={require("../assets/images/fondo.png")} style={styles.background} imageStyle={{opacity:0.2}}>
         
@@ -63,8 +59,6 @@ function addIngredients(props) {
         </View>
         
       </ImageBackground>
-
-      <NavBar/>
 
     </SafeAreaView>
   );
