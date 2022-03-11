@@ -1,9 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,StatusBar} from "react-native";
 
 const Styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 100,
+        //height: 100,
+        marginTop: StatusBar.currentHeight,
         paddingHorizontal: 5,
         alignItems: 'center',
         flexDirection: 'row',
@@ -12,13 +13,21 @@ const Styles = StyleSheet.create({
     },
     bar:{
         backgroundColor: 'transparent',
-        width : '90%',
+        //width : '20%',
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     barra:{
-        borderTopWidth : '0px',
-        borderBottomWidth: '0px'
+        borderTopWidth : 0,
+        borderBottomWidth: 0,
+        borderColor: 'transparent',
+        backgroundColor: 'transparent',
+        display: 'flex',
+        width: '100%'
+    },
+    input:{
+        backgroundColor: 'transparent', 
+        
     }
 });
 

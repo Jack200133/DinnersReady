@@ -18,11 +18,11 @@ const SearchBart = () => {
             placeholderTextColor = 'white'
             rightIconContainerStyle = {Styles.bar}
             round = {true}
-            inputStyle={Styles.bar}
+            inputStyle={Styles.input}
             searchIcon = 'white'
-            containerStyle =  {Styles.bar}
+            containerStyle =  {Styles.barra}
             underlineColorAndroid = 'white'
-            style = {Styles.barra}
+            //style = {Styles.barra}
             
         />
         
