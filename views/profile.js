@@ -37,7 +37,6 @@ function ProfileScreen(props) {
           
         </View>
       </ImageBackground>
-      <NavBar/>
     </View>
   );
 }

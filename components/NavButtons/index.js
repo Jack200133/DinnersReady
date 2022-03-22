@@ -5,7 +5,7 @@ import styles from './style';
 
 
 const NavButton = (props) => {
-    console.log(props.url);
+    
     
     
     return (

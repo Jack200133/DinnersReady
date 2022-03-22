@@ -15,12 +15,7 @@ function Mis_ingredientes(props) {
   return (
     <View style={styles.container}>
 
-      <TitleBar/>
-
-      <View style={styles.iconContainer}>
-        <IconBar image={Agregar} color={'#f36c6c'}/>
-        <IconBar image={Existentes} color={'#F5ACAC'}/>
-      </View>
+      
 
       <View style={styles.container}>
         <ImageBackground source={require('../assets/images/fondo.png')}
@@ -48,8 +43,6 @@ function Mis_ingredientes(props) {
           </View>
         </ImageBackground>
         </View>
-
-      <NavBar/>
 
     </View>
   );
