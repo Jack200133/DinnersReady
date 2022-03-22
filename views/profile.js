@@ -32,6 +32,7 @@ function ProfileScreen(props) {
             <Text style = {styles.recetas}>-Barra de Proteina de Avena</Text>
             <Text style = {styles.recetas}>-Galletas con Chispas de Chocolate</Text>
             <Text style = {styles.recetas}>-Galletas de Avena</Text>
+            <Text style = {styles.recetas}>-Papas con Sal</Text>
           </ScrollView>
           
         </View>
