@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, ScrollView } from 'react-native';
-
+import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable } from 'react-native';
+import ModaleditProfile from '../components/ModalEditProfile/modaleditProfile';
 import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar'
+import { Button } from 'react-native-web';
 
 function ProfileScreen(props) {
+  const [modal, setModal] = React.useState(false)
+  const descripcion = 'Soy un chef graduado de la academia de cocina Le Cordon Bleu en Perú, listo para compartir contigo todo lo que se.'
+  const imagen = require('../assets/images/chef.jpg')
 
+  const toggleModal = () =>{
+    setModal(!modal)
+  }
   return (
+    modal ? <ModaleditProfile descripcion = {descripcion} imagen = {imagen} toggleModal = {toggleModal}/>
+    :
     <View style={styles.container}>
       <TitleBar/>
       <ImageBackground source={require('../assets/images/fondo.png')} resizeMode="cover" style={styles.back} imageStyle={{opacity: 0.3}}>
         <View style={styles.userbox}>
-          <Image source={require('../assets/images/chef.jpg')} style = {styles.profilepic}></Image>
+          <View style = {styles.profrow}>
+            <Image source={imagen} style = {styles.profilepic}></Image>
+            <Pressable style = {styles.edit} onPress= {toggleModal}>
+              <Text >Editar Perfil</Text>
+            </Pressable>
+          </View>
           <View style={styles.usernombre}>
             <Text style = {styles.usernamettitle}>Juan Ignacio Ramirez</Text>
-            <Text style = {styles.descripcion}>Soy un chef graduado de la academia de cocina Le Cordon Bleu en Perú, listo para compartir contigo todo lo que se.</Text>
+            <Text style = {styles.descripcion}>{descripcion}</Text>
           </View>
         </View>
         <View style={styles.userbox1}>
@@ -68,20 +82,20 @@ const styles = StyleSheet.create({
     flexDirection:'column'
   },
   userbox: {
-    flex:1,
+    height:200,
     backgroundColor: '#6F6861',
     justifyContent:'center',
-    flexDirection:'row',
+    flexDirection:'column',
     borderRadius: 30,
     borderColor: 'black',
     borderWidth: 2,
-    padding: 30,
+    padding: 10,
     marginTop:5,
     marginBottom:5,
     marginLeft:5,
     marginRight:5
   },userbox1: {
-    flex:4,
+    flex:1,
     backgroundColor: '#6F6861',
     flexDirection:'column',
     borderRadius: 30,
@@ -98,13 +112,15 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   profilepic: {
-    height:100,
-    width:75,
+    height:85,
+    width:85,
+    borderRadius: 60,
   },
   usernombre:{
     marginLeft:10,
     flexDirection:'column',
-    width:'65%'
+    marginTop:15,
+
   },
   usernamettitle:{
     fontSize:15,
@@ -125,6 +141,21 @@ const styles = StyleSheet.create({
   recetas:{
     fontSize: 20,
     color: 'white'
+  },
+  profrow:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+  },
+  edit:{
+    display:'flex',
+    height:30,
+    width:95,
+    borderRadius:50,
+    backgroundColor: 'white',
+    alignSelf:'center',
+    marginRight:10,
+    justifyContent:'center',
+    alignItems:'center'
   }
 });
 
