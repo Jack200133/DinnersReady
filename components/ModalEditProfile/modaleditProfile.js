@@ -31,7 +31,7 @@ const ModaleditProfile = ({descripcion, imagen, toggleModal}) =>{
 
 
   return(
-    <SafeAreaView style = {{flex:1, }}>
+    <SafeAreaView style = {{flex:1}}>
       <View style = {styles.container}>
         <View style = {styles.buttons}>
           <View>
@@ -50,7 +50,7 @@ const ModaleditProfile = ({descripcion, imagen, toggleModal}) =>{
             <Text style={styles.titular}>Presione imagen para cambiar</Text>
             <Pressable style={styles.button} onPress={pickImage}>
             {
-                image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} 
+                image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 100}} 
                 source = {{uri: image}}/> :
                 <Image resizeMode='contain' style={styles.addImage} 
                 source = {imagen}/>
@@ -58,12 +58,13 @@ const ModaleditProfile = ({descripcion, imagen, toggleModal}) =>{
             </Pressable>
           </View>
           <View style = {{marginVertical: 15, flex:1}}>
-            <Text style = {{marginTop: 45, marginLeft: 20, fontSize: 15}} >Ingrese nueva descripcion</Text>
+            <Text style = {{marginTop: 45, marginLeft: 20, fontSize: 18}} >Ingrese nueva descripcion</Text>
             <TextInput
                 style={styles.inputDesc}
                 onChangeText={onChangeNumber}
                 value={number}
                 placeholder = {descripcion}
+                placeholderTextColor = {'black'}
                 multiline = {true}
                 keyboardType="default"
               />

@@ -1,4 +1,4 @@
-import { StyleSheet} from "react-native-web"
+import { StyleSheet} from "react-native"
 
 
 
@@ -49,22 +49,22 @@ const styles = StyleSheet.create({
   },
   inputDesc:{
     borderWidth: 1,
+    marginHorizontal: 15,
     margin: 8,
     borderColor: 'black',
     borderRadius: 30,
-    fontSize: 18,
+    fontSize: 16,
     height: 170,
     paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: '#EEE9E9'
   },
   titular:{
-    width: 300,
+    width: 250,
     marginVertical: 15,
-    fontSize: 15,
+    fontSize: 18,
     justifyContent: 'center',
     alignSelf: 'center',
-    marginLeft: '50%'
   }
 
 });
