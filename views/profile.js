@@ -5,11 +5,51 @@ import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar'
 import { Button } from 'react-native-web';
+import RecetaItem from '../components/RecetaItem/RecetaItem';
 
 function ProfileScreen(props) {
   const [modal, setModal] = React.useState(false)
   const descripcion = 'Soy un chef graduado de la academia de cocina Le Cordon Bleu en Perú, listo para compartir contigo todo lo que se.'
   const imagen = require('../assets/images/chef.jpg')
+
+  const recetas = [
+    {
+      receta: 'Pollo',
+      rating: '3.5'
+    },
+    {
+      receta: 'Pasta',
+      rating: '4.0'
+    },
+    {
+      receta: 'Carne',
+      rating: '4.2'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    },
+    {
+      receta: 'Papas con sal',
+      rating: '2.0'
+    }
+  ]
 
   const toggleModal = () =>{
     setModal(!modal)
@@ -33,20 +73,13 @@ function ProfileScreen(props) {
           </View>
         </View>
         <View style={styles.userbox1}>
-          <Text style = {styles.misrecetas}>Mis Recetas</Text>
-          <ScrollView style = {styles.scrollCont}>
-            <Text style = {styles.recetas}>-Rellenitos de Frijol</Text>
-            <Text style = {styles.recetas}>-Pizza de Pan Pita</Text>
-            <Text style = {styles.recetas}>-Fresco de Suchiles</Text>
-            <Text style = {styles.recetas}>-Sincronizadas</Text>
-            <Text style = {styles.recetas}>-Leche con Cereal</Text>
-            <Text style = {styles.recetas}>-Arroz Frito Chino</Text>
-            <Text style = {styles.recetas}>-Plataninas</Text>
-            <Text style = {styles.recetas}>-Banderillas</Text>
-            <Text style = {styles.recetas}>-Barra de Proteina de Avena</Text>
-            <Text style = {styles.recetas}>-Galletas con Chispas de Chocolate</Text>
-            <Text style = {styles.recetas}>-Galletas de Avena</Text>
-            <Text style = {styles.recetas}>-Papas con Sal</Text>
+          <Text style={{fontSize: 20, color: 'white', marginBottom:10}}>Mis recetas</Text>
+          <ScrollView >
+            {
+              recetas.map((element, index) => {
+                return (<RecetaItem key={index} receta={element.receta} rating={element.rating}/>)
+              })
+            }
           </ScrollView>
           
         </View>
@@ -105,7 +138,7 @@ const styles = StyleSheet.create({
     marginTop:5,
     marginBottom:5,
     marginLeft:5,
-    marginRight:5
+    marginRight:5,
   },
   text:{
     fontSize: 30,
