@@ -10,9 +10,15 @@ export default function RecipeScreen(props) {
 
   const [image, setImage] = useState(null);
   const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
+  const [number, onChangeNumber] = React.useState("");
   const [desc, onChangeDesc] = React.useState(null);
   const [country, setCountry] = useState('Unknown');
+  const [value, setValue] = React.useState('Seleccionar dificultad');
+
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -26,6 +32,7 @@ export default function RecipeScreen(props) {
 
     if (!result.cancelled) {
       setImage(result.uri);
+      
     }
   };
 
@@ -85,10 +92,26 @@ export default function RecipeScreen(props) {
               keyboardType="default"
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
-            <View style={styles.difficulty}>
-              <Pressable>
-                <Text>Dificultad</Text> 
-              </Pressable>
+            <View >
+                <select  value={value} onChange={handleChange} style={{
+                  borderWidth: 1,
+                  marginTop: 5,
+                  borderColor: 'black',
+                  borderRadius: 30,
+                  fontSize: 18,
+                  height: 40,
+                  width: '100%',
+                  paddingHorizontal:15,
+                  paddingVertical: 5,
+                  backgroundColor: '#EEE9E9',
+                  justifyItems:'center',
+                  paddingLeft:15,
+                }}>
+                  <option hidden="hidden" >Elegir dificultad</option>
+                  <option value = "Facil">Facil</option> 
+                  <option value = "Intermedio">Intermedio</option> 
+                  <option value = "Dificil">Dificil</option> 
+                </select>
             </View>
             <Text style={styles.titles}>Categorías</Text>
             <TextInput
@@ -116,6 +139,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1
   },
+
   padContainer: {
     flex:1,
     paddingHorizontal: 10,
