@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground,SafeAreaView,ScrollView } from 'react-native';
 
 import StyledButton from '../components/StyledButton';
@@ -12,11 +12,22 @@ function Mis_ingredientes(props) {
   const Agregar = require('../assets/images/agregar.png');
   const Existentes = require('../assets/images/existentes.png');
 
+  const [ingredientes,setIngredientes]=React.useState(['Zanahoria','Pepino','Tomate','Brocoli','Elote','Papa','Arroz','Frijol','Queso']);
+
+  const removeIngred = (index) => {
+    let oldState = [...ingredientes]
+    oldState.splice(index, 1)
+    setIngredientes(oldState)
+  } 
+
+  useEffect => {
+    setIngredientes(ingred);
+  }, [ingredientes]
+
   return (
     <View style={styles.container}>
 
       
-
       <View style={styles.container}>
         <ImageBackground source={require('../assets/images/fondo.png')}
               resizeMode="cover"
@@ -26,15 +37,7 @@ function Mis_ingredientes(props) {
             <ScrollView style={styles.scrollCont}>
               <Text style={styles.text}>Mis Ingredientes</Text>
               <View style={styles.iconContainer}>
-                <Ingred text={'Zanahoria'} />
-                <Ingred text={'Pepino'}/>
-                <Ingred text={'Tomate'}/>
-                <Ingred text={'Brocoli'}/>
-                <Ingred text={'Elote'}/>
-                <Ingred text={'Papa'}/>
-                <Ingred text={'Arroz'}/>
-                <Ingred text={'Frijol'}/>
-                <Ingred text={'Queso'}/>
+                {ingredientes.map((ingredient, index) => <Ingred key = {ingredient} text = {ingredient} index = {index} removeIngred = {removeIngred}/>)}
               </View>
               
 

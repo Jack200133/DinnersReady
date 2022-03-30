@@ -32,7 +32,7 @@ export default function Categories({index, name, ingredients, clicked, handleCli
                     </View>
 
                     <View style={styles.iconContainer}>
-                        {ingredients.map((ingredient) => <Ingred key = {ingredient} text = {ingredient}/>)}
+                        {ingredients.map((ingredient,index) => <Ingred key = {ingredient} text = {ingredient} index={index} removeIngred = {() => null}/>)}
                     </View>
     
                 </ScrollView>
