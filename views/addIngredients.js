@@ -5,11 +5,24 @@ import NavBar from '../components/NavBar';
 import IconBar from '../components/IconBar';
 import Ingred from '../components/Ingred';
 import TitleBar from '../components/TitleBar';
+import Categories from '../components/Categories';
+
+import {useState} from 'react'
 
 function addIngredients(props) {
 
   const Agregar = require('../assets/images/agregar.png');
   const Existentes = require('../assets/images/existentes.png');
+
+  const [categories, setCategories] = useState([{name: 'Vegetales', ingredients: ['tomate', 'cebolla']},{name: 'Carnes', ingredients: ['lomito', 'cerdo']}])
+  const [clicked, setClicked] = useState(categories.map(() => false))
+
+  const handleClick = (index) => {
+      let oldState = [...clicked]
+      oldState[index] = !oldState[index]
+      setClicked(oldState)
+  }
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,35 +40,12 @@ function addIngredients(props) {
                 <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
             
-          <ScrollView style={styles.scrollCont}>
-            <Text style={styles.text}>Vegetales</Text>
 
-            <View style={styles.iconContainer}>
+          {
+            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients =  {category.ingredients} clicked = {clicked[index]} handleClick = {handleClick}/>)
+          }
 
-              <Ingred text={'Zanahoria'}/>
-              <Ingred text={'Pepino'}/>
-              <Ingred text={'Tomate'}/>
-              <Ingred text={'Elote'}/>
-              <Ingred text={'Papa'}/>
-              <Ingred text={'Brocoli'}/>
-
-            </View>
-          </ScrollView>
           
-        </View>
-
-        <View style={styles.padContainer}>
-
-          <View style={styles.ingredView}>
-            <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>Carne</Text>
-            <Image style={styles.arrow} source={require('../assets/images/arrow.png')}></Image>
-          </View>
-
-          <View style={styles.ingredView}>
-            <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>Frutas</Text>
-            <Image style={styles.arrow} source={require('../assets/images/arrow.png')}></Image>
-          </View>
-
         </View>
         
       </ImageBackground>
@@ -101,15 +91,6 @@ const styles = StyleSheet.create({
   introContainer:{
     paddingLeft: 20,
     marginBottom: 20
-  },
-  ingredView: {
-    alignItems:'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#EEEEEE',
-    height: 50,
-    borderRadius: 30,
-    marginBottom:10,
   },
   arrow:{
     justifyContent: 'flex-end',
