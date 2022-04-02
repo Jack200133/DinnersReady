@@ -14,6 +14,8 @@ function HomeAlacena(props) {
   const Alacena_Recipe = require('../assets/images/casitan.png');
   const Market_Recipe = require('../assets/images/cart.png');
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
+  const Saved = require('../assets/images/bookmark.png')
+  const Savednt = require('../assets/images/bookmark.png')
 
 
   return (
@@ -29,16 +31,29 @@ function HomeAlacena(props) {
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
-                    <PubItem image={Hamburguesa} NameRecipe={"Hamburguesa"} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} NameRecipe={'Hamburguesa'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} color ={colors('dificil')} dificultad={'dificil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} color ={colors('intermedio')} dificultad={'intermedio'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
                 </View>
             </ScrollView>
       </ImageBackground>
 
     </View>
   );
+}
+
+const colors = (dif) =>{
+  let color = ''
+  if(dif === "facil"){
+    color = 'green'
+  }else if(dif==='intermedio'){
+    color = 'orange'
+  }else{
+    color = 'red'
+  }
+
+  return color
 }
 
 const styles = StyleSheet.create({
