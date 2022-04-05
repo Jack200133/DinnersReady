@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         justifyContent: 'center',
-        backgroundColor: '#f36c6c' 
+        backgroundColor: '#3D6A8F' 
     },
 });
 
