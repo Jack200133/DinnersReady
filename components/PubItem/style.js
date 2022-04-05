@@ -58,14 +58,14 @@ const styles= StyleSheet.create({
     },
     Stars:{
         backgroundColor:"black",
-        width: "30%",
+        width: '30%',
         height:30,
         display:'flex',
         flexDirection: "row",
         justifyContent:'center',
         alignItems: 'center',
         marginTop: 5,
-        borderRadius:'10%',
+        borderRadius:10,
     },
     TextStar:{
         color:'white'

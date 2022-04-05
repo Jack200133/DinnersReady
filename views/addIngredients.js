@@ -9,7 +9,7 @@ import Categories from '../components/Categories';
 
 import {useState} from 'react'
 
-function addIngredients(props) {
+function AddIngredients(props) {
 
   const Agregar = require('../assets/images/agregar.png');
   const Existentes = require('../assets/images/existentes.png');
@@ -101,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default addIngredients;
+export default AddIngredients;
