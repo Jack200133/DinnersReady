@@ -7,18 +7,34 @@ import PubItem from '../components/PubItem';
 
 function SavedScreen() {
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
+  const Saved = require('../assets/images/bookmark.png')
+  const Savednt = require('../assets/images/bookmark.png')
   return (
     <View style={styles.container}>
       <SearchBart/>
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
-                    <PubItem image={Hamburguesa} NameRecipe={"Hamburguesa"} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
+                  <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
                 </View>
             </ScrollView>
       </ImageBackground>
     </View>
   );
+}
+
+
+const colors = (dif) =>{
+  let color = ''
+  if(dif === "facil"){
+    color = 'green'
+  }else if(dif==='intermedio'){
+    color = 'orange'
+  }else{
+    color = 'red'
+  }
+
+  return color
 }
 
 
@@ -38,11 +54,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   NavegationPost:{
-    flex: 1, 
+    height:1400, 
     alignItems:'center',
     paddingHorizontal:20,
     
-
   },
   scrollCont: {
     flex:1,

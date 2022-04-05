@@ -2,6 +2,7 @@ import React , { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
 TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import Dropdown from '../components/dropdown/dropdown';
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
@@ -92,27 +93,7 @@ export default function RecipeScreen(props) {
               keyboardType="default"
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
-            <View >
-                <select  value={value} onChange={handleChange} style={{
-                  borderWidth: 1,
-                  marginTop: 5,
-                  borderColor: 'black',
-                  borderRadius: 30,
-                  fontSize: 18,
-                  height: 40,
-                  width: '100%',
-                  paddingHorizontal:15,
-                  paddingVertical: 5,
-                  backgroundColor: '#EEE9E9',
-                  justifyItems:'center',
-                  paddingLeft:15,
-                }}>
-                  <option hidden="hidden" >Elegir dificultad</option>
-                  <option value = "Facil">Facil</option> 
-                  <option value = "Intermedio">Intermedio</option> 
-                  <option value = "Dificil">Dificil</option> 
-                </select>
-            </View>
+            <Dropdown />
             <Text style={styles.titles}>Categorías</Text>
             <TextInput
               style={styles.cat}
@@ -124,7 +105,7 @@ export default function RecipeScreen(props) {
             />
             <View style={styles.publish}>
               <Pressable>
-                <Text style={{fontSize: 18, color: '#EEE9E9'}}>Publicar receta</Text> 
+                <Text style={{fontSize: 18, color: '#fff'}}>Publicar receta</Text> 
               </Pressable>
             </View>
             <View style={{ height: 70 }} />
@@ -253,12 +234,13 @@ const styles = StyleSheet.create({
     height: 130,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: '#EEE9E9'
+    backgroundColor: '#EEE9E9',
+    zIndex:1
   },
   publish:{
     height: 60,
     width: '80%',
-    backgroundColor: '#f36c6c',
+    backgroundColor: '#5EA3DB',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 0,
@@ -269,7 +251,7 @@ const styles = StyleSheet.create({
   top:{
     height: 90,
     width: '100%',
-    backgroundColor: '#f36c6c',
+    backgroundColor: '#3D6A8F',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center'

@@ -7,10 +7,11 @@ import React from 'react'
 
 import Mis_ingredientes from '../views/mis_ingredientes'
 import RecipeScreen from '../views/recipe'
-import HomeAlacena from '../views/HomeAlacena'
 import SavedScreen from '../views/Saved'
 import ProfileScreen from '../views/profile'
 import Ingredients from '../views/ingredients';
+import RecipeView from '../views/recipeView';
+import Homes from '../views/homes';
 
 import styles from './styles'
 
@@ -28,7 +29,7 @@ function MyTabs(){
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle:{
-                    backgroundColor: '#f36c6c',
+                    backgroundColor: '#3D6A8F',
                     height: 100,
                 }
             }}>
@@ -65,7 +66,7 @@ function MyTabs(){
                 }}/>
             <Tab.Screen 
                 name = 'home' 
-                component = {HomeAlacena}
+                component = {Homes}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
@@ -98,6 +99,22 @@ function MyTabs(){
             <Tab.Screen 
                 name = 'profile' 
                 component = {ProfileScreen}
+                options = {{
+                    tabBarLabel: '',
+                    headerShown: false,
+                    tabBarIcon: ()=>(
+                        <Image source={profile}
+                            resizeMode="contain"
+                            style = {{
+                                width: 40,
+                                height:40,
+                            }}
+                        />
+                    )
+                }}/>
+                <Tab.Screen 
+                name = 'view' 
+                component = {RecipeView}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
