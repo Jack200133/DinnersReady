@@ -93,6 +93,7 @@ export default function RecipeScreen(props) {
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
             <View >
+            <label>
                 <select  value={value} onChange={handleChange} style={{
                   borderWidth: 1,
                   marginTop: 5,
@@ -107,11 +108,12 @@ export default function RecipeScreen(props) {
                   justifyItems:'center',
                   paddingLeft:15,
                 }}>
-                  <option hidden="hidden" >Elegir dificultad</option>
-                  <option value = "Facil">Facil</option> 
-                  <option value = "Intermedio">Intermedio</option> 
-                  <option value = "Dificil">Dificil</option> 
+                  <option hidden="hidden" ><Text>Elegir dificultad</Text></option>
+                  <option value = "Facil"><Text>Facil</Text></option> 
+                  <option value = "Intermedio"><Text>Intermedio</Text></option> 
+                  <option value = "Dificil"><Text>Dificil</Text></option> 
                 </select>
+              </label>
             </View>
             <Text style={styles.titles}>Categorías</Text>
             <TextInput
