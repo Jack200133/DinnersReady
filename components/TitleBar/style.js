@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#3D6A8F' 
+        backgroundColor: '#F06D6D' 
     }
 });
 
