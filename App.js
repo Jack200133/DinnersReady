@@ -7,7 +7,7 @@ import RecipeScreen from './views/recipe';
 
 export default function App() {
   return (
-    <SignIn/>
+    <Navigation/>
   );
 }
 
