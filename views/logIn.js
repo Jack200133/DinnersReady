@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView,TextInput, Pressable } from 'react-native';
 
 import TitleBar from '../components/TitleBar';
+import {useNavigate} from 'react-router-dom';
 
 
 function LogIn(props) {
 
   
 
-  const [usuario, setUsuario] = React.useState("");
+  const [correo, setCorreo] = React.useState("");
   const [contraseña, setContraseña] = React.useState("");
+  const [loged,setLoged] = useState(false);
+  let navigate = useNavigate();
 
+  const checkLog = async() => {
+
+      const fet = 'http://localhost:5000/login/'+contraseña+'/'+correo
+      const response = await fetch(fet)
+        .then((response) => {return response.json()}
+        ).then((responseInJSON) => {return responseInJSON})
+
+      setLoged(response.completado)
+
+      if(loged){
+        navigate('/Navigation')
+      }
+  }
 
   return (
     <View style={styles.containerLogIn}>
@@ -28,28 +44,28 @@ function LogIn(props) {
           <Text style={styles.desctext}>Usuario:</Text>
             <TextInput
             style={styles.inputLogIn}
-            onChangeText={setUsuario}
-            value={usuario}
-            placeholder="Ingrese su usuario"
+            onChangeText={(e) => setCorreo(e)}
+            value={correo}
+            placeholder="Ingrese su correo"
             keyboardType="default"
             />
           <Text style={styles.desctext}>Contraseña:</Text>
 
           <TextInput
           style={styles.inputLogIn}
-          onChangeText={setContraseña}
+          onChangeText={(e) => setContraseña(e)}
           value={contraseña}
           placeholder="Ingrese su contraseña"
           keyboardType="default"
           />
 
           <View style={styles.LogInButton}>
-            <Pressable>
+            <Pressable onPress ={() => checkLog()}>
                 <Text style={{fontSize: 18, color: '#EEE9E9'}}>Ingresar</Text> 
             </Pressable>
           </View>
           <View style={styles.LogInButton}>
-            <Pressable>
+            <Pressable onPress = {() => navigate('/Register')}>
                 <Text style={{fontSize: 18, color: '#EEE9E9'}}>Registrarse</Text> 
             </Pressable>
           </View>

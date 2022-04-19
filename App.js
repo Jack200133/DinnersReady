@@ -5,10 +5,22 @@ import LogIn from './views/logIn';
 import SignIn from './views/signIn';
 import RecipeScreen from './views/recipe';
 import HomeAlacena from './views/HomeAlacena';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 export default function App() {
   return (
-    <Navigation/>
+    //<Navigation/>
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route path="/" element={<LogIn />} />
+        <Route path="/Register" element={<SignIn />} />
+        <Route path="/Navigation" element={<Navigation />} />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 

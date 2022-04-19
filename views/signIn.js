@@ -9,9 +9,41 @@ function SignIn(props) {
 
     const [usuario, setUsuario] = React.useState("");
     const [contraseña, setContraseña] = React.useState("");
+    const [contraseña2, setContraseña2] = React.useState("");
     const [correo, setCorreo] = React.useState("");
     const [descripcion, setDescripcion] = React.useState("");
     const [image, setImage] = React.useState(null);
+
+    const regis = async () => {
+          const json = {
+              name:usuario,
+              correo:correo,
+              contrasena:contraseña,
+              descripcion:descripcion
+          }
+  
+          const options = {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(json)
+          }
+          const resp = await fetch('http://localhost:5000/users', options)
+          .then((response) => {return response.json()})
+          .then((responseInJSON) => { return responseInJSON })
+          console.log(resp.completado)
+          if(!resp.completado){
+            console.log('Ya existe ese usuario')
+          }
+
+          setUsuario('')
+          setContraseña('')
+          setContraseña2('')
+          setCorreo('')
+          setDescripcion('')
+
+      }
 
     const pickImage = async () => {
       // No permissions request is necessary for launching the image library
@@ -63,17 +95,19 @@ function SignIn(props) {
                     />
                     <Text style={styles.desctext}>Contraseña:</Text>
                     <TextInput
-                        style={styles.inputLogIn}
+                        style={styles.inputContra}
                         onChangeText={setContraseña}
                         value={contraseña}
+                        secureTextEntry={true}
                         placeholder="Ingrese su contraseña"
                         keyboardType="default"
                     />
                     <Text style={styles.desctext}>Repetir contraseña:</Text>
                     <TextInput
-                        style={styles.inputLogIn}
-                        onChangeText={setContraseña}
-                        value={contraseña}
+                        style={styles.inputContra}
+                        secureTextEntry={true}
+                        onChangeText={setContraseña2}
+                        value={contraseña2}
                         placeholder="Confirme su contraseña"
                         keyboardType="default"
                     />
@@ -99,7 +133,7 @@ function SignIn(props) {
                        
                    
                     <View style={styles.LogInButton}>
-                        <Pressable>
+                        <Pressable onPress={() => regis()}>
                             <Text style={{fontSize: 18, color: '#EEE9E9'}}>Registrarse</Text> 
                         </Pressable>
                     </View>
@@ -126,6 +160,16 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 25,
     backgroundColor: '#EEE9E9', 
+  },
+  inputContra:{
+    borderWidth: 1,
+    marginBottom: 20,
+    borderColor: 'black',
+    borderRadius: 30,
+    fontSize: 18,
+    height: 40,
+    paddingHorizontal: 25,
+    backgroundColor: '#EEE9E9',
   },
   backimage:{
     width: '100%',
