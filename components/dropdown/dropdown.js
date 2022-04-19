@@ -15,7 +15,7 @@ const Opcion = ({ texto, select }) => {
     )
 }
 
-const Dropdown = () =>{
+const Dropdown = ({setDificultad}) =>{
     const elements = ['Fácil', 'Intermedio', 'Difícil']
 
     const[eleccion, setEleccion] = React.useState('Elegir dificultad')
@@ -27,6 +27,7 @@ const Dropdown = () =>{
 
     const select = (text) => {
         setEleccion(text);
+        setDificultad(text);
         onClick()
     }
 

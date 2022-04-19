@@ -10,7 +10,7 @@ import SignIn from './views/signIn';
 
 export default function App() {
   return (
-    <SignIn/>
+    <Navigation/>
   );
 }
 
