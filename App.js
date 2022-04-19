@@ -4,6 +4,9 @@ import Navigation from './navigation/MainStack';
 import LogIn from './views/logIn';
 import SignIn from './views/signIn';
 import RecipeScreen from './views/recipe';
+import HomeAlacena from './views/HomeAlacena';
+import LogIn from './views/LogIn';
+import SignIn from './views/signIn';
 
 export default function App() {
   return (
