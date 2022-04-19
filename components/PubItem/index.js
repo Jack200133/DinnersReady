@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 import {View,ImageBackground,Image,Text, Pressable} from 'react-native';
 import styles from './style';
 
@@ -10,9 +11,13 @@ const PubItem = (props) => {
             <View >
                 <View style={styles.vistas}>
                     
-                        <View style = {{...styles.TextBack,backgroundColor: props.color}}>
+                        <LinearGradient colors={['#D1F0FF','#264DA8']}
+                        locations = {[0.8, 1]}
+                        start={{ x: -1, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.TextBack}>
                             <Text style={styles.Dificult} >{props.dificultad}</Text>
-                        </View>
+                        </LinearGradient>
                         <View style = {styles.SavedContainer}>
                             <Image source={props.saved} 
                             resizeMode="contain" style={styles.Image}>  

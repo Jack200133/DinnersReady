@@ -7,7 +7,7 @@ import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
 import PubItem from '../components/PubItem';
 import SearchBart from '../components/NavSearch';
-import { LinearGradient } from 'expo-linear-gradient';
+
 
 
 function HomeAlacena(props) {
