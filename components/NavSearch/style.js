@@ -9,7 +9,7 @@ const Styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#f36c6c'
+        backgroundColor: '#3D6A8F'
     },
     bar:{
         backgroundColor: 'transparent',

@@ -4,16 +4,15 @@ import {View, Text, Pressable, ImageBackground, Image} from 'react-native';
 
 import React from 'react'
 
-import Mis_ingredientes from '../../views/mis_ingredientes';
-import AddIngredients from '../../views/addIngredients';
-
+import HomeAlacena from '../../views/HomeAlacena';
+import HomeNuevo from '../../views/HomeNuevo';  
 
 
 const Tab = createMaterialTopTabNavigator()
 
-export default function NavIngredients(){
-    const Agregar = require('../../assets/images/agregar.png');
-    const Existentes = require('../../assets/images/existentes.png');
+export default function NavHome(){
+    const Agregar = require('../../assets/images/cart.png');
+    const Existentes = require('../../assets/images/casita.png');
     
     return(
         <Tab.Navigator
@@ -28,8 +27,8 @@ export default function NavIngredients(){
                 }
             }}>
             <Tab.Screen 
-                name = 'Alacena' 
-                component = {Mis_ingredientes}
+                name = 'Recetas' 
+                component = {HomeAlacena}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
@@ -44,8 +43,8 @@ export default function NavIngredients(){
                     )
                 }}/>
             <Tab.Screen 
-                name = 'AddIng' 
-                component = {AddIngredients}
+                name = 'RecetasNuevas' 
+                component = {HomeNuevo}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
@@ -61,4 +60,3 @@ export default function NavIngredients(){
         </Tab.Navigator>
     )
 }
-

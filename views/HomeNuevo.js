@@ -7,10 +7,9 @@ import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
 import PubItem from '../components/PubItem';
 import SearchBart from '../components/NavSearch';
-import { LinearGradient } from 'expo-linear-gradient';
 
 
-function HomeAlacena(props) {
+function HomeNuevo(props) {
 
   const Alacena_Recipe = require('../assets/images/casitan.png');
   const Market_Recipe = require('../assets/images/cart.png');
@@ -21,7 +20,6 @@ function HomeAlacena(props) {
 
   return (
     <View style={styles.container}>
-
 
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
@@ -41,11 +39,11 @@ function HomeAlacena(props) {
 const colors = (dif) =>{
   let color = ''
   if(dif === "facil"){
-    color = '#5DE8F0'
+    color = '#4ECF66'
   }else if(dif==='intermedio'){
-    color = '#5AE6C6'
+    color = 'orange'
   }else{
-    color = '#5A6FE6'
+    color = 'red'
   }
 
   return color
@@ -81,4 +79,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeAlacena;
+export default HomeNuevo;
