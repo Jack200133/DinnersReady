@@ -7,7 +7,7 @@ import React from 'react'
 
 import Mis_ingredientes from '../views/mis_ingredientes'
 import RecipeScreen from '../views/recipe'
-import HomeAlacena from '../views/HomeAlacena'
+import Home from '../views/Home'
 import SavedScreen from '../views/Saved'
 import ProfileScreen from '../views/profile'
 import Ingredients from '../views/ingredients';
@@ -65,7 +65,7 @@ function MyTabs(){
                 }}/>
             <Tab.Screen 
                 name = 'home' 
-                component = {HomeAlacena}
+                component = {Home}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,

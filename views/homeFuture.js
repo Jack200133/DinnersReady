@@ -9,10 +9,8 @@ import PubItem from '../components/PubItem';
 import SearchBart from '../components/NavSearch';
 
 
-function HomeAlacena(props) {
+function HomeFuture(props) {
 
-  const Alacena_Recipe = require('../assets/images/casitan.png');
-  const Market_Recipe = require('../assets/images/cart.png');
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmark.png')
@@ -78,4 +76,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeAlacena;
+export default HomeFuture
