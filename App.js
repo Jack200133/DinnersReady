@@ -8,7 +8,7 @@ import HomeAlacena from './views/HomeAlacena';
 
 export default function App() {
   return (
-    <SignIn/>
+    <Navigation/>
   );
 }
 

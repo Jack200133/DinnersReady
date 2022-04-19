@@ -10,15 +10,28 @@ import { render } from 'react-dom';
 export default function RecipeScreen(props) {
 
   const [image, setImage] = useState(null);
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState("");
-  const [desc, onChangeDesc] = React.useState(null);
-  const [country, setCountry] = useState('Unknown');
-  const [value, setValue] = React.useState('Seleccionar dificultad');
-
+  const [titulo, setTitulo] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [pasos, setPasos] = useState('');
+  const [categorias, setCategorias] = useState('');
+  const [dificultad, setDificultad] = useState('');
+  const [sms,setSms] = useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+
+  const Publish = () => {
+
+    if(image==null || titulo=='' ||descripcion==''||pasos==''||categorias==''||dificultad==''){
+      setSms("Campos incompletos")
+    }
+    else
+    {
+      setSms("")
+      //fetch
+    }
+
   };
 
   const pickImage = async () => {
@@ -63,16 +76,16 @@ export default function RecipeScreen(props) {
             <Text style={styles.titles}>Titulo de receta</Text>
             <TextInput
               style={styles.input}
-              onChangeText={onChangeNumber}
-              value={number}
+              onChangeText={(e) => setTitulo(e)}
+              value={titulo}
               placeholder="Ingresa el título..."
               keyboardType="default"
             />
             <Text style={styles.titles}>Descripción</Text>
             <TextInput
               style={styles.inputDesc}
-              onChangeText={onChangeDesc}
-              value={number}
+              onChangeText={(e) => setDescripcion(e)}
+              value={descripcion}
               multiline={true}
               placeholder="Ingresa la descripción de la receta..."
               keyboardType="default"
@@ -86,28 +99,30 @@ export default function RecipeScreen(props) {
             <Text style={styles.titles}>Pasos a seguir</Text>
             <TextInput
               style={styles.inputDesc}
-              onChangeText={onChangeDesc}
-              value={number}
+              onChangeText={(e) => setPasos(e)}
+              value={pasos}
               multiline={true}
               placeholder="Ingresa los pasos de la receta..."
               keyboardType="default"
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
-            <Dropdown />
+            <Dropdown setDificultad = {setDificultad}/>
             <Text style={styles.titles}>Categorías</Text>
             <TextInput
               style={styles.cat}
-              onChangeText={onChangeDesc}
-              value={number}
+              onChangeText={(e) => setCategorias(e)}
+              value={categorias}
               multiline={true}
               placeholder="Ingresa las categorías de tu receta..."
               keyboardType="default"
             />
+            
             <View style={styles.publish}>
-              <Pressable>
+              <Pressable onPress={() => Publish()}>
                 <Text style={{fontSize: 18, color: '#fff'}}>Publicar receta</Text> 
               </Pressable>
             </View>
+            {sms!="" && <Text style={styles.Sms}>{sms}</Text>}
             <View style={{ height: 70 }} />
           </ScrollView>
         </View>
@@ -119,6 +134,17 @@ export default function RecipeScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex:1
+  },
+
+  Sms:{
+    flex:1,
+    color: "orange",
+    fontSize:20,
+    justifyContent:"center",
+    alignItems:"center",
+    alignSelf:"center",
+    marginTop: '10px',
+    fontWeight:"bold"
   },
 
   padContainer: {
