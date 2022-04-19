@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, {useState} from 'react';
+>>>>>>> Entry
 import { StyleSheet, Text, View, ImageBackground, SafeAreaView,ScrollView,TextInput, Pressable, Picker, Image } from 'react-native';
 
 import TitleBar from '../components/TitleBar';
@@ -39,9 +43,15 @@ function SignIn(props) {
               style={styles.backimage}
               imageStyle={{opacity: 0.2}}>
 
+<<<<<<< HEAD
             <ScrollView>
                 <View style={styles.title}>
                     <Text style = {{ fontSize: '30px', fontWeight: 'bold', alignSelf: 'center', justifyContent: 'center'}}>Crea tu cuenta</Text>
+=======
+            <ScrollView style={styles.scrollContSigin}>
+                <View style={styles.title}>
+                    <Text style = {styles.titleSign}>Crea tu cuenta</Text>
+>>>>>>> Entry
                 </View>
                 <View style={styles.LogInContainer}>
 
@@ -82,9 +92,16 @@ function SignIn(props) {
                         style={styles.inputLogIn}
                         onChangeText={setDescripcion}
                         value={descripcion}
+<<<<<<< HEAD
                         placeholder="Ingresa una breve descripcion tuya"
                         keyboardType="default"
                     />
+=======
+                        placeholder="Ingresa una breve descripcion"
+                        keyboardType="default"
+                    />
+                      
+>>>>>>> Entry
                     <View style={styles.imagePickerLogIn}>
                       <Pressable style={styles.buttonS} onPress={pickImage}>
                       {
@@ -95,15 +112,29 @@ function SignIn(props) {
                       }
                       </Pressable>
                     </View>
+<<<<<<< HEAD
+=======
+                       
+                   
+>>>>>>> Entry
                     <View style={styles.LogInButton}>
                         <Pressable>
                             <Text style={{fontSize: 18, color: '#EEE9E9'}}>Registrarse</Text> 
                         </Pressable>
                     </View>
+<<<<<<< HEAD
                 </View>
             </ScrollView>
         </ImageBackground>
         <TitleBar></TitleBar>
+=======
+
+        
+                </View>
+            </ScrollView>
+      </ImageBackground>
+      <TitleBar></TitleBar>
+>>>>>>> Entry
     </View>
   );
 }
@@ -130,7 +161,11 @@ const styles = StyleSheet.create({
   },
   LogInContainer: {
     flex:1,
+<<<<<<< HEAD
     height: '80%',
+=======
+    height: 850,
+>>>>>>> Entry
     paddingHorizontal: 10
   },
   LogInButton:{
@@ -145,14 +180,22 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   desctext:{
+<<<<<<< HEAD
     fontSize: 28,
+=======
+    fontSize: 18,
+>>>>>>> Entry
     marginLeft:10,
     marginBottom:5,
   },  
   title:{
     justifyContent:'center',
     alignItems:'center',
+<<<<<<< HEAD
     height:'25%',
+=======
+    height:'15%',
+>>>>>>> Entry
 
   },
   imagePickerLogIn: {
@@ -176,6 +219,22 @@ const styles = StyleSheet.create({
     height: '25%',
     borderRadius: 30
   },
+<<<<<<< HEAD
+=======
+  titleSign:{
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    alignSelf: 'center', 
+    justifyContent: 'center'
+  },
+
+  scrollContSigin: {
+    flex:1,
+  },
+  scrollContainerSigin:{
+
+  },
+>>>>>>> Entry
 });
 
 export default SignIn;
