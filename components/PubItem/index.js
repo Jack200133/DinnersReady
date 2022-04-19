@@ -7,7 +7,7 @@ const star = require('../../assets/images/star.png')
 
 const PubItem = (props) => {
     return (
-        <Pressable style = {styles.container} onPress={()=>console.log('putaaaaaaaaaaaaa')}>
+        <Pressable style = {styles.container} onPress={()=>console.log('si')}>
             <View >
                 <View style={styles.vistas}>
                     
