@@ -2,6 +2,7 @@ import React , { useState, useEffect, Fragment } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
 TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { useNavigate } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
@@ -10,13 +11,21 @@ import Ingred from '../components/Ingred';
 
 
 export default function RecipeView(props) {
+
+    const navigate = useNavigate()
+
     const star = require('../assets/images/star.png')
     const image = require('../assets/images/hamburguesa_temporal.jpg')
     const saved = require('../assets/images/bookmark.png')
+    const arrow = require('../assets/images/left-arrow.png')
     const ingredientes = ['zanahoria', 'pollo', 'pan', 'arroz', 'tomate', 'lechuga']
     return (
         <Fragment>
-            <View style={styles.top}></View>
+            <View style={styles.top}>
+                <Pressable style={styles.button} onPress={()=>navigate('/Navigation')}>
+                            <Image style={styles.arrow} source={arrow}></Image>
+                </Pressable>
+            </View>
             <ScrollView contentContainerStyle = {styles.container}>
                 
                 <View style={styles.vistas}>
@@ -200,5 +209,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'
-    }
+    },
+    arrow:{
+        alignSelf:'flex-start',
+        width: '25%',
+        height: '40%', 
+        resizeMode: 'contain',
+    },
+    button:{
+        width: 70,
+        height: 70,
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf: 'flex-start',
+        marginLeft: 20
+    },
 });

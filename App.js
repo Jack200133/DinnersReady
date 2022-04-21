@@ -5,6 +5,8 @@ import LogIn from './views/logIn';
 import SignIn from './views/signIn';
 import RecipeScreen from './views/recipe';
 import HomeAlacena from './views/HomeAlacena';
+import RecipeView from './views/recipeView';
+
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
         <Route path="/" element={<LogIn />} />
         <Route path="/Register" element={<SignIn />} />
         <Route path="/Navigation" element={<Navigation />} />
+        <Route path="/Recipe" element={<RecipeView />} />
 
       </Routes>
 

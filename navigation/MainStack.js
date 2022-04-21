@@ -10,7 +10,6 @@ import RecipeScreen from '../views/recipe'
 import SavedScreen from '../views/Saved'
 import ProfileScreen from '../views/profile'
 import Ingredients from '../views/ingredients';
-import RecipeView from '../views/recipeView';
 import Homes from '../views/homes';
 
 import styles from './styles'
@@ -99,22 +98,6 @@ function MyTabs(){
             <Tab.Screen 
                 name = 'profile' 
                 component = {ProfileScreen}
-                options = {{
-                    tabBarLabel: '',
-                    headerShown: false,
-                    tabBarIcon: ()=>(
-                        <Image source={profile}
-                            resizeMode="contain"
-                            style = {{
-                                width: 40,
-                                height:40,
-                            }}
-                        />
-                    )
-                }}/>
-                <Tab.Screen 
-                name = 'view' 
-                component = {RecipeView}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,

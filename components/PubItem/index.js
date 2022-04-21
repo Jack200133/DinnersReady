@@ -1,13 +1,15 @@
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import {View,ImageBackground,Image,Text, Pressable} from 'react-native';
+import { useNavigate } from 'react-router-dom';
 import styles from './style';
 
 const star = require('../../assets/images/star.png')
 
 const PubItem = (props) => {
+    const navigate = useNavigate()
     return (
-        <Pressable style = {styles.container} onPress={()=>console.log('si')}>
+        <Pressable style = {styles.container} onPress={()=>navigate('/Recipe')}>
             <View >
                 <View style={styles.vistas}>
                     
