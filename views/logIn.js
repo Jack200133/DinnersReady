@@ -8,23 +8,24 @@ import {useNavigate} from 'react-router-dom';
 function LogIn(props) {
 
   
-
+  const [dentro, setDentro] = React.useState(true)
   const [correo, setCorreo] = React.useState("");
   const [contraseña, setContraseña] = React.useState("");
-  const [loged,setLoged] = useState(false);
-  let navigate = useNavigate();
+  const navigate = useNavigate()
 
   const checkLog = async() => {
-
+      console.log(contraseña)
       const fet = 'http://localhost:5000/login/'+contraseña+'/'+correo
       const response = await fetch(fet)
         .then((response) => {return response.json()}
         ).then((responseInJSON) => {return responseInJSON})
 
-      setLoged(response.completado)
+      const loged = response.completado
 
       if(loged){
         navigate('/Navigation')
+      } else {
+        setDentro(false)
       }
   }
 
@@ -55,9 +56,13 @@ function LogIn(props) {
           style={styles.inputLogIn}
           onChangeText={(e) => setContraseña(e)}
           value={contraseña}
+          secureTextEntry={true}
           placeholder="Ingrese su contraseña"
           keyboardType="default"
           />
+
+          {!dentro && <Text style={{marginLeft: 10, color:'red', fontSize: 16}}>Error al ingresar. Introduce bien tus datos.</Text>}
+          
 
           <View style={styles.LogInButton}>
             <Pressable onPress ={() => checkLog()}>
