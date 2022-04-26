@@ -7,20 +7,70 @@ import Ingred from '../components/Ingred';
 import TitleBar from '../components/TitleBar';
 import Categories from '../components/Categories';
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 function AddIngredients(props) {
 
   const Agregar = require('../assets/images/agregar.png');
   const Existentes = require('../assets/images/existentes.png');
 
-  const [categories, setCategories] = useState([{name: 'Vegetales', ingredients: ['tomate', 'cebolla']},{name: 'Carnes', ingredients: ['lomito', 'cerdo']}])
+  const [categories, setCategories] = useState([])
   const [clicked, setClicked] = useState(categories.map(() => false))
+  const [categorias, setCategorias] = useState([])
+
+  useEffect( async () => {
+    GetCategorias()
+  }, [])
+
+  
+  useEffect( async () => {
+
+    let oldState = [...categories]
+
+    categorias.forEach(async (categoria) => {
+      let temp = []
+
+      let fet = "http://localhost:5000/ingredientes/"+categoria.categoria
+
+      const response = await fetch(fet)
+      .then((response) => {return response.json()}
+      ).then((responseInJSON) => { return responseInJSON })
+
+      const r = [...response]
+
+      r.forEach(element => {
+        temp.push(element.nombre)
+      })
+
+      const value = {
+        name: categoria.categoria,
+        ingredients: [...temp]
+      }
+      
+      oldState.push(value)
+      setCategories([...oldState])
+    })
+
+
+  }, [categorias])
 
   const handleClick = (index) => {
       let oldState = [...clicked]
       oldState[index] = !oldState[index]
       setClicked(oldState)
+  }
+
+  const GetCategorias = async() => {
+    
+        
+    let fet = "http://localhost:5000/categorias"
+
+
+    const response = await fetch(fet)
+    .then((response) => {return response.json()}
+    ).then((responseInJSON) => { return responseInJSON })
+    setCategorias([...response])
+
   }
 
 
@@ -33,20 +83,18 @@ function AddIngredients(props) {
         
         
 
-        <View style={styles.padContainer}>
+        <ScrollView style={styles.padContainer}>
 
           <View style ={styles.introContainer}>
                 <Text style={{fontSize: 40,color: 'black'}}> Agregar nuevos ingredientes</Text>
                 <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
-            
-
           {
-            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients =  {category.ingredients} clicked = {clicked[index]} handleClick = {handleClick}/>)
+            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} handleClick = {handleClick}/>)
           }
 
           
-        </View>
+        </ScrollView>
         
       </ImageBackground>
 
@@ -73,7 +121,7 @@ const styles = StyleSheet.create({
     flex:1,
     paddingHorizontal: 10,
     paddingTop: 5,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   scrollCont: {
     flex:1,
