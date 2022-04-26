@@ -11,7 +11,7 @@ function LogIn(props) {
   const [dentro, setDentro] = React.useState(true)
   const [correo, setCorreo] = React.useState("");
   const [contraseña, setContraseña] = React.useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate()
 
   const checkLog = async() => {
       console.log(contraseña)
@@ -56,6 +56,7 @@ function LogIn(props) {
           style={styles.inputLogIn}
           onChangeText={(e) => setContraseña(e)}
           value={contraseña}
+          secureTextEntry={true}
           placeholder="Ingrese su contraseña"
           keyboardType="default"
           />

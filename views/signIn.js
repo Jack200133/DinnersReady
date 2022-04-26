@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ImageBackground, SafeAreaView,ScrollView,TextIn
 
 import TitleBar from '../components/TitleBar';
 import * as ImagePicker from 'expo-image-picker';
+import {useNavigate} from 'react-router-dom';
 
 
 function SignIn(props) {
@@ -13,6 +14,7 @@ function SignIn(props) {
     const [correo, setCorreo] = React.useState("");
     const [descripcion, setDescripcion] = React.useState("");
     const [image, setImage] = React.useState(null);
+    const navigate = useNavigate()
 
     const regis = async () => {
           const json = {
@@ -35,6 +37,9 @@ function SignIn(props) {
           console.log(resp.completado)
           if(!resp.completado){
             console.log('Ya existe ese usuario')
+          }
+          else{
+            navigate('/Navigation')
           }
 
           setUsuario('')
