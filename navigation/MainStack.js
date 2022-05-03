@@ -31,7 +31,7 @@ function MyTabs(){
                     backgroundColor: '#3D6A8F',
                     height: 100,
                 }
-            }}>
+            }} initialRouteName="home">
             <Tab.Screen 
                 name = 'MyIng' 
                 component = {Ingredients}
