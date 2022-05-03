@@ -14,16 +14,17 @@ const SearchBart = () => {
             placeholder="Buscar..."
             onChangeText={onChangeSearch}
             value={searchQuery}
-            leftIconContainerStyle = {Styles.bar}
             placeholderTextColor = 'white'
-            rightIconContainerStyle = {Styles.bar}
+            rightIconContainerStyle = {Styles.icon}
+
             round = {true}
             inputStyle={Styles.input}
-            searchIcon = 'white'
+            searchIconColor = 'white'
             containerStyle =  {Styles.barra}
             underlineColorAndroid = 'white'
-            //style = {Styles.barra}
-            
+            style = {Styles.container}
+            inputContainerStyle = {Styles.input}
+             
         />
         
     </SafeAreaView>

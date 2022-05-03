@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   scrollCont: {
     flex:1,
-    backgroundColor: '#6F6861',
+    backgroundColor: '#4E87B5',
     borderRadius: 30,
     borderColor: 'black',
     borderWidth: 2,

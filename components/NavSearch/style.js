@@ -9,24 +9,31 @@ const Styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#3D6A8F'
+        backgroundColor: '#5EA3DB',
+        borderBottomColor:'#5EA3DB',
+        color: 'white',
     },
     bar:{
         backgroundColor: 'transparent',
         //width : '20%',
         flexDirection: 'row',
+        color: 'white',
         justifyContent: 'space-between',
+    },
+    icon:{
+        color:'white',
+        backgroundColor:'#5EA3DB'
     },
     barra:{
         borderTopWidth : 0,
         borderBottomWidth: 0,
-        borderColor: 'transparent',
-        backgroundColor: 'transparent',
+        backgroundColor: '#3D6A8F',
         display: 'flex',
+        color: 'white',
         width: '100%'
     },
     input:{
-        backgroundColor: 'transparent', 
+        backgroundColor: '#5EA3DB', 
         
     }
 });

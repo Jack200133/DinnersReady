@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom';
 
 const storeData = async (value) => {
   try {
-    await AsyncStorage.setItem('@Usario', value)
+    await AsyncStorage.setItem('@Usuario', value)
   } catch (e) {
     // saving error
   }

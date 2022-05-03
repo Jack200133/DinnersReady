@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   scrollCont: {
     flex:1,
-    backgroundColor: '#6F6861',
+    backgroundColor: '#4E87B5',
     borderWidth: 1,
     borderRadius:10,
     padding: 30,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   userbox: {
     height:200,
-    backgroundColor: '#6F6861',
+    backgroundColor: '#4E87B5',
     justifyContent:'center',
     flexDirection:'column',
     borderRadius: 30,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     marginRight:5
   },userbox1: {
     flex:1,
-    backgroundColor: '#6F6861',
+    backgroundColor: '#4E87B5',
     flexDirection:'column',
     borderRadius: 30,
     borderColor: 'black',
