@@ -5,6 +5,13 @@ import TitleBar from '../components/TitleBar';
 import * as ImagePicker from 'expo-image-picker';
 import {useNavigate} from 'react-router-dom';
 
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('@Usuario', value)
+  } catch (e) {
+    // saving error
+  }
+}
 
 function SignIn(props) {
 
@@ -39,6 +46,7 @@ function SignIn(props) {
             console.log('Ya existe ese usuario')
           }
           else{
+            storeData(correo)
             navigate('/Navigation')
           }
 

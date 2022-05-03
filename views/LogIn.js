@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView,TextInput, Pressable } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import TitleBar from '../components/TitleBar';
 import {useNavigate} from 'react-router-dom';
 
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('@Usario', value)
+  } catch (e) {
+    // saving error
+  }
+}
 
 function LogIn(props) {
 
@@ -23,6 +31,7 @@ function LogIn(props) {
       const loged = response.completado
 
       if(loged){
+        storeData(correo)
         navigate('/Navigation')
       } else {
         setDentro(false)
