@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom';
 
 function LogIn(props) {
 
-  
+  //prueba login chiquito
   const [dentro, setDentro] = React.useState(true)
   const [correo, setCorreo] = React.useState("");
   const [contraseña, setContraseña] = React.useState("");
