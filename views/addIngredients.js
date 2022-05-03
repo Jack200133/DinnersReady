@@ -31,6 +31,7 @@ function AddIngredients(props) {
   const [categories, setCategories] = useState([])
   const [clicked, setClicked] = useState(categories.map(() => false))
   const [categorias, setCategorias] = useState([])
+  const [change, setChange] = useState(false)
 
   useEffect( async () => {
     GetCategorias()
@@ -39,12 +40,12 @@ function AddIngredients(props) {
   
   useEffect( async () => {
 
-    let oldState = [...categories]
+    let oldState = []
 
     categorias.forEach(async (categoria) => {
       let temp = []
-
-      let fet = "http://localhost:5000/ingredientes/"+categoria.categoria
+      const usuario = await getData()
+      let fet = "http://localhost:5000/ingredientes/"+categoria.categoria+"/"+usuario
 
       const response = await fetch(fet)
       .then((response) => {return response.json()}
@@ -62,11 +63,12 @@ function AddIngredients(props) {
       }
       
       oldState.push(value)
+      console.log(value)
       setCategories([...oldState])
     })
 
 
-  }, [categorias])
+  }, [categorias, change])
 
   const handleClick = (index) => {
       let oldState = [...clicked]
@@ -83,11 +85,11 @@ function AddIngredients(props) {
     const response = await fetch(fet)
     .then((response) => {return response.json()}
     ).then((responseInJSON) => { return responseInJSON })
+    console.log(response)
     setCategorias([...response])
-
   }
 
-  const addIngrediente = async(ingredienteput) => {
+  const addIngrediente = async(ingredienteput, indexC, indexI) => {
     const usuario = await getData()
     console.log(usuario)
     const endpoint = 'http://localhost:5000/ingrediente'
@@ -101,8 +103,10 @@ function AddIngredients(props) {
         ingrediente:ingredienteput
       })
     })
+    const oldState = [...categories]
+    oldState[indexC].ingredients.splice(indexI, 1)
+    setCategories(oldState)
     const responseJSON = await response.json()
-    GetCategorias()
     return responseJSON
   }
 
@@ -123,7 +127,7 @@ function AddIngredients(props) {
                 <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
           {
-            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
+            categories.map((category, index) => <Categories key = {category.name} indexC = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
           }
 
           

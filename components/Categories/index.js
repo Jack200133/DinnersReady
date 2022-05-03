@@ -4,7 +4,7 @@ import styles from './style';
 import { SafeAreaView, Text, View, ImageBackground, ScrollView, Image, Pressable  } from 'react-native';
 import Ingred from '../Ingred';
 
-export default function Categories({index, name, ingredients, clicked, handleClick, AddIngrediente}){
+export default function Categories({indexC, name, ingredients, clicked, handleClick, AddIngrediente}){
     return (
         <View>
 
@@ -13,7 +13,7 @@ export default function Categories({index, name, ingredients, clicked, handleCli
                 
                     <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>{name}</Text>
                     
-                    <Pressable style={styles.button} onPress = { () => {handleClick(index)}}>
+                    <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
                         <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>
                     </Pressable>
             
@@ -26,13 +26,13 @@ export default function Categories({index, name, ingredients, clicked, handleCli
                     <View style = {styles.ingredTitle}>
                         <Text style={{fontSize: 20,color: 'black', paddingLeft:20}}>{name}</Text>
                         
-                        <Pressable style={styles.button} onPress = { () => {handleClick(index)}}>
+                        <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
                             <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>
                         </Pressable>
                     </View>
 
                     <View style={styles.iconContainer}>
-                        {ingredients.map((ingredient,index) => <Ingred key = {ingredient} text = {ingredient} index={index} AddIngrediente={AddIngrediente} />)}
+                        {ingredients.map((ingredient,index) => <Ingred key = {ingredient} text = {ingredient} index={index} IndexC={indexC} AddIngrediente={AddIngrediente} />)}
                     </View>
     
                 </ScrollView>
