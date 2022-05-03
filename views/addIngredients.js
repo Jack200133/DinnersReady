@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ImageBackground, ScrollView, Image  } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import NavBar from '../components/NavBar';
 import IconBar from '../components/IconBar';
@@ -8,6 +9,19 @@ import TitleBar from '../components/TitleBar';
 import Categories from '../components/Categories';
 
 import {useEffect, useState} from 'react'
+
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('@Usuario')
+    if(value !== null) {
+      return value
+    }
+  } catch(e) {
+    // error reading value
+  }
+}
+
 
 function AddIngredients(props) {
 
@@ -73,6 +87,25 @@ function AddIngredients(props) {
 
   }
 
+  const addIngrediente = async(ingredienteput) => {
+    const usuario = await getData()
+    console.log(usuario)
+    const endpoint = 'http://localhost:5000/ingrediente'
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        usuario: usuario,
+        ingrediente:ingredienteput
+      })
+    })
+    const responseJSON = await response.json()
+    GetCategorias()
+    return responseJSON
+  }
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -90,7 +123,7 @@ function AddIngredients(props) {
                 <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
           {
-            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} handleClick = {handleClick}/>)
+            categories.map((category, index) => <Categories key = {category.name} index = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
           }
 
           

@@ -4,7 +4,7 @@ import styles from './style';
 import { SafeAreaView, Text, View, ImageBackground, ScrollView, Image, Pressable  } from 'react-native';
 import Ingred from '../Ingred';
 
-export default function Categories({index, name, ingredients, clicked, handleClick}){
+export default function Categories({index, name, ingredients, clicked, handleClick, AddIngrediente}){
     return (
         <View>
 
@@ -32,7 +32,7 @@ export default function Categories({index, name, ingredients, clicked, handleCli
                     </View>
 
                     <View style={styles.iconContainer}>
-                        {ingredients.map((ingredient,index) => <Ingred key = {ingredient} text = {ingredient} index={index} removeIngred = {() => null}/>)}
+                        {ingredients.map((ingredient,index) => <Ingred key = {ingredient} text = {ingredient} index={index} AddIngrediente={AddIngrediente} />)}
                     </View>
     
                 </ScrollView>
