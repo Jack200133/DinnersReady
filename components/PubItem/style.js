@@ -6,7 +6,7 @@ const styles= StyleSheet.create({
         display:'flex',
         flexDirection: "column",
         width: "100%",
-        height: '25%',
+        height: 360,
         backgroundColor: '#4E87B5',
         marginTop: 10,
         marginBottom: 10,

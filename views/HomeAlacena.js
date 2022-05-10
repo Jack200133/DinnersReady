@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView } from 'react-native';
 
 import StyledButton from '../components/StyledButton';
@@ -18,6 +18,17 @@ function HomeAlacena(props) {
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmark.png')
 
+  const [recetas, setRecetas] = React.useState([])
+  
+
+  useEffect( async () => {
+      const url = 'http://localhost:5000/recetas'
+      const response = await fetch(url, {
+        method: 'GET'
+      })
+      const responseJSON = await response.json()
+      setRecetas(responseJSON)
+    },[])
 
   return (
     <View style={styles.container}>
@@ -26,11 +37,10 @@ function HomeAlacena(props) {
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
-                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} color ={colors('dificil')} dificultad={'dificil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} color ={colors('intermedio')} dificultad={'intermedio'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}/>
-                </View>
+                  {
+                    recetas.map((e) => <PubItem id={e.id} image={Hamburguesa} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={false ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion}/>)
+                  }
+                </View> 
             </ScrollView>
       </ImageBackground>
 
@@ -40,9 +50,9 @@ function HomeAlacena(props) {
 
 const colors = (dif) =>{
   let color = ''
-  if(dif === "facil"){
+  if(dif === "Fácil"){
     color = '#5DE8F0'
-  }else if(dif==='intermedio'){
+  }else if(dif==='Medio'){
     color = '#5AE6C6'
   }else{
     color = '#5A6FE6'
