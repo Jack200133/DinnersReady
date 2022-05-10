@@ -3,13 +3,23 @@ import { LinearGradient } from 'expo-linear-gradient';
 import {View,ImageBackground,Image,Text, Pressable} from 'react-native';
 import { useNavigate } from 'react-router-dom';
 import styles from './style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const star = require('../../assets/images/star.png')
 
+const storeData = async (value) => {
+    try {
+        await AsyncStorage.setItem('@Receta', value)
+    } catch (e) {
+        // saving error
+    }
+}
+
 const PubItem = (props) => {
+    
     const navigate = useNavigate()
     return (
-        <Pressable style = {styles.container} onPress={()=>navigate('/Recipe')}>
+        <Pressable style = {styles.container} onPress={()=> {storeData(props.id) ,navigate('/Recipe')}}>
             <View >
                 <View style={styles.vistas}>
                     

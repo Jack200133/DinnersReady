@@ -3,12 +3,23 @@ import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
 TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigate } from 'react-router-dom';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
 import PubItem from '../components/PubItem';
 import Ingred from '../components/Ingred';
 
+const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@Receta')
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+    }
+  }
 
 export default function RecipeView(props) {
 
@@ -19,6 +30,18 @@ export default function RecipeView(props) {
     const saved = require('../assets/images/bookmark.png')
     const arrow = require('../assets/images/left-arrow.png')
     const ingredientes = ['zanahoria', 'pollo', 'pan', 'arroz', 'tomate', 'lechuga']
+    const [info, setInfo] = React.useState({})
+
+    useEffect( async () => {
+        const receta = await getData()
+        const url = `http://localhost:5000/recetas/${receta}`
+        const response = await fetch(url, {
+            method: 'GET',
+        })
+        const responseJSON = await response.json()
+        setInfo(responseJSON[0])
+    }, [])
+
     return (
         <Fragment>
             <View style={styles.top}>
@@ -31,7 +54,7 @@ export default function RecipeView(props) {
                 <View style={styles.vistas}>
                     
                         <View style = {{...styles.TextBack,backgroundColor: '#4ECF66'}}>
-                            <Text style={styles.Dificult} >{'Fácil'}</Text>
+                            <Text style={styles.Dificult} >{info.dificultad}</Text>
                         </View>
                         <View style = {styles.SavedContainer}>
                             <Image source={saved} 
@@ -42,9 +65,9 @@ export default function RecipeView(props) {
                 </View>
                 <Image source={image} resizeMode="contain" style={styles.background}>
                     </Image>   
-                <Text style={styles.name}>{'Por: Yonny'}</Text>
+                <Text style={styles.name}>Por: {info.autor}</Text>
                 <View style = {styles.TitleContainer}>
-                    <Text style={styles.Title}>{'Hamburguesa'}</Text>
+                    <Text style={styles.Title}>{info.nombre}</Text>
                     
                     <View style = {styles.Stars}>
                         
@@ -54,11 +77,11 @@ export default function RecipeView(props) {
                                 
                             </Image>
                         </View>
-                        <Text style={styles.TextStar}> {3.5}</Text>
+                        <Text style={styles.TextStar}> {info.estrellas}</Text>
                     </View>
                 </View>
                 <Text style={styles.Arr}>{"Descripcion"}</Text>
-                <Text style={styles.Descripcion}>{"Deliciosa borgir hecha en casa."}</Text>
+                <Text style={styles.Descripcion}>{info.descripcion}</Text>
                 <View>
                     <Text style={styles.Arr}>{"Ingredientes"}</Text>
                     <View style={styles.ingredContainer}> 
