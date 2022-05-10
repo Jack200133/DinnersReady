@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './navigation/MainStack';
-import LogIn from './views/logIn';
+import LogIn from './views/LogIn';
 import SignIn from './views/signIn';
 import RecipeScreen from './views/recipe';
 import HomeAlacena from './views/HomeAlacena';

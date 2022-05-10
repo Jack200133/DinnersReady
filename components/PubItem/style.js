@@ -104,6 +104,12 @@ const styles= StyleSheet.create({
         marginLeft:10,
         
     },
+    autor: {
+        justifyContent:"center",
+        fontSize: 13,
+        marginLeft: 20,
+        fontStyle:'italic',
+    }
 });
 
 export default styles;

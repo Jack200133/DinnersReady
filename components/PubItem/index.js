@@ -15,6 +15,44 @@ const storeData = async (value) => {
     }
 }
 
+const Gradient = (dificultad) => {
+    console.log(dificultad)
+    switch (dificultad) {
+        case 'Fácil':
+            return (
+                <LinearGradient colors={['#D1F0FF','#264DA8']}
+                locations = {[0.8, 1]}
+                start={{ x: -1, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.TextBack}>
+                    <Text style={styles.Dificult} >{dificultad}</Text>
+                </LinearGradient>
+            )
+        case 'Medio':
+            return (
+                <LinearGradient colors={['#D1F0FF','#264DA8']}
+                locations = {[0.5, 1]}
+                start={{ x: -1, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.TextBack}>
+                    <Text style={styles.Dificult} >{dificultad}</Text>
+                </LinearGradient>
+            )
+        default:
+            return (
+                <LinearGradient colors={['#D1F0FF','#264DA8']}
+                locations = {[-5, 1]}
+                start={{ x: -1, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.TextBack}>
+                    <Text style={styles.Dificult} >{dificultad}</Text>
+                </LinearGradient>
+            )
+    
+
+    }
+}
+
 const PubItem = (props) => {
     
     const navigate = useNavigate()
@@ -22,14 +60,10 @@ const PubItem = (props) => {
         <Pressable style = {styles.container} onPress={()=> {storeData(props.id) ,navigate('/Recipe')}}>
             <View >
                 <View style={styles.vistas}>
-                    
-                        <LinearGradient colors={['#D1F0FF','#264DA8']}
-                        locations = {[0.8, 1]}
-                        start={{ x: -1, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        style={styles.TextBack}>
-                            <Text style={styles.Dificult} >{props.dificultad}</Text>
-                        </LinearGradient>
+                        {
+                            Gradient(props.dificultad)
+                        }
+                        
                         <View style = {styles.SavedContainer}>
                             <Image source={props.saved} 
                             resizeMode="contain" style={styles.Image}>  
@@ -39,7 +73,8 @@ const PubItem = (props) => {
                         
                 </View>
                 <Image source={props.image} resizeMode="contain" style={styles.background}>
-                    </Image>   
+                    </Image>
+                <Text style={styles.autor}>{"Autor: "+props.autor}</Text>
                 <View style = {styles.TitleContainer}>
                     <Text style={styles.Title}>{props.NameRecipe}</Text>
                     <View style = {styles.Stars}>
