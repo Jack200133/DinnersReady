@@ -26,6 +26,7 @@ function Mis_ingredientes(props) {
     }
   }
 
+
   const getIngredientes = async() => {
 
     const usuario = await getData()
@@ -53,7 +54,7 @@ function Mis_ingredientes(props) {
   } 
 
   useEffect( () => {
-
+    console.log('adios')
     getIngredientes()
     
   }, [])

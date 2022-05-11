@@ -38,9 +38,11 @@ function AddIngredients(props) {
   }, [])
 
   
+  
   useEffect( async () => {
 
     let oldState = []
+    console.log('hola')
 
     categorias.forEach(async (categoria) => {
       let temp = []

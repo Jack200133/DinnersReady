@@ -14,6 +14,8 @@ const Tab = createMaterialTopTabNavigator()
 export default function NavIngredients(){
     const Agregar = require('../../assets/images/agregar.png');
     const Existentes = require('../../assets/images/existentes.png');
+    const [addIng, setAddIng] = React.useState(false)
+    const [misIng, setMisIng] = React.useState(false)
     
     return(
         <Tab.Navigator
@@ -29,7 +31,7 @@ export default function NavIngredients(){
             }}>
             <Tab.Screen 
                 name = 'Alacena' 
-                component = {Mis_ingredientes}
+                component = {() => <Mis_ingredientes />}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
@@ -41,11 +43,11 @@ export default function NavIngredients(){
                                 height: 35,
                             }}
                         />
-                    )
+                    ),
                 }}/>
             <Tab.Screen 
                 name = 'AddIng' 
-                component = {AddIngredients}
+                component = {() => <AddIngredients />}
                 options = {{
                     tabBarLabel: '',
                     headerShown: false,
@@ -56,7 +58,7 @@ export default function NavIngredients(){
                             width: 40,
                             height:35,
                         }}/>
-                    )
+                    ),
                 }}/>
         </Tab.Navigator>
     )
