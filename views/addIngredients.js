@@ -129,7 +129,7 @@ function AddIngredients(props) {
                 <Text style={{fontSize: 20,color: 'black'}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
           {
-            categories.map((category, index) => <Categories key = {category.name} indexC = {index} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
+            categories.map((category, index) => <Categories key = {category.name} indexC = {index} removeIngred={(text) => {}} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
           }
 
           

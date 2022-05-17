@@ -10,7 +10,8 @@ const styles =  StyleSheet.create({
         height: 25,
         paddingHorizontal: 10,
         backgroundColor: '#EEE9E9',
-        borderRadius: 30
+        borderRadius: 30,
+        marginRight: 5
         
     }
 });

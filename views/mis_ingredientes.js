@@ -73,7 +73,7 @@ function Mis_ingredientes(props) {
               <Text style={styles.text}>Mis Ingredientes</Text>
               <View style={styles.iconContainer}>
                 {ingredientes.map((ingredient, index) => 
-                  <Ingred key={index.id} text = {ingredient.nombre_ingrediente} index = {index} removeIngred = {removeIngred} />
+                  <Ingred key={index.id} text = {ingredient.nombre_ingrediente} index = {index} AddIngrediente={(text,IndexC,index) => {}} removeIngred = {removeIngred} />
                 )}
               </View>
               
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
   },
   iconContainer:{
     flexDirection:'row',
-    justifyContent: 'space-evenly',
-    flexWrap: 'wrap'
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
   back:{
     width: '100%',
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   padContainer: {
     flex:1,
-    padding:40
+    padding:20
   },
   scrollCont: {
     flex:1,
