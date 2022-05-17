@@ -91,7 +91,7 @@ export default function RecipeView(props) {
                 <Text style={styles.Arr}>{"Pasos"}</Text>
                 <Text style={styles.Descripcion}>{"Cocinar la borgir."}</Text>
                 <Text style={styles.Arr}>{"Categorías"}</Text>
-                <Text style={styles.Descripcion}>{"#love4war"}</Text>
+                <Text style={styles.Descripcion}>{"#love4war"}</Text>                
             </ScrollView>
         </Fragment>
         
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: '100%',
         backgroundColor: '#D0F0F8',
+        paddingBottom: 35
     },
     ingredContainer: {
         display: 'flex',
