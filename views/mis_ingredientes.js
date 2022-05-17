@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: 'white'
+    color: '#05182A'
   }
 });
 

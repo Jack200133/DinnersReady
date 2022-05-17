@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: 'white',
+    color: '#05182A',
   },
   addRecipe: {
     marginTop: 10,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   titles: {paddingTop: 20,
     fontSize: 25,
-    color: 'white',
+    color: '#05182A',
   },
   input:{
     borderWidth: 1,

@@ -73,7 +73,7 @@ function ProfileScreen(props) {
           </View>
         </View>
         <View style={styles.userbox1}>
-          <Text style={{fontSize: 20, color: 'white', marginBottom:10}}>Mis recetas</Text>
+          <Text style={{fontSize: 20, color: '#05182A', marginBottom:10}}>Mis recetas</Text>
           <ScrollView >
             {
               recetas.map((element, index) => {
@@ -158,12 +158,12 @@ const styles = StyleSheet.create({
   usernamettitle:{
     fontSize:15,
     fontWeight:'bold',
-    color:'white'
+    color:'#05182A'
     
   },
   descripcion:{
     fontSize:12,
-    color:'white'
+    color:'#05182A'
   },
   misrecetas:{
     alignSelf:'center',

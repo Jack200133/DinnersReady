@@ -14,7 +14,8 @@ const styles= StyleSheet.create({
         borderWidth:2,
         borderColor:'black',
         justifyContent: 'center',
-        alignContent: "center"
+        alignContent: "center",
+        color: '#05182A'
     },
     vistas:{
         width: "100%",
@@ -81,17 +82,20 @@ const styles= StyleSheet.create({
         borderRadius:20,
         borderWidth:2,
         borderColor:'black',
+        color: '#05182A',
         alignSelf:'center',
         display:"flex",
         alignContent: 'center',
         justifyContent: 'center',
     },
     Hashtag:{
+        color: '#05182A',
         justifyContent:"center",
         marginLeft:40,
         fontStyle:'italic'  
     },
     Title:{
+        color: '#05182A',
         //flex: 2, 
         justifyContent:"center",
         //marginLeft:40,
@@ -102,9 +106,11 @@ const styles= StyleSheet.create({
         //flex: 2, 
         justifyContent:"center",
         marginLeft:10,
+        color: '#05182A',
         
     },
     autor: {
+        color: '#05182A',
         justifyContent:"center",
         fontSize: 13,
         marginLeft: 20,
