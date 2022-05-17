@@ -47,7 +47,7 @@ function SignIn(props) {
           }
           else{
             storeData(correo)
-            //navigate('/Navigation')
+            props.navigation.navigate('Navigation')
           }
 
           setUsuario('')

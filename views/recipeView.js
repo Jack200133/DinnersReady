@@ -45,7 +45,7 @@ export default function RecipeView(props) {
     return (
         <Fragment>
             <View style={styles.top}>
-                <Pressable style={styles.button} onPress={()=>{}}>
+                <Pressable style={styles.button} onPress={()=>{props.navigation.navigate('Navigation')}}>
                             <Image style={styles.arrow} source={arrow}></Image>
                 </Pressable>
             </View>

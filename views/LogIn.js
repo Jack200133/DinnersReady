@@ -80,7 +80,7 @@ function LogIn(props) {
             </Pressable>
           </View>
           <View style={styles.LogInButton}>
-            <Pressable onPress = {() => navigate('/Register')}>
+            <Pressable onPress = {() => {props.navigation.navigate('Register')}}>
                 <Text style={{fontSize: 18, color: '#EEE9E9'}}>Registrarse</Text> 
             </Pressable>
           </View>

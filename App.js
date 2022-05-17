@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import Navigation from './navigation/MainStack';
 import LogIn from './views/LogIn';
 import SignIn from './views/signIn';
@@ -20,19 +21,20 @@ export default function App() {
     headerLeft: null
   }
   return (
-    //<Navigation/>
-    <NavigationContainer >
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer >
 
-      <Stack.Navigator screenOptions={style}>
+        <Stack.Navigator screenOptions={style}>
 
-        <Stack.Screen options={{headerBackTitleVisible: false}} name="Login" component={LogIn}/>
-        <Stack.Screen options={{headerBackTitleVisible: false}} name="Register" component={SignIn}/>
-        <Stack.Screen options={{headerBackTitleVisible: false}} name="Navigation" component={Navigation}/>
-        <Stack.Screen options={{headerBackTitleVisible: false}} name="Recipe" component={RecipeView}/>
+          <Stack.Screen options={{headerBackTitleVisible: false}} name="Login" component={LogIn}/>
+          <Stack.Screen options={{headerBackTitleVisible: false}} name="Register" component={SignIn}/>
+          <Stack.Screen options={{headerBackTitleVisible: false}} name="Navigation" component={Navigation}/>
+          <Stack.Screen options={{headerBackTitleVisible: false}} name="RecipeView" component={RecipeView}/>
 
-      </Stack.Navigator>
+        </Stack.Navigator>
 
-    </NavigationContainer>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
