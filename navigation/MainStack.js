@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {View, Text, Pressable, ImageBackground, Image} from 'react-native';
 
@@ -17,7 +16,7 @@ import styles from './styles'
 
 const Tab = createBottomTabNavigator()
 
-function MyTabs(){
+export default function MyTabs(){
     const home = require('../assets/images/recetaw.png');
     const profile = require('../assets/images/perfil.png');
     const bookmarks = require('../assets/images/bookmark.png');
@@ -115,10 +114,10 @@ function MyTabs(){
     )
 }
 
-export default function Navigation (){
+/*export default function Navigation (){
     return(
         <NavigationContainer>
             <MyTabs />
         </NavigationContainer>
     )
-}
+}*/

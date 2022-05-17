@@ -23,7 +23,7 @@ const getData = async () => {
 
 export default function RecipeView(props) {
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
     const star = require('../assets/images/star.png')
     const image = require('../assets/images/hamburguesa_temporal.jpg')
@@ -45,7 +45,7 @@ export default function RecipeView(props) {
     return (
         <Fragment>
             <View style={styles.top}>
-                <Pressable style={styles.button} onPress={()=>navigate('/Navigation')}>
+                <Pressable style={styles.button} onPress={()=>{}}>
                             <Image style={styles.arrow} source={arrow}></Image>
                 </Pressable>
             </View>

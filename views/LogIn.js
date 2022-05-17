@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ImageBackground,ScrollView,TextInput, Pressable
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import TitleBar from '../components/TitleBar';
-import {useNavigate} from 'react-router-dom';
+//import {useNavigate} from 'react-router-dom';
 
 const storeData = async (value) => {
   try {
@@ -19,7 +19,7 @@ function LogIn(props) {
   const [dentro, setDentro] = React.useState(true)
   const [correo, setCorreo] = React.useState("");
   const [contraseña, setContraseña] = React.useState("");
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   const checkLog = async() => {
       console.log(contraseña)
@@ -32,7 +32,8 @@ function LogIn(props) {
 
       if(loged){
         storeData(correo)
-        navigate('/Navigation')
+        props.navigation.navigate('Navigation')
+        //navigate('/Navigation')
       } else {
         setDentro(false)
       }
