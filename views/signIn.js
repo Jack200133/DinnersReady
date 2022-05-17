@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ImageBackground, SafeAreaView,ScrollView,TextIn
 
 import TitleBar from '../components/TitleBar';
 import * as ImagePicker from 'expo-image-picker';
-import {useNavigate} from 'react-router-dom';
+//import {useNavigate} from 'react-router-dom';
 
 const storeData = async (value) => {
   try {
@@ -21,7 +21,7 @@ function SignIn(props) {
     const [correo, setCorreo] = React.useState("");
     const [descripcion, setDescripcion] = React.useState("");
     const [image, setImage] = React.useState(null);
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
     const regis = async () => {
           const json = {
@@ -47,7 +47,7 @@ function SignIn(props) {
           }
           else{
             storeData(correo)
-            navigate('/Navigation')
+            props.navigation.navigate('Navigation')
           }
 
           setUsuario('')

@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 import SearchBart from '../components/NavSearch';
 import PubItem from '../components/PubItem';
 
-function SavedScreen() {
+function SavedScreen(props) {
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmark.png')
@@ -15,7 +15,7 @@ function SavedScreen() {
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
-                  <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'Fácil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}autor={'autor'}/>
+                  <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'Fácil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"}autor={'autor'} navigation = {props.navigation}/>
                 </View>
             </ScrollView>
       </ImageBackground>

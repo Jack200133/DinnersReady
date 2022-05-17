@@ -21,10 +21,10 @@ function HomeFuture(props) {
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
-                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'}/>
-                    <PubItem image={Hamburguesa} color ={colors('dificil')} dificultad={'dificil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'}/>
-                    <PubItem image={Hamburguesa} color ={colors('intermedio')} dificultad={'intermedio'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'}/>
-                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'}/>
+                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'} navigation = {props.navigation}/>
+                    <PubItem image={Hamburguesa} color ={colors('dificil')} dificultad={'dificil'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'} navigation = {props.navigation}/>
+                    <PubItem image={Hamburguesa} color ={colors('intermedio')} dificultad={'intermedio'} saved={false ? Saved:Savednt} NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'} navigation = {props.navigation}/>
+                    <PubItem image={Hamburguesa} color ={colors('facil')} dificultad={'facil'} saved={false ? Saved:Savednt}NameRecipe={"Hamburguesa"} stars ={"3.5"} hash={'#love'} desc={"Hamburguesa deliciosa hecha en casa con ingredietes frescos"} autor={'autor'} navigation = {props.navigation}/>
                 </View>
             </ScrollView>
       </ImageBackground>

@@ -54,10 +54,10 @@ const Gradient = (dificultad) => {
 }
 
 const PubItem = (props) => {
-    
-    const navigate = useNavigate()
+    console.log(props.navigation.navigate)
+    //const navigate = useNavigate()
     return (
-        <Pressable style = {styles.container} onPress={()=> {storeData(props.id) ,navigate('/Recipe')}}>
+        <Pressable style = {styles.container} onPress={()=> {storeData(props.id); props.navigation.navigate('RecipeView')}}>
             <View >
                 <View style={styles.vistas}>
                         {
