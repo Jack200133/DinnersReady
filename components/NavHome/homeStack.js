@@ -12,7 +12,7 @@ import MiHomeFuture from '../../views/homeFuture';
 const Tab = createMaterialTopTabNavigator()
 
 export default function NavHome(){
-    const Existentes = require('../../assets/images/casita.png');
+    const Existentes = require('../../assets/imagenes/recetaw.');
     const Agregar = require('../../assets/images/cart.png');
     
     return(

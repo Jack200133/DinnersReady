@@ -19,7 +19,7 @@ const Tab = createBottomTabNavigator()
 export default function MyTabs(){
     const home = require('../assets/images/recetaw.png');
     const profile = require('../assets/images/perfil.png');
-    const bookmarks = require('../assets/images/bookmark.png');
+    const bookmarks = require('../assets/images/bookmarks.png');
     const newrecipe = require('../assets/images/newrecipe.png');
     const alacena = require('../assets/images/ingredW.png');
     
@@ -59,6 +59,7 @@ export default function MyTabs(){
                         style = {{
                             width: 40,
                             height:40,
+                            marginTop:4,
                         }}/>
                     )
                 }}/>
