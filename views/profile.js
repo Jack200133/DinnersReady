@@ -6,11 +6,38 @@ import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar'
 import { Button } from 'react-native-web';
 import RecetaItem from '../components/RecetaItem/RecetaItem';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ProfileScreen(props) {
   const [modal, setModal] = React.useState(false)
-  const descripcion = 'Soy un chef graduado de la academia de cocina Le Cordon Bleu en Perú, listo para compartir contigo todo lo que se.'
+  const [descripcion, setDescripcion] = React.useState('')
+  const [usuario, setUsuario] = React.useState('')
   const imagen = require('../assets/images/chef.jpg')
+
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@Usuario')
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
+
+  React.useEffect(async () => {
+    const correo = await getData()
+    console.log(correo)
+    let fet = "http://localhost:5000/users/"+correo
+    const response = await fetch(fet)
+      .then((response) => {return response.json()}
+      ).then((responseInJSON) => { return responseInJSON })
+
+    console.log(response[0])
+    setDescripcion(response[0].descripcion)
+    setUsuario(response[0].nombre)
+
+  }, [])
 
   const recetas = [
     {
@@ -68,7 +95,7 @@ function ProfileScreen(props) {
             </Pressable>
           </View>
           <View style={styles.usernombre}>
-            <Text style = {styles.usernamettitle}>Juan Ignacio Ramirez</Text>
+            <Text style = {styles.usernamettitle}>{usuario}</Text>
             <Text style = {styles.descripcion}>{descripcion}</Text>
           </View>
         </View>

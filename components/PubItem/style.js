@@ -29,7 +29,7 @@ const styles= StyleSheet.create({
         justifyContent: 'space-between',
         alignContent: "center"
     },
-    background:{
+    backgroundX:{
         width: "90%",
         height: 200,
         display: 'flex',
@@ -45,8 +45,6 @@ const styles= StyleSheet.create({
     },
     Dificult:{
         display: "flex",
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
         width: 20,
         height: 20,
     },
