@@ -63,11 +63,11 @@ export default function RecipeScreen(props) {
       {
         // `uri` can also be a file system path (i.e. file://)
         uri: image.uri,
-        name: image.fileName,
+        name: 'queso',
         type: image.type,
       },
       {
-        keyPrefix: 'recipe', // Ex. myuploads/
+        keyPrefix: 'recipe/', // Ex. myuploads/
         bucket: 'dinnersready', // Ex. aboutreact
         region: 'us-east-2', // Ex. ap-south-1
         accessKey: 'AKIA3GQSDDDGWDXZDVZ7',
@@ -77,7 +77,11 @@ export default function RecipeScreen(props) {
         successActionStatus: 201,
       },
     )
+    .progress((progress) =>
+      console.log(progress.loaded / progress.total)
+     )
       .then((response) => {
+        console.log(response)
         if (response.status !== 201)
           alert('Failed to upload image to S3');
         /**
