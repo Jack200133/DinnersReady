@@ -88,9 +88,10 @@ const styles= StyleSheet.create({
         alignSelf:'center',
         display:"flex",
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         flexDirection:'row',
-        backgroundColor:'#5EA3DB'
+        backgroundColor:'#5EA3DB',
+        marginLeft:5,
         
     },
     Hashtag:{
@@ -105,13 +106,15 @@ const styles= StyleSheet.create({
         justifyContent:"center",
         //marginLeft:40,
         fontWeight:'bold',
-        fontSize: 20
+        fontSize: 20,
+        marginLeft: 6,
     },
     Descripcion:{
         //flex: 2, 
         justifyContent:"center",
         marginLeft:10,
         color: '#05182A',
+        marginLeft: 18,
         
     },
     autor: {
