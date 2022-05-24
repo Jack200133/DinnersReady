@@ -65,7 +65,7 @@ const PubItem = (props) => {
                         </View>
                         
                 </View>
-                <Image source={props.image} resizeMode="contain" style={styles.background}>
+                <Image source={props.image} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
                 <Text style={styles.autor}>{"Autor: "+props.autor}</Text>
                 <View style = {styles.TitleContainer}>
