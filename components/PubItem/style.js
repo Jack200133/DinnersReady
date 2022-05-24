@@ -44,9 +44,11 @@ const styles= StyleSheet.create({
         alignSelf:'center',
     },
     Dificult:{
-        
-        textAlign: "center",
-        textAlignVertical: 'center'
+        display: "flex",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        width: 20,
+        height: 20,
     },
     TitleContainer:{
         display:"flex",
@@ -64,7 +66,7 @@ const styles= StyleSheet.create({
         flexDirection: "row",
         justifyContent:'center',
         alignItems: 'center',
-        marginTop: 5,
+        marginTop: 4,
         borderRadius:10,
     },
     TextStar:{
@@ -77,16 +79,19 @@ const styles= StyleSheet.create({
         alignSelf:'center',
     },
     TextBack:{
-        width:"50%",
+        width:"30%",
         height:30,
-        borderRadius:20,
-        borderWidth:2,
-        borderColor:'black',
+        borderRadius:10,
+        borderWidth:1,
+        borderColor:'#02073B',
         color: '#05182A',
         alignSelf:'center',
         display:"flex",
-        alignContent: 'center',
-        justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        flexDirection:'row',
+        backgroundColor:'#5EA3DB'
+        
     },
     Hashtag:{
         color: '#05182A',

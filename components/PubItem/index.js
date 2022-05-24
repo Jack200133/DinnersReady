@@ -6,6 +6,8 @@ import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const star = require('../../assets/images/star.png')
+const sarte = require('../../assets/images/sarten.png')
+
 
 const storeData = async (value) => {
     try {
@@ -20,33 +22,24 @@ const Gradient = (dificultad) => {
     switch (dificultad) {
         case 'Fácil':
             return (
-                <LinearGradient colors={['#D1F0FF','#264DA8']}
-                locations = {[0.8, 1]}
-                start={{ x: -1, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.TextBack}>
-                    <Text style={styles.Dificult} >{dificultad}</Text>
-                </LinearGradient>
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
             )
         case 'Medio':
             return (
-                <LinearGradient colors={['#D1F0FF','#264DA8']}
-                locations = {[0.5, 1]}
-                start={{ x: -1, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.TextBack}>
-                    <Text style={styles.Dificult} >{dificultad}</Text>
-                </LinearGradient>
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
             )
         default:
             return (
-                <LinearGradient colors={['#D1F0FF','#264DA8']}
-                locations = {[-5, 1]}
-                start={{ x: -1, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.TextBack}>
-                    <Text style={styles.Dificult} >{dificultad}</Text>
-                </LinearGradient>
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
             )
     
 
