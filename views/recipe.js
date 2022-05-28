@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
 TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Dropdown from '../components/dropdown/dropdown';
+import { launchImageLibrary } from 'react-native-image-picker';
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
+import {RNS3} from 'react-native-aws3'
 
 export default function RecipeScreen(props) {
 
@@ -34,6 +36,7 @@ export default function RecipeScreen(props) {
 
   };
 
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -45,9 +48,53 @@ export default function RecipeScreen(props) {
     console.log(result);
 
     if (!result.cancelled) {
-      setImage(result.uri);
+      setImage(result)
       
     }
+  };
+
+  const uploadFile = () => {
+    if (Object.keys(image).length == 0) {
+      alert('Please select image first');
+      return;
+    }
+    console.log(image.uri)
+    RNS3.put(
+      {
+        // `uri` can also be a file system path (i.e. file://)
+        uri: image.uri,
+        name: 'queso',
+        type: image.type,
+      },
+      {
+        keyPrefix: 'recipe/', // Ex. myuploads/
+        bucket: 'dinnersready', // Ex. aboutreact
+        region: 'us-east-2', // Ex. ap-south-1
+        accessKey: 'AKIA3GQSDDDGWDXZDVZ7',
+        // Ex. AKIH73GS7S7C53M46OQ
+        secretKey: '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',
+        // Ex. Pt/2hdyro977ejd/h2u8n939nh89nfdnf8hd8f8fd
+        successActionStatus: 201,
+      },
+    )
+    .progress((progress) =>
+      console.log(progress.loaded / progress.total)
+     )
+      .then((response) => {
+        console.log(response)
+        if (response.status !== 201)
+          alert('Failed to upload image to S3');
+        /**
+         * {
+         *   postResponse: {
+         *     bucket: "your-bucket",
+         *     etag : "9f620878e06d28774406017480a59fd4",
+         *     key: "uploads/image.png",
+         *     location: "https://bucket.s3.amazonaws.com/**.png"
+         *   }
+         * }
+         */
+      });
   };
 
   const img = require('../assets/images/add-image.png');
@@ -67,7 +114,7 @@ export default function RecipeScreen(props) {
               <Pressable style={styles.button} onPress={pickImage}>
               {
                   image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} 
-                  source = {{uri: image}}/> :
+                  source = {{uri: image.uri}}/> :
                   <Image resizeMode='contain' style={styles.addImage} 
                   source = {img}/>
               }
@@ -118,7 +165,7 @@ export default function RecipeScreen(props) {
             />
             
             <View style={styles.publish}>
-              <Pressable onPress={() => Publish()}>
+              <Pressable onPress={() => uploadFile()}>
                 <Text style={{fontSize: 18, color: '#fff'}}>Publicar receta</Text> 
               </Pressable>
             </View>
@@ -172,7 +219,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: 'white',
+    color: '#05182A',
   },
   addRecipe: {
     marginTop: 10,
@@ -203,7 +250,7 @@ const styles = StyleSheet.create({
   },
   titles: {paddingTop: 20,
     fontSize: 25,
-    color: 'white',
+    color: '#05182A',
   },
   input:{
     borderWidth: 1,

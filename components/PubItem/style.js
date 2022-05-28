@@ -14,7 +14,8 @@ const styles= StyleSheet.create({
         borderWidth:2,
         borderColor:'black',
         justifyContent: 'center',
-        alignContent: "center"
+        alignContent: "center",
+        color: '#05182A'
     },
     vistas:{
         width: "100%",
@@ -28,7 +29,7 @@ const styles= StyleSheet.create({
         justifyContent: 'space-between',
         alignContent: "center"
     },
-    background:{
+    backgroundX:{
         width: "90%",
         height: 200,
         display: 'flex',
@@ -43,9 +44,9 @@ const styles= StyleSheet.create({
         alignSelf:'center',
     },
     Dificult:{
-        
-        textAlign: "center",
-        textAlignVertical: 'center'
+        display: "flex",
+        width: 20,
+        height: 20,
     },
     TitleContainer:{
         display:"flex",
@@ -63,7 +64,7 @@ const styles= StyleSheet.create({
         flexDirection: "row",
         justifyContent:'center',
         alignItems: 'center',
-        marginTop: 5,
+        marginTop: 4,
         borderRadius:10,
     },
     TextStar:{
@@ -76,35 +77,46 @@ const styles= StyleSheet.create({
         alignSelf:'center',
     },
     TextBack:{
-        width:"50%",
+        width:"30%",
         height:30,
-        borderRadius:20,
-        borderWidth:2,
-        borderColor:'black',
+        borderRadius:10,
+        borderWidth:1,
+        borderColor:'#02073B',
+        color: '#05182A',
         alignSelf:'center',
         display:"flex",
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
+        flexDirection:'row',
+        backgroundColor:'#5EA3DB',
+        marginLeft:5,
+        
     },
     Hashtag:{
+        color: '#05182A',
         justifyContent:"center",
         marginLeft:40,
         fontStyle:'italic'  
     },
     Title:{
+        color: '#05182A',
         //flex: 2, 
         justifyContent:"center",
         //marginLeft:40,
         fontWeight:'bold',
-        fontSize: 20
+        fontSize: 20,
+        marginLeft: 6,
     },
     Descripcion:{
         //flex: 2, 
         justifyContent:"center",
         marginLeft:10,
+        color: '#05182A',
+        marginLeft: 18,
         
     },
     autor: {
+        color: '#05182A',
         justifyContent:"center",
         fontSize: 13,
         marginLeft: 20,

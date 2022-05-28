@@ -38,7 +38,7 @@ function HomeAlacena(props) {
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
                   {
-                    recetas.map((e) => <PubItem id={e.id} image={Hamburguesa} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={false ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
+                    recetas.map((e) => <PubItem id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={false ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
                   }
                 </View> 
             </ScrollView>

@@ -14,14 +14,14 @@ const SearchBart = () => {
             placeholder="Buscar..."
             onChangeText={onChangeSearch}
             value={searchQuery}
-            placeholderTextColor = 'white'
+            placeholderTextColor = '#05182A'
             rightIconContainerStyle = {Styles.icon}
 
             round = {true}
             inputStyle={Styles.input}
-            searchIconColor = 'white'
+            searchIconColor = '#05182A'
             containerStyle =  {Styles.barra}
-            underlineColorAndroid = 'white'
+            underlineColorAndroid = '#05182A'
             style = {Styles.container}
             inputContainerStyle = {Styles.input}
              

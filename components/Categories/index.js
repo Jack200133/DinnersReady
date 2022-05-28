@@ -11,7 +11,7 @@ export default function Categories({indexC, name, ingredients, clicked, handleCl
             {!clicked &&
                 <View style={styles.ingredView}>
                 
-                    <Text style={{fontSize: 20,color: '#4F4F4F', paddingLeft:20}}>{name}</Text>
+                    <Text style={{fontSize: 20,color: '#05182A', paddingLeft:20}}>{name}</Text>
                     
                     <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
                         <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>
