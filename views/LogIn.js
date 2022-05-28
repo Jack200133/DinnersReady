@@ -23,7 +23,7 @@ function LogIn(props) {
 
   const checkLog = async() => {
       console.log(contraseña)
-      const fet = 'http://localhost:5000/login/'+contraseña+'/'+correo
+      const fet = 'http://3.132.195.25/dinner/login/'+contraseña+'/'+correo
       const response = await fetch(fet)
         .then((response) => {return response.json()}
         ).then((responseInJSON) => {return responseInJSON})

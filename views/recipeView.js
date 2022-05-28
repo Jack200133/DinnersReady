@@ -34,7 +34,7 @@ export default function RecipeView(props) {
 
     useEffect( async () => {
         const receta = await getData()
-        const url = `http://localhost:5000/recetas/${receta}`
+        const url = `http://3.132.195.25/dinner/recetas/${receta}`
         const response = await fetch(url, {
             method: 'GET',
         })

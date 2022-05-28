@@ -22,7 +22,7 @@ function HomeAlacena(props) {
   
 
   useEffect( async () => {
-      const url = 'http://localhost:5000/recetas'
+      const url = 'http://3.132.195.25/dinner/recetas'
       const response = await fetch(url, {
         method: 'GET'
       })

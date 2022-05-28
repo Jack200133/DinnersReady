@@ -30,7 +30,7 @@ function Mis_ingredientes(props) {
   const getIngredientes = async() => {
 
     const usuario = await getData()
-    let fet = "http://localhost:5000/ingredientes/"+usuario
+    let fet = "http://3.132.195.25/dinner/ingredientes/"+usuario
 
     const response = await fetch(fet)
     .then((response) => {return response.json()}
@@ -43,7 +43,7 @@ function Mis_ingredientes(props) {
     const usuario = await getData()
 
 
-    let fet = "http://localhost:5000/ingredientes/"+usuario+"/"+nombre_ingrediente
+    let fet = "http://3.132.195.25/dinner/ingredientes/"+usuario+"/"+nombre_ingrediente
 
     const response = await fetch(fet, { method: 'DELETE' })
     .then((response) => {return response.json()}

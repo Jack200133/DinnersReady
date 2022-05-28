@@ -47,7 +47,7 @@ function AddIngredients(props) {
     categorias.forEach(async (categoria) => {
       let temp = []
       const usuario = await getData()
-      let fet = "http://localhost:5000/ingredientes/"+categoria.categoria+"/"+usuario
+      let fet = "http://3.132.195.25/dinner/ingredientes/"+categoria.categoria+"/"+usuario
 
       const response = await fetch(fet)
       .then((response) => {return response.json()}
@@ -81,7 +81,7 @@ function AddIngredients(props) {
   const GetCategorias = async() => {
     
         
-    let fet = "http://localhost:5000/categorias"
+    let fet = "http://3.132.195.25/dinner/categorias"
 
 
     const response = await fetch(fet)
@@ -94,7 +94,7 @@ function AddIngredients(props) {
   const addIngrediente = async(ingredienteput, indexC, indexI) => {
     const usuario = await getData()
     console.log(usuario)
-    const endpoint = 'http://localhost:5000/ingrediente'
+    const endpoint = 'http://3.132.195.25/dinner/ingrediente'
     const response = await fetch(endpoint, {
       method: 'POST',
       headers:{
