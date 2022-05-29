@@ -9,17 +9,34 @@ import HomeAlacena from './views/HomeAlacena';
 import RecipeView from './views/recipeView';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import AppLoading from 'expo-app-loading';
+import useFonts from './hooks/useFonts';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { useState } from 'react';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const LoadFonts = async () => {
+    await useFonts(); 
+  };
   const style = {
     headerTitle:null,
     headerTransparent:true,
     headerLeft: null
   }
+  if (!fontsLoaded) {
+    return (
+      <AppLoading
+        startAsync={LoadFonts}
+        onFinish={() => setFontsLoaded(true)}
+        onError={(error) => console.log(error)}
+      />
+    );
+  }
+
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer >

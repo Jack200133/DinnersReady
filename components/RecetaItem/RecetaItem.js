@@ -8,9 +8,9 @@ const RecetaItem = ({receta, rating}) => {
 
     return (
         <View style = {styles.container}>
-            <Text style={{fontSize: 17}}>{receta}</Text>
+            <Text style={{fontSize: 17, fontFamily:'Mukta_Bold'}}>{receta}</Text>
             <View style={styles.containerRating}>
-                <Text style={{fontSize: 17}}>{rating}</Text>
+                <Text style={{fontSize: 17, fontFamily:'Mukta_Bold'}}>{rating}</Text>
                 <Image resizeMode='cover' source = {star} style={styles.image}></Image>
             </View>
         </View>

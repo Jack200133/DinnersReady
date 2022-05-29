@@ -125,8 +125,8 @@ function AddIngredients(props) {
         <ScrollView style={styles.padContainer}>
 
           <View style ={styles.introContainer}>
-                <Text style={{fontSize: 25}}> Agregar nuevos ingredientes</Text>
-                <Text style={{fontSize: 15}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
+                <Text style={{fontSize: 25, fontFamily: 'Montserrat_Black',}}> Agregar nuevos ingredientes</Text>
+                <Text style={{fontSize: 15, fontFamily:'Mukta_Bold',}}> Selecciona que ingredientes quieres añadir a tu colección.</Text>
           </View>
           {
             categories.map((category, index) => <Categories key = {category.name} indexC = {index} removeIngred={(text) => {}} name = {category.name} ingredients = {category.ingredients} clicked = {clicked[index]} AddIngrediente={addIngrediente} handleClick = {handleClick} />)
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: 'white'
+    color: 'white',
   },
   introContainer:{
     paddingLeft: 20,

@@ -91,7 +91,7 @@ function ProfileScreen(props) {
           <View style = {styles.profrow}>
             <Image source={imagen} style = {styles.profilepic}></Image>
             <Pressable style = {styles.edit} onPress= {toggleModal}>
-              <Text >Editar Perfil</Text>
+              <Text style={{fontFamily:'Mukta_Bold'}} >Editar Perfil</Text>
             </Pressable>
           </View>
           <View style={styles.usernombre}>
@@ -100,7 +100,7 @@ function ProfileScreen(props) {
           </View>
         </View>
         <View style={styles.userbox1}>
-          <Text style={{fontSize: 20, color: '#05182A', marginBottom:10}}>Mis recetas</Text>
+          <Text style={{fontSize: 20, color: '#05182A', marginBottom:10, fontFamily:'Montserrat_Black'}}>Mis recetas</Text>
           <ScrollView >
             {
               recetas.map((element, index) => {
@@ -184,19 +184,20 @@ const styles = StyleSheet.create({
   },
   usernamettitle:{
     fontSize:15,
-    fontWeight:'bold',
+    fontFamily:'Mukta_Bold',
     color:'#05182A'
     
   },
   descripcion:{
     fontSize:12,
-    color:'#05182A'
+    color:'#05182A',
+    fontFamily:'Mulish_Regular',
   },
   misrecetas:{
     alignSelf:'center',
     fontSize: 20,
     color: 'white',
-    fontWeight:'bold'
+    fontFamily:'Montserrat_Black',
   },
   recetas:{
     fontSize: 20,
@@ -215,7 +216,8 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     marginRight:10,
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    fontFamily:'Mukta_Bold',
   }
 });
 

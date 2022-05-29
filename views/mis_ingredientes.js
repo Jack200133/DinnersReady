@@ -123,7 +123,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: '#05182A'
+    color: '#05182A',
+    fontFamily: 'Montserrat_Black',
   }
 });
 

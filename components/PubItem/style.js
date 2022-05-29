@@ -68,7 +68,8 @@ const styles= StyleSheet.create({
         borderRadius:10,
     },
     TextStar:{
-        color:'white'
+        color:'white',
+        fontFamily:'Mulish_Regular',
     },
     Estrella:{
         width: 25,
@@ -90,13 +91,14 @@ const styles= StyleSheet.create({
         flexDirection:'row',
         backgroundColor:'#5EA3DB',
         marginLeft:5,
+        fontFamily:'Mulish_Regular',
         
     },
     Hashtag:{
         color: '#05182A',
         justifyContent:"center",
         marginLeft:40,
-        fontStyle:'italic'  
+        fontFamily:'Mulish_Regular', 
     },
     Title:{
         color: '#05182A',
@@ -106,6 +108,7 @@ const styles= StyleSheet.create({
         fontWeight:'bold',
         fontSize: 20,
         marginLeft: 6,
+        fontFamily: 'Montserrat_Black',
     },
     Descripcion:{
         //flex: 2, 
@@ -113,6 +116,7 @@ const styles= StyleSheet.create({
         marginLeft:10,
         color: '#05182A',
         marginLeft: 18,
+        fontFamily:'Mulish_Regular',
         
     },
     autor: {
@@ -120,7 +124,7 @@ const styles= StyleSheet.create({
         justifyContent:"center",
         fontSize: 13,
         marginLeft: 20,
-        fontStyle:'italic',
+        fontFamily:'Mulish_Regular',
     }
 });
 

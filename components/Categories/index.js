@@ -11,7 +11,7 @@ export default function Categories({indexC, name, ingredients, clicked, handleCl
             {!clicked &&
                 <View style={styles.ingredView}>
                 
-                    <Text style={{fontSize: 20,color: '#05182A', paddingLeft:20}}>{name}</Text>
+                    <Text style={{fontSize: 20,color: '#05182A', paddingLeft:20, fontFamily:'Mukta_Bold'}}>{name}</Text>
                     
                     <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
                         <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>
@@ -24,7 +24,7 @@ export default function Categories({indexC, name, ingredients, clicked, handleCl
                 <ScrollView style={styles.scrollCont}>
 
                     <View style = {styles.ingredTitle}>
-                        <Text style={{fontSize: 20,color: 'black', paddingLeft:20}}>{name}</Text>
+                        <Text style={{fontSize: 20,color: '#05182A', paddingLeft:20, fontFamily:'Mukta_Bold'}}>{name}</Text>
                         
                         <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
                             <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>

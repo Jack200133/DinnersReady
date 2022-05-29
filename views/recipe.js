@@ -127,6 +127,7 @@ export default function RecipeScreen(props) {
               value={titulo}
               placeholder="Ingresa el título..."
               keyboardType="default"
+              fontFamily='Mukta_Regular'
             />
             <Text style={styles.titles}>Descripción</Text>
             <TextInput
@@ -136,6 +137,7 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa la descripción de la receta..."
               keyboardType="default"
+              
             />
             <Text style={styles.titles}>Tus ingredientes</Text>
             <View style={styles.AddItem}>
@@ -151,6 +153,7 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa los pasos de la receta..."
               keyboardType="default"
+              
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
             <Dropdown setDificultad = {setDificultad}/>
@@ -162,11 +165,12 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa las categorías de tu receta..."
               keyboardType="default"
+              
             />
             
             <View style={styles.publish}>
               <Pressable onPress={() => uploadFile()}>
-                <Text style={{fontSize: 18, color: '#fff'}}>Publicar receta</Text> 
+                <Text style={{fontSize: 18, color: '#fff', fontFamily:'Mukta_Regular',}}>Publicar receta</Text> 
               </Pressable>
             </View>
             {sms!="" && <Text style={styles.Sms}>{sms}</Text>}
@@ -220,6 +224,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     color: '#05182A',
+    fontFamily: 'Montserrat_Black',
   },
   addRecipe: {
     marginTop: 10,
@@ -251,6 +256,7 @@ const styles = StyleSheet.create({
   titles: {paddingTop: 20,
     fontSize: 25,
     color: '#05182A',
+    fontFamily: 'Montserrat_Black',
   },
   input:{
     borderWidth: 1,
@@ -260,7 +266,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     height: 40,
     paddingHorizontal: 15,
-    backgroundColor: '#EEE9E9'
+    backgroundColor: '#EEE9E9',
+    fontFamily:'Mukta_Regular'
   },
   inputDesc:{
     borderWidth: 1,
@@ -271,7 +278,8 @@ const styles = StyleSheet.create({
     height: 170,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: '#EEE9E9'
+    backgroundColor: '#EEE9E9',
+    fontFamily:'Mukta_Regular'
   },
   AddItem:{
     borderWidth: 1,
@@ -308,7 +316,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: '#EEE9E9',
-    zIndex:1
+    zIndex:1,
+    fontFamily:'Mukta_Regular'
   },
   publish:{
     height: 60,

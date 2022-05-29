@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView,TextInput, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 import TitleBar from '../components/TitleBar';
 //import {useNavigate} from 'react-router-dom';
 
@@ -76,12 +78,12 @@ function LogIn(props) {
 
           <View style={styles.LogInButton}>
             <Pressable onPress ={() => checkLog()}>
-                <Text style={{fontSize: 18, color: '#EEE9E9'}}>Ingresar</Text> 
+                <Text style={{fontSize: 18, color: '#EEE9E9', fontFamily:'Mukta_Regular',}}>Ingresar</Text> 
             </Pressable>
           </View>
           <View style={styles.LogInButton}>
             <Pressable onPress = {() => {props.navigation.navigate('Register')}}>
-                <Text style={{fontSize: 18, color: '#EEE9E9'}}>Registrarse</Text> 
+                <Text style={{fontSize: 18, color: '#EEE9E9', fontFamily:'Mukta_Regular',}}>Registrarse</Text> 
             </Pressable>
           </View>
         </View>
@@ -104,7 +106,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     height: 40,
     paddingHorizontal: 25,
-    backgroundColor: '#EEE9E9', 
+    backgroundColor: '#EEE9E9',
+    fontFamily:'Mulish_Regular',
   },
   backimage:{
     width: '100%',
@@ -134,6 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft:10,
     marginBottom:5,
+    fontFamily:'Mukta_Regular',
   },  
   titleL:{
     justifyContent:'center',
@@ -143,10 +147,10 @@ const styles = StyleSheet.create({
 
   },
   titleDinner:{
-    fontSize: 30, 
-    fontWeight: 'bold', 
+    fontSize: 34, 
     alignSelf: 'center', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: 'Montserrat_Black',
   }
 });
 
