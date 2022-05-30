@@ -6,7 +6,6 @@ const useFonts = async () => {
     Montserrat_ExtraBold: require('../assets/fonts/Montserrat-ExtraBold.ttf'),
     Mukta_Regular: require('../assets/fonts/Mukta-Regular.ttf'),
     Mukta_Bold: require('../assets/fonts/Mukta-Bold.ttf'),
-    Mulish_Light: require('../assets/fonts/Mulish-Light.ttf'),
     Mulish_Regular: require('../assets/fonts/Mulish-Medium.ttf'),
   });
 };

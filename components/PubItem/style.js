@@ -108,7 +108,7 @@ const styles= StyleSheet.create({
         fontWeight:'bold',
         fontSize: 20,
         marginLeft: 6,
-        fontFamily: 'Montserrat_Black',
+        fontFamily: 'Montserrat_ExtraBold',
     },
     Descripcion:{
         //flex: 2, 
