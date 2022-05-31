@@ -47,7 +47,7 @@ const Gradient = (dificultad) => {
 }
 
 const PubItem = (props) => {
-    console.log(props.navigation.navigate)
+    //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
         <Pressable style = {styles.container} onPress={()=> {storeData(props.id); props.navigation.navigate('RecipeView')}}>
@@ -56,14 +56,14 @@ const PubItem = (props) => {
                         {
                             Gradient(props.dificultad)
                         }
-                        
-                        <View style = {styles.SavedContainer}>
-                            <Image source={props.saved} 
-                            resizeMode="contain" style={styles.Image}>  
-                                
-                            </Image>
-                        </View>
-                        
+                        <Pressable  onPress={()=> {console.log("BUTON")}}>
+                            <View style = {styles.SavedContainer}>
+                                <Image source={props.saved} 
+                                resizeMode="contain" style={styles.Image} >  
+                                    
+                                </Image>
+                            </View>
+                        </Pressable>
                 </View>
                 <Image source={props.image} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
