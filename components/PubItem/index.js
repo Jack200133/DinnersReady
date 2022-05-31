@@ -7,8 +7,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const star = require('../../assets/images/star.png')
 const sarte = require('../../assets/images/sarten.png')
-
-
+const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@Usuario')
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
 const storeData = async (value) => {
     try {
         await AsyncStorage.setItem('@Receta', value)
@@ -56,7 +64,7 @@ const PubItem = (props) => {
                         {
                             Gradient(props.dificultad)
                         }
-                        <Pressable  onPress={()=> {console.log("BUTON")}}>
+                        <Pressable  onPress={()=> {console.log("BUTON");send(props.is,getData())}}>
                             <View style = {styles.SavedContainer}>
                                 <Image source={props.saved} 
                                 resizeMode="contain" style={styles.Image} >  
