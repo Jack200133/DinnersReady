@@ -7,8 +7,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const star = require('../../assets/images/star.png')
 const sarte = require('../../assets/images/sarten.png')
-
-
+const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@Usuario')
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
 const storeData = async (value) => {
     try {
         await AsyncStorage.setItem('@Receta', value)
@@ -47,7 +55,7 @@ const Gradient = (dificultad) => {
 }
 
 const PubItem = (props) => {
-    console.log(props.navigation.navigate)
+    //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
         <Pressable style = {styles.container} onPress={()=> {storeData(props.id); props.navigation.navigate('RecipeView')}}>
@@ -56,15 +64,14 @@ const PubItem = (props) => {
                         {
                             Gradient(props.dificultad)
                         }
-                        
-                        <View style = {styles.SavedContainer}>
-                            <Image source={props.saved} 
-                            resizeMode="contain" style={styles.Image}>  
-                                
-                            </Image>
-                        </View>
-                        
-                        
+                        <Pressable  onPress={()=> {console.log("BUTON");send(props.is,getData())}}>
+                            <View style = {styles.SavedContainer}>
+                                <Image source={props.saved} 
+                                resizeMode="contain" style={styles.Image} >  
+                                    
+                                </Image>
+                            </View>
+                        </Pressable>
                 </View>
                 <Image source={props.image} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
