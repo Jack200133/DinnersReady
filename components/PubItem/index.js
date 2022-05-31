@@ -64,6 +64,7 @@ const PubItem = (props) => {
                             </Image>
                         </View>
                         
+                        
                 </View>
                 <Image source={props.image} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
