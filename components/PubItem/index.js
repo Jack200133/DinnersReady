@@ -17,6 +17,25 @@ const storeData = async (value) => {
     }
 }
 
+const send = (id,correo) =>
+{
+    const json = {
+        id:id,
+        correo:correo,
+    }
+
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+    }
+    const resp = await fetch('http://localhost:5000/save/', options)
+    .then((response) => {return response.json()})
+    .then((responseInJSON) => { return responseInJSON })
+}
+
 const Gradient = (dificultad) => {
     console.log(dificultad)
     switch (dificultad) {
@@ -45,6 +64,8 @@ const Gradient = (dificultad) => {
 
     }
 }
+
+
 
 const PubItem = (props) => {
     console.log(props.navigation.navigate)
