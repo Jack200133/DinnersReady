@@ -44,7 +44,6 @@ const send = async(id,correo) =>{
 }
 
 const Gradient = (dificultad) => {
-    console.log(dificultad)
     switch (dificultad) {
         case 'Fácil':
             return (

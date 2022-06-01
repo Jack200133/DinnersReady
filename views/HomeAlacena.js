@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import StyledButton from '../components/StyledButton';
 import NavBar from '../components/NavBar';
@@ -16,21 +17,50 @@ function HomeAlacena(props) {
   const Market_Recipe = require('../assets/images/cart.png');
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
-  const Savednt = require('../assets/images/bookmark.png')
+  const Savednt = require('../assets/images/bookmarkN.png')
 
   const [recetas, setRecetas] = React.useState([])
+  const [savedrecipe, setSaved] = React.useState([])
+
+
+  const getData = async () => {
+    try {
+
+      const value = await AsyncStorage.getItem('@Usuario')
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
   
 
   useEffect( async () => {
+      const usuario = await getData()
       const url = 'http://3.132.195.25/dinner/recetas'
       const response = await fetch(url, {
         method: 'GET'
       })
       const responseJSON = await response.json()
-      setRecetas(responseJSON)
+      await setRecetas(responseJSON)
+
+      const url2 = 'http://localhost:5000/save/'+usuario
+      const response2 = await fetch(url2, {
+        method: 'GET'
+      })
+      const responseJSON2 = await response2.json()
+      let temp = []
+      responseJSON2.map((idx)=> temp.push(idx.id))
+      setSaved(temp)
+
     },[])
+    
+      
+    console.log(savedrecipe)
 
   return (
+    
     <View style={styles.container}>
 
 
@@ -38,7 +68,8 @@ function HomeAlacena(props) {
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.NavegationPost}>
                   {
-                    recetas.map((e) => <PubItem id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={false ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
+                    
+                    recetas.map((e) => <PubItem id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={savedrecipe.includes(e.id) ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
                   }
                 </View> 
             </ScrollView>
