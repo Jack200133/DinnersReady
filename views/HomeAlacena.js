@@ -45,7 +45,7 @@ function HomeAlacena(props) {
       const responseJSON = await response.json()
       await setRecetas(responseJSON)
 
-      const url2 = 'http://localhost:5000/save/'+usuario
+      const url2 = 'http://3.132.195.25/dinner/save/'+usuario
       const response2 = await fetch(url2, {
         method: 'GET'
       })

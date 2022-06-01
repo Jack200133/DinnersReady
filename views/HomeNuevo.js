@@ -15,7 +15,7 @@ function HomeNuevo(props) {
   const Market_Recipe = require('../assets/images/cart.png');
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
-  const Savednt = require('../assets/images/bookmark.png')
+  const Savednt = require('../assets/images/bookmarkN.png')
 
 
   return (

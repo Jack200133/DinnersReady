@@ -26,7 +26,7 @@ function SavedScreen(props) {
 
   useEffect(async () => {
     const usuario = await getData()
-    const url = 'http://localhost:5000/save/'+usuario
+    const url = 'http://3.132.195.25/dinner/save/'+usuario
       const response2 = await fetch(url, {
         method: 'GET'
       })
