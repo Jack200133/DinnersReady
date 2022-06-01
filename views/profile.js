@@ -28,7 +28,7 @@ function ProfileScreen(props) {
   React.useEffect(async () => {
     const correo = await getData()
     console.log(correo)
-    let fet = "http://localhost:5000/users/"+correo
+    let fet = "http://3.132.195.25/dinner/users/"+correo
     const response = await fetch(fet)
       .then((response) => {return response.json()}
       ).then((responseInJSON) => { return responseInJSON })

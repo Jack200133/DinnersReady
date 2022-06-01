@@ -84,6 +84,7 @@ export default function MyTabs(){
                 component = {SavedScreen}
                 options = {{
                     tabBarLabel: '',
+                    unmountOnBlur: true,
                     headerShown: false,
                     tabBarIcon: ()=>(
                         <Image source={bookmarks}
@@ -94,7 +95,10 @@ export default function MyTabs(){
                             }}
                         />
                     )
-                }}/>
+                }}
+                listeners={({ navigation }) => ({
+                    blur: () => navigation.setParams({ screen: undefined }),
+                })}/>
             <Tab.Screen 
                 name = 'profile' 
                 component = {ProfileScreen}

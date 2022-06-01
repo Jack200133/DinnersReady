@@ -25,7 +25,8 @@ const storeData = async (value) => {
     }
 }
 
-const send = async(id,correo) =>{
+const send = async(id) =>{
+    const correo = await getData()
     const json = {
         id:id,
         correo:correo,
@@ -83,7 +84,7 @@ const PubItem = (props) => {
                         {
                             Gradient(props.dificultad)
                         }
-                        <Pressable  onPress={()=> {console.log("BUTON");send(props.is,getData())}}>
+                        <Pressable  onPress={()=> {console.log("BUTON");send(props.id)}}>
                             <View style = {styles.SavedContainer}>
                                 <Image source={props.saved} 
                                 resizeMode="contain" style={styles.Image} >  
