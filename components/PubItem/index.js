@@ -25,7 +25,7 @@ const storeData = async (value) => {
     }
 }
 
-const send = (id,correo) =>
+const send = async (id,correo) =>
 {
     const json = {
         id:id,
@@ -45,7 +45,6 @@ const send = (id,correo) =>
 }
 
 const Gradient = (dificultad) => {
-    console.log(dificultad)
     switch (dificultad) {
         case 'Fácil':
             return (
