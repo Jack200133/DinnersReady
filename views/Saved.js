@@ -8,7 +8,7 @@ import PubItem from '../components/PubItem';
 function SavedScreen(props) {
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
-  const Savednt = require('../assets/images/bookmark.png')
+  const Savednt = require('../assets/images/bookmarkn.png')
   return (
     <View style={styles.container}>
       <SearchBart/>
