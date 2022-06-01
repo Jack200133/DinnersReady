@@ -10,30 +10,6 @@ function SavedScreen(props) {
   const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmarkN.png')
-  const [saved, setSaved] = useState([])
-
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Usuario')
-      console.log(value)
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
-  }
-
-  useEffect(async () => {
-    const usuario = await getData()
-    const url = 'http://localhost:5000/save/'+usuario
-      const response2 = await fetch(url, {
-        method: 'GET'
-      })
-      const responseJSON2 = await response2.json()
-      setSaved(responseJSON2)
-  }, [])
-
   return (
     <View style={styles.container}>
       <SearchBart/>
