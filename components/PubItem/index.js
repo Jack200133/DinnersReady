@@ -25,8 +25,7 @@ const storeData = async (value) => {
     }
 }
 
-const send = (id,correo) =>
-{
+const send = async(id,correo) =>{
     const json = {
         id:id,
         correo:correo,
@@ -39,7 +38,7 @@ const send = (id,correo) =>
         },
         body: JSON.stringify(json)
     }
-    const resp = await fetch('http://localhost:5000/save/', options)
+    const resp = await fetch('http://3.132.195.25/dinner/save/', options)
     .then((response) => {return response.json()})
     .then((responseInJSON) => { return responseInJSON })
 }
