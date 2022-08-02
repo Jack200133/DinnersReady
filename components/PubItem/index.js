@@ -19,10 +19,15 @@ const getData = async () => {
   }
 const storeData = async (value) => {
     try {
-        await AsyncStorage.setItem('@Receta', value)
+        await AsyncStorage.setItem('@Receta', value.toString())
     } catch (e) {
         // saving error
     }
+}
+
+const save = (value, nav) => {
+    storeData(value)
+    nav.navigate('RecipeView')
 }
 
 const send = async(id) =>{
@@ -78,7 +83,7 @@ const PubItem = (props) => {
     //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
-        <Pressable style = {styles.container} onPress={()=> {storeData(props.id); props.navigation.navigate('RecipeView')}}>
+        <Pressable style = {styles.container} onPress={()=> {save(props.id, props.navigation)}}>
             <View >
                 <View style={styles.vistas}>
                         {
@@ -93,7 +98,7 @@ const PubItem = (props) => {
                             </View>
                         </Pressable>
                 </View>
-                <Image source={props.image} resizeMode="contain" style={styles.backgroundX}>
+                <Image source={{uri: props.image}} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
                 <Text style={styles.autor}>{"Autor: "+props.autor}</Text>
                 <View style = {styles.TitleContainer}>
