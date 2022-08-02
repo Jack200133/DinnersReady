@@ -68,7 +68,7 @@ export default function RecipeScreen(props) {
 
   // Funcion para armar la ruta de la imagen.
   const getImageURL = async () => {
-    let fet = "http://localhost:5000/contador/"
+    let fet = "http://3.132.195.25/dinner/contador/"
     const response = await fetch(fet, {
       method: 'GET'
     })

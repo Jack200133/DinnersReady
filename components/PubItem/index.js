@@ -81,11 +81,7 @@ const PubItem = (props) => {
     //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
-<<<<<<< HEAD
-        <Pressable style = {styles.container} onPress={()=> {console.log(`${props.id}`);storeData(props.id); props.navigation.navigate('RecipeView')}}>
-=======
         <Pressable style = {styles.container} onPress={()=> {save(props.id, props.navigation)}}>
->>>>>>> develop
             <View >
                 <View style={styles.vistas}>
                         {
