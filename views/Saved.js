@@ -23,7 +23,10 @@ function SavedScreen(props) {
       // error reading value
     }
   }
+  const clickHandlerBye = (id) =>{
+    setSaved(saved.filter(e => e !== id)) 
 
+  }
   useEffect(async () => {
     const usuario = await getData()
     const url = 'http://3.132.195.25/dinner/save/'+usuario
@@ -34,6 +37,7 @@ function SavedScreen(props) {
       setSaved(responseJSON2)
   }, [])
 
+
   return (
     <View style={styles.container}>
       <SearchBart/>
@@ -42,7 +46,18 @@ function SavedScreen(props) {
                 <View style={styles.NavegationPost}>
                   {
                     saved.map((e) =>
-                      <PubItem key={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={true ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>
+                      <PubItem key={e.id} id={e.id} 
+                        image={e.imagen} 
+                        color ={colors(e.dificultad)} 
+                        dificultad={e.dificultad} 
+                        saved={true ? Saved:Savednt} 
+                        NameRecipe={e.nombre} 
+                        stars ={e.estrellas} 
+                        hash={'#love'} 
+                        desc={e.descripcion} 
+                        autor={e.autor} 
+                        navigation = {props.navigation} 
+                        cH ={clickHandlerBye}/>
                     )
                   }
                 </View>

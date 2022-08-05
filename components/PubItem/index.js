@@ -79,30 +79,30 @@ const Gradient = (dificultad) => {
 
 
 
-const PubItem = (props) => {
+const PubItem = ({id,image,color,dificultad,saved,cH,NameRecipe,stars,hash,desc,autor,navigation}) => {
     //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
-        <Pressable style = {styles.container} onPress={()=> {save(props.id, props.navigation)}}>
+        <Pressable style = {styles.container} onPress={()=> {save(id, navigation)}}>
             <View >
                 <View style={styles.vistas}>
                         {
-                            Gradient(props.dificultad)
+                            Gradient(dificultad)
                         }
-                        <Pressable  onPress={()=> {console.log("BUTON");send(props.id)}}>
+                        <Pressable  onPress={()=> {console.log('IDPUB',id);cH(id);send(id)}}>
                             <View style = {styles.SavedContainer}>
-                                <Image source={props.saved} 
+                                <Image source={saved} 
                                 resizeMode="contain" style={styles.Image} >  
                                     
                                 </Image>
                             </View>
                         </Pressable>
                 </View>
-                <Image source={{uri: props.image}} resizeMode="contain" style={styles.backgroundX}>
+                <Image source={{uri: image}} resizeMode="contain" style={styles.backgroundX}>
                     </Image>
-                <Text style={styles.autor}>{"Autor: "+props.autor}</Text>
+                <Text style={styles.autor}>{"Autor: "+autor}</Text>
                 <View style = {styles.TitleContainer}>
-                    <Text style={styles.Title}>{props.NameRecipe}</Text>
+                    <Text style={styles.Title}>{NameRecipe}</Text>
                     <View style = {styles.Stars}>
                         
                         <View style = {styles.SavedContainer}>
@@ -111,11 +111,11 @@ const PubItem = (props) => {
                                 
                             </Image>
                         </View>
-                        <Text style={styles.TextStar}> {props.stars}</Text>
+                        <Text style={styles.TextStar}> {stars}</Text>
                     </View>
                 </View>
-                <Text style={styles.Descripcion}>{props.desc}</Text>
-                <Text style = {styles.Hashtag}>{props.hash} </Text>
+                <Text style={styles.Descripcion}>{desc}</Text>
+                <Text style = {styles.Hashtag}>{hash} </Text>
             </View>
         </Pressable>
         

@@ -34,6 +34,19 @@ function HomeAlacena(props) {
       // error reading value
     }
   }
+
+  const clickHandler = (id) =>{
+    if(savedrecipe.length != 0){
+      console.log('ID',id)
+      
+      if (savedrecipe.includes(id)){
+        setSaved(savedrecipe.filter(e => e !== id))
+      }
+      else if(id!==undefined){
+        setSaved([...savedrecipe, id])
+      }
+    }
+  }
   
 
   useEffect( async () => {
@@ -69,7 +82,19 @@ function HomeAlacena(props) {
                 <View style={styles.NavegationPost}>
                   {
                     
-                    recetas.map((e) => <PubItem id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={savedrecipe.includes(e.id) ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
+                    recetas.map((e) => 
+                    <PubItem id={e.id} key={e.id}
+                      image={e.imagen} 
+                      color ={colors(e.dificultad)} 
+                      dificultad={e.dificultad} 
+                      saved={savedrecipe.includes(e.id) ? Saved:Savednt}
+                      cH={clickHandler} 
+                      NameRecipe={e.nombre} 
+                      stars ={e.estrellas} 
+                      hash={'#love'} 
+                      desc={e.descripcion} 
+                      autor={e.autor} 
+                      navigation = {props.navigation}/>)
                   }
                 </View> 
             </ScrollView>
