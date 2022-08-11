@@ -13,9 +13,9 @@ import SearchBart from '../components/NavSearch';
 
 function HomeAlacena(props) {
 
-  const Alacena_Recipe = require('../assets/images/casitan.png');
-  const Market_Recipe = require('../assets/images/cart.png');
-  const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
+  //const Alacena_Recipe = require('../assets/images/casitan.png');
+  //const Market_Recipe = require('../assets/images/cart.png');
+  //const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmarkN.png')
 
@@ -38,12 +38,25 @@ function HomeAlacena(props) {
 
   useEffect( async () => {
       const usuario = await getData()
-      const url = 'http://3.132.195.25/dinner/recetas'
+      const url = 'http://3.132.195.25/recomendacionA/'+usuario
       const response = await fetch(url, {
         method: 'GET'
       })
       const responseJSON = await response.json()
-      await setRecetas(responseJSON)
+      
+      const listaId = responseJSON
+
+      let lista = []
+      for (let i = 0; i < listaId.final.length; i++)
+      {
+        const url3 = 'http://3.132.195.25/dinner/recetas/' + listaId.final[i]
+        const response3 = await fetch(url3, {
+          method: 'GET'
+        })
+        const responseJSON3 = await response3.json()
+        lista.push(...responseJSON3)
+      }
+      setRecetas(lista)
 
       const url2 = 'http://3.132.195.25/dinner/save/'+usuario
       const response2 = await fetch(url2, {
@@ -56,8 +69,6 @@ function HomeAlacena(props) {
 
     },[])
     
-      
-    console.log(savedrecipe)
 
   return (
     
@@ -69,7 +80,7 @@ function HomeAlacena(props) {
                 <View style={styles.NavegationPost}>
                   {
                     
-                    recetas.map((e) => <PubItem id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={savedrecipe.includes(e.id) ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
+                    recetas.map((e) => <PubItem key={e.id} id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={savedrecipe.includes(e.id) ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
                   }
                 </View> 
             </ScrollView>
