@@ -4,6 +4,7 @@ TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Dropdown from '../components/dropdown/dropdown';
 import { launchImageLibrary } from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
@@ -36,6 +37,18 @@ export default function RecipeScreen(props) {
 
   };
 
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@Usuario')
+      console.log(value)
+      if(value !== null) {
+        return value
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
+
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -53,7 +66,23 @@ export default function RecipeScreen(props) {
     }
   };
 
-  const uploadFile = () => {
+  // Funcion para armar la ruta de la imagen.
+  const getImageURL = async () => {
+    let fet = "http://3.132.195.25/dinner/contador/"
+    const response = await fetch(fet, {
+      method: 'GET'
+    })
+    const responseJSON = await response.json()
+    const user = await getData()
+    return user + responseJSON[0].max
+
+    // Debe retornar un String que indique este nombre.
+    // La forma del string debe ser 'nombre de usuario loggeado + (llamada a endpoint de contador)'
+  }
+
+  const uploadFile = async () => {
+    const imageURL = await getImageURL()
+    console.log(imageURL)
     if (Object.keys(image).length == 0) {
       alert('Please select image first');
       return;
@@ -63,7 +92,7 @@ export default function RecipeScreen(props) {
       {
         // `uri` can also be a file system path (i.e. file://)
         uri: image.uri,
-        name: 'queso',
+        name: imageURL,
         type: image.type,
       },
       {

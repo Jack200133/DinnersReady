@@ -77,8 +77,6 @@ const Gradient = (dificultad) => {
     }
 }
 
-
-
 const PubItem = (props) => {
     //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
