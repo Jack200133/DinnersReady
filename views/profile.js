@@ -12,6 +12,7 @@ function ProfileScreen(props) {
   const [modal, setModal] = React.useState(false)
   const [descripcion, setDescripcion] = React.useState('')
   const [usuario, setUsuario] = React.useState('')
+  const [recetas, setRecetas] = React.useState([])
   const imagen = require('../assets/images/chef.jpg')
 
   const getData = async () => {
@@ -37,46 +38,13 @@ function ProfileScreen(props) {
     setDescripcion(response[0].descripcion)
     setUsuario(response[0].nombre)
 
+    let feti = "http://3.132.195.25/dinner/recetaCreada/"+correo
+    const responsei = await fetch(feti).then(response => {return response.json()}).then(responseInJSON => {return responseInJSON})
+    console.log(responsei)
+    setRecetas(responsei)
   }, [])
 
-  const recetas = [
-    {
-      receta: 'Pollo',
-      rating: '3.5'
-    },
-    {
-      receta: 'Pasta',
-      rating: '4.0'
-    },
-    {
-      receta: 'Carne',
-      rating: '4.2'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    },
-    {
-      receta: 'Papas con sal',
-      rating: '2.0'
-    }
-  ]
+
 
   const toggleModal = () =>{
     setModal(!modal)
@@ -104,7 +72,7 @@ function ProfileScreen(props) {
           <ScrollView >
             {
               recetas.map((element, index) => {
-                return (<RecetaItem key={index} receta={element.receta} rating={element.rating}/>)
+                return (<RecetaItem key={index} receta={element.nombre} rating={element.estrellas}/>)
               })
             }
           </ScrollView>
