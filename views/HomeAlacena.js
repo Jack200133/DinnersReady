@@ -34,11 +34,19 @@ function HomeAlacena(props) {
       // error reading value
     }
   }
-  
 
   useEffect( async () => {
+    actualizarRecetas()
+  }, [recetas])
+
+  useEffect( async () => {
+    actualizarRecetas()
+  }, [])
+  
+
+  const actualizarRecetas = async () => {
       const usuario = await getData()
-      const url = 'http://3.132.195.25/recomendacionA/'+usuario
+      const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
       const response = await fetch(url, {
         method: 'GET'
       })
@@ -67,7 +75,7 @@ function HomeAlacena(props) {
       responseJSON2.map((idx)=> temp.push(idx.id))
       setSaved(temp)
 
-    },[])
+    }
     
 
   return (
