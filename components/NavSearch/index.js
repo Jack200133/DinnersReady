@@ -16,7 +16,13 @@ const SearchBart = () => {
             value={searchQuery}
             placeholderTextColor = '#05182A'
             rightIconContainerStyle = {Styles.icon}
-
+            onKeyPress={(e) => {
+              if (e.key=='Enter'){
+                console.log(e.target.value)}//En vez del console iria un query
+                // Deberiamos mandar una funcion en props para que busque dependiendo de donde este.
+                // Similar al press y long press de alacena.
+              } 
+            }
             round = {true}
             inputStyle={Styles.input}
             searchIconColor = '#05182A'
