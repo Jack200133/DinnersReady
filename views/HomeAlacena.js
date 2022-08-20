@@ -13,9 +13,9 @@ import SearchBart from '../components/NavSearch';
 
 function HomeAlacena(props) {
 
-  //const Alacena_Recipe = require('../assets/images/casitan.png');
-  //const Market_Recipe = require('../assets/images/cart.png');
-  //const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
+  const Alacena_Recipe = require('../assets/images/casitan.png');
+  const Market_Recipe = require('../assets/images/cart.png');
+  const Hamburguesa = require('../assets/images/hamburguesa_temporal.jpg');
   const Saved = require('../assets/images/bookmark.png')
   const Savednt = require('../assets/images/bookmarkN.png')
 
@@ -35,36 +35,28 @@ function HomeAlacena(props) {
     }
   }
 
-  useEffect( async () => {
-    actualizarRecetas()
-  }, [recetas])
-
-  useEffect( async () => {
-    actualizarRecetas()
-  }, [])
+  const clickHandler = (id) =>{
+    if(savedrecipe.length != 0){
+      console.log('ID',id)
+      
+      if (savedrecipe.includes(id)){
+        setSaved(savedrecipe.filter(e => e !== id))
+      }
+      else if(id!==undefined){
+        setSaved([...savedrecipe, id])
+      }
+    }
+  }
   
 
-  const actualizarRecetas = async () => {
+  useEffect( async () => {
       const usuario = await getData()
-      const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
+      const url = 'http://3.132.195.25/dinner/recetas'
       const response = await fetch(url, {
         method: 'GET'
       })
       const responseJSON = await response.json()
-      
-      const listaId = responseJSON
-
-      let lista = []
-      for (let i = 0; i < listaId.final.length; i++)
-      {
-        const url3 = 'http://3.132.195.25/dinner/recetas/' + listaId.final[i]
-        const response3 = await fetch(url3, {
-          method: 'GET'
-        })
-        const responseJSON3 = await response3.json()
-        lista.push(...responseJSON3)
-      }
-      setRecetas(lista)
+      await setRecetas(responseJSON)
 
       const url2 = 'http://3.132.195.25/dinner/save/'+usuario
       const response2 = await fetch(url2, {
@@ -75,8 +67,10 @@ function HomeAlacena(props) {
       responseJSON2.map((idx)=> temp.push(idx.id))
       setSaved(temp)
 
-    }
+    },[savedrecipe])
     
+      
+    console.log(savedrecipe)
 
   return (
     
@@ -88,7 +82,19 @@ function HomeAlacena(props) {
                 <View style={styles.NavegationPost}>
                   {
                     
-                    recetas.map((e) => <PubItem key={e.id} id={e.id} image={e.imagen} color ={colors(e.dificultad)} dificultad={e.dificultad} saved={savedrecipe.includes(e.id) ? Saved:Savednt} NameRecipe={e.nombre} stars ={e.estrellas} hash={'#love'} desc={e.descripcion} autor={e.autor} navigation = {props.navigation}/>)
+                    recetas.map((e) => 
+                    <PubItem id={e.id} key={e.id}
+                      image={e.imagen} 
+                      color ={colors(e.dificultad)} 
+                      dificultad={e.dificultad} 
+                      saved={savedrecipe.includes(e.id) ? Saved:Savednt}
+                      cH={clickHandler} 
+                      NameRecipe={e.nombre} 
+                      stars ={e.estrellas} 
+                      hash={'#love'} 
+                      desc={e.descripcion} 
+                      autor={e.autor} 
+                      navigation = {props.navigation}/>)
                   }
                 </View> 
             </ScrollView>
