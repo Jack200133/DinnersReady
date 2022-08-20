@@ -67,7 +67,7 @@ function HomeAlacena(props) {
       responseJSON2.map((idx)=> temp.push(idx.id))
       setSaved(temp)
 
-    },[])
+    },[savedrecipe])
     
       
     console.log(savedrecipe)

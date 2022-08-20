@@ -35,7 +35,7 @@ function SavedScreen(props) {
       })
       const responseJSON2 = await response2.json()
       setSaved(responseJSON2)
-  }, [])
+  }, [saved])
 
 
   return (
@@ -46,18 +46,18 @@ function SavedScreen(props) {
                 <View style={styles.NavegationPost}>
                   {
                     saved.map((e) =>
-                      <PubItem key={e.id} id={e.id} 
-                        image={e.imagen} 
-                        color ={colors(e.dificultad)} 
-                        dificultad={e.dificultad} 
-                        saved={true ? Saved:Savednt} 
-                        NameRecipe={e.nombre} 
-                        stars ={e.estrellas} 
-                        hash={'#love'} 
-                        desc={e.descripcion} 
-                        autor={e.autor} 
-                        navigation = {props.navigation} 
-                        cH ={clickHandlerBye}/>
+                      <PubItem id={e.id} key={e.id}
+                      image={e.imagen} 
+                      color ={colors(e.dificultad)} 
+                      dificultad={e.dificultad} 
+                      saved={saved.includes(e.id) ? Savednt:Saved}
+                      cH={clickHandlerBye} 
+                      NameRecipe={e.nombre} 
+                      stars ={e.estrellas} 
+                      hash={'#love'} 
+                      desc={e.descripcion} 
+                      autor={e.autor} 
+                      navigation = {props.navigation}/>
                     )
                   }
                 </View>
