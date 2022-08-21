@@ -50,24 +50,37 @@ function HomeAlacena(props) {
   
 
   useEffect( async () => {
-      const usuario = await getData()
-      const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
-      const response = await fetch(url, {
+    const usuario = await getData()
+    const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
+    const response = await fetch(url, {
+      method: 'GET'
+    })
+    const responseJSON = await response.json()
+    
+    const listaId = responseJSON
+
+    let lista = []
+    for (let i = 0; i < listaId.final.length; i++)
+    {
+      const url3 = 'http://3.132.195.25/dinner/recetas/' + listaId.final[i]
+      const response3 = await fetch(url3, {
         method: 'GET'
       })
-      const responseJSON = await response.json()
-      await setRecetas(responseJSON)
+      const responseJSON3 = await response3.json()
+      lista.push(...responseJSON3)
+    }
+    setRecetas(lista)
 
-      const url2 = 'http://3.132.195.25/dinner/save/'+usuario
-      const response2 = await fetch(url2, {
-        method: 'GET'
-      })
-      const responseJSON2 = await response2.json()
-      let temp = []
-      responseJSON2.map((idx)=> temp.push(idx.id))
-      setSaved(temp)
+    const url2 = 'http://3.132.195.25/dinner/save/'+usuario
+    const response2 = await fetch(url2, {
+      method: 'GET'
+    })
+    const responseJSON2 = await response2.json()
+    let temp = []
+    responseJSON2.map((idx)=> temp.push(idx.id))
+    setSaved(temp)
 
-    },[savedrecipe])
+  },[savedrecipe])
     
       
     console.log(savedrecipe)
