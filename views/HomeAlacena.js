@@ -51,7 +51,7 @@ function HomeAlacena(props) {
 
   useEffect( async () => {
       const usuario = await getData()
-      const url = 'http://3.132.195.25/dinner/recetas'
+      const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
       const response = await fetch(url, {
         method: 'GET'
       })
