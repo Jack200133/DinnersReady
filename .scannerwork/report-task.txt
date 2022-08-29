@@ -2,5 +2,5 @@ projectKey=dinnersready
 serverUrl=http://localhost:9000
 serverVersion=9.5.0.56709
 dashboardUrl=http://localhost:9000/dashboard?id=dinnersready
-ceTaskId=AYJXP6CjDR-7yp93wInL
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYJXP6CjDR-7yp93wInL
+ceTaskId=AYLH6hBATt04Wm_J5QBt
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYLH6hBATt04Wm_J5QBt
