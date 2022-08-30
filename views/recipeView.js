@@ -31,6 +31,7 @@ export default function RecipeView(props) {
     const arrow = require('../assets/images/left-arrow.png')
     const ingredientes = ['zanahoria', 'pollo', 'pan', 'arroz', 'tomate', 'lechuga']
     const [info, setInfo] = React.useState({})
+    const [ingredients, setIngredients] = React.useState([])
 
     useEffect( async () => {
         const receta = await getData()
@@ -40,6 +41,20 @@ export default function RecipeView(props) {
         })
         const responseJSON = await response.json()
         setInfo(responseJSON[0])
+        console.log("DATOS: ",responseJSON[0])
+
+
+
+        const id_receta = responseJSON[0].id
+        //const url2 = `http://3.132.195.25/dinner/ingredientes/receta/${id_receta}`
+        const url2 = `http://localhost:5000/ingredientes/receta/${id_receta}`
+        const response2 = await fetch(url2, {
+            method: 'GET',
+        })
+        const responseJSON2 = await response2.json()
+        setIngredients(responseJSON2[0])
+
+        console.log("DATOS2: ",responseJSON2[0])
     }, [])
 
     return (
