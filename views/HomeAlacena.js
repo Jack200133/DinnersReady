@@ -80,23 +80,26 @@ function HomeAlacena(props) {
     responseJSON2.map((idx)=> temp.push(idx.id))
     setSaved(temp)
 
-  },[savedrecipe])
-    
-      
-    console.log(savedrecipe)
+  },[])
 
+  function Pruebaset(Prueba_Recetas) {
+
+    setRecetas(Prueba_Recetas)
+  }
+  
   return (
+    
     
     <View style={styles.container}>
 
 
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
-                <View style={styles.NavegationPost}>
+                <View testID="receta_contenedor" style={styles.NavegationPost}>
                   {
                     
                     recetas.map((e) => 
-                    <PubItem id={e.id} key={e.id}
+                    <PubItem testID="receta" id={e.id} key={e.id}
                       image={e.imagen} 
                       color ={colors(e.dificultad)} 
                       dificultad={e.dificultad} 
