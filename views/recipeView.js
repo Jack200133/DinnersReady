@@ -46,15 +46,15 @@ export default function RecipeView(props) {
 
 
         const id_receta = responseJSON[0].id
-        //const url2 = `http://3.132.195.25/dinner/ingredientes/receta/${id_receta}`
-        const url2 = `http://localhost:5000/ingredientes/receta/${id_receta}`
+        //const url2 = `http://3.132.195.25/dinner/ingredientes_receta/${id_receta}`
+        const url2 = `http://localhost:5000/ingredientes_receta/${id_receta}`
         const response2 = await fetch(url2, {
             method: 'GET',
         })
         const responseJSON2 = await response2.json()
-        setIngredients(responseJSON2[0])
+        setIngredients(responseJSON2)
 
-        console.log("DATOS2: ",responseJSON2[0])
+        console.log("DATOS2: ",responseJSON2)
     }, [])
 
     return (
@@ -100,7 +100,10 @@ export default function RecipeView(props) {
                 <View>
                     <Text style={styles.Arr}>{"Ingredientes"}</Text>
                     <View style={styles.ingredContainer}> 
-                        {ingredientes.map((ingredient, index) => <Ingred key = {ingredient} text = {ingredient} index = {index}/>)}
+                        {ingredients.map((index) => 
+                        <Text key = {index} text = {index.nombre_ingrediente} index = {index}>
+                            {`${index.nombre_ingrediente } --> ${index.cantidad}`}
+                        </Text>)}
                     </View>
                 </View>
                 <Text style={styles.Arr}>{"Pasos"}</Text>
