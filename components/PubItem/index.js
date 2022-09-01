@@ -82,7 +82,7 @@ const PubItem = ({id,image,color,dificultad,saved,cH,NameRecipe,stars,hash,desc,
     //console.log(props.navigation.navigate)
     //const navigate = useNavigate()
     return (
-        <Pressable testID="receta" style = {styles.container} onPress={()=> {save(id, navigation)}}>
+        <Pressable style = {styles.container} onPress={()=> {save(id, navigation)}}>
             <View>
                 <View style={styles.vistas}>
                         {
