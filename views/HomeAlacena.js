@@ -50,7 +50,10 @@ function HomeAlacena(props) {
   
 
   useEffect( async () => {
-    const usuario = await getData()
+    
+    
+    //const usuario = await getData()
+    const usuario = 'pez'
     const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
     const response = await fetch(url, {
       method: 'GET'
@@ -58,7 +61,7 @@ function HomeAlacena(props) {
     const responseJSON = await response.json()
     
     const listaId = responseJSON
-
+    console.log(listaId)
     let lista = []
     for (let i = 0; i < listaId.final.length; i++)
     {
@@ -67,6 +70,7 @@ function HomeAlacena(props) {
         method: 'GET'
       })
       const responseJSON3 = await response3.json()
+      
       lista.push(...responseJSON3)
     }
     setRecetas(lista)
@@ -80,23 +84,26 @@ function HomeAlacena(props) {
     responseJSON2.map((idx)=> temp.push(idx.id))
     setSaved(temp)
 
-  },[savedrecipe])
-    
-      
-    console.log(savedrecipe)
+  },[])
 
+  function Pruebaset(Prueba_Recetas) {
+
+    setRecetas(Prueba_Recetas)
+  }
+  
   return (
     
-    <View style={styles.container}>
+    
+    <View testID='HomeAlacena' style={styles.container}>
 
 
       <ImageBackground source={require('../assets/images/fondo.png')}resizeMode="cover"style={styles.background} imageStyle={{opacity: 0.3}}>
             <ScrollView style={styles.scrollCont}>
-                <View style={styles.NavegationPost}>
+                <View testID="receta_contenedor" style={styles.NavegationPost}>
                   {
                     
                     recetas.map((e) => 
-                    <PubItem id={e.id} key={e.id}
+                    <PubItem testID="receta" id={e.id} key={e.id}
                       image={e.imagen} 
                       color ={colors(e.dificultad)} 
                       dificultad={e.dificultad} 

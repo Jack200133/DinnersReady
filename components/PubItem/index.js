@@ -1,5 +1,4 @@
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 import {View,ImageBackground,Image,Text, Pressable} from 'react-native';
 import { useNavigate } from 'react-router-dom';
 import styles from './style';
@@ -84,7 +83,7 @@ const PubItem = ({id,image,color,dificultad,saved,cH,NameRecipe,stars,hash,desc,
     //const navigate = useNavigate()
     return (
         <Pressable style = {styles.container} onPress={()=> {save(id, navigation)}}>
-            <View >
+            <View>
                 <View style={styles.vistas}>
                         {
                             Gradient(dificultad)
