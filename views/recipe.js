@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react';
+import React , { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable,
 TextInput, KeyboardAvoidingView, Picker } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
@@ -8,7 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
-import {RNS3} from 'react-native-aws3'
+import {RNS3} from 'react-native-aws3';
+import Ingrediente from '../components/ingrediente';
 
 export default function RecipeScreen(props) {
 
@@ -19,7 +20,10 @@ export default function RecipeScreen(props) {
   const [categorias, setCategorias] = useState('');
   const [dificultad, setDificultad] = useState('');
   const [sms,setSms] = useState('');
+  const [ingredientes, setIngredientes] = useState([]);
+  const imageU = useRef('')
 
+  
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -80,9 +84,14 @@ export default function RecipeScreen(props) {
     // La forma del string debe ser 'nombre de usuario loggeado + (llamada a endpoint de contador)'
   }
 
+  const addInput = () => {
+    const temp = [...ingredientes]
+    temp.push({ing: '', cantidad: ''})
+    setIngredientes(temp)
+  }
+
   const uploadFile = async () => {
     const imageURL = await getImageURL()
-    console.log(imageURL)
     if (Object.keys(image).length == 0) {
       alert('Please select image first');
       return;
@@ -113,6 +122,7 @@ export default function RecipeScreen(props) {
         console.log(response)
         if (response.status !== 201)
           alert('Failed to upload image to S3');
+        imageU.current = 'https://dinnersready.s3.us-east-2.amazonaws.com/recipe/' + imageURL
         /**
          * {
          *   postResponse: {
@@ -126,8 +136,34 @@ export default function RecipeScreen(props) {
       });
   };
 
-  const img = require('../assets/images/add-image.png');
+  const uploadRecipe = async() => {
+    const usuario = await getData()
+    await uploadFile()
+    const url = 'http://3.132.195.25/dinner/crear_receta/'
+    const json = {
+      nombre:titulo,
+      descripcion:descripcion,
+      dificultad:dificultad,
+      estrellas:5,
+      autor: usuario,
+      link: imageU.current,
+      ingredientes: ingredientes
+    }
 
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+    }
+    const resp = await fetch(url, options)
+    .then((response) => {return response.json()})
+    .then((responseInJSON) => { return responseInJSON })
+  }
+
+  const img = require('../assets/images/add-image.png');
+  console.log(ingredientes)
   
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -156,7 +192,7 @@ export default function RecipeScreen(props) {
               value={titulo}
               placeholder="Ingresa el título..."
               keyboardType="default"
-              fontFamily='Mukta_Regular'
+              fontFamily='Arial'
             />
             <Text style={styles.titles}>Descripción</Text>
             <TextInput
@@ -169,8 +205,13 @@ export default function RecipeScreen(props) {
               
             />
             <Text style={styles.titles}>Tus ingredientes</Text>
+            <View style={styles.ing}>
+              {
+                ingredientes.map((current, index) => <Ingrediente ingrediente={current.ing} cantidad={current.cantidad} index={index} state={ingredientes} setState={setIngredientes} />)
+              }
+            </View>
             <View style={styles.AddItem}>
-              <Pressable>
+              <Pressable onPress={addInput}>
                 <Text>+ Añade ingredientes</Text> 
               </Pressable>
             </View>
@@ -198,8 +239,8 @@ export default function RecipeScreen(props) {
             />
             
             <View style={styles.publish}>
-              <Pressable onPress={() => uploadFile()}>
-                <Text style={{fontSize: 18, color: '#fff', fontFamily:'Mukta_Regular',}}>Publicar receta</Text> 
+              <Pressable onPress={() => uploadRecipe()}>
+                <Text style={{fontSize: 18, color: '#fff', fontFamily:'Arial',}}>Publicar receta</Text> 
               </Pressable>
             </View>
             {sms!="" && <Text style={styles.Sms}>{sms}</Text>}
@@ -296,7 +337,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 15,
     backgroundColor: '#EEE9E9',
-    fontFamily:'Mukta_Regular'
+    fontFamily:'Arial'
   },
   inputDesc:{
     borderWidth: 1,
@@ -308,7 +349,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: '#EEE9E9',
-    fontFamily:'Mukta_Regular'
+    fontFamily:'Arial'
   },
   AddItem:{
     borderWidth: 1,
@@ -346,7 +387,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: '#EEE9E9',
     zIndex:1,
-    fontFamily:'Mukta_Regular'
+    fontFamily:'Arial'
   },
   publish:{
     height: 60,
@@ -366,6 +407,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center'
+  },
+  ing:{
+    justifyContent: 'center'
   }
 });
 
