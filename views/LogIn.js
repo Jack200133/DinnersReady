@@ -61,6 +61,7 @@ function LogIn(props) {
             value={correo}
             placeholder="Ingrese su correo"
             keyboardType="default"
+            testID="userInput"
             />
           <Text style={styles.desctext}>Contraseña:</Text>
 
@@ -71,17 +72,18 @@ function LogIn(props) {
           secureTextEntry={true}
           placeholder="Ingrese su contraseña"
           keyboardType="default"
+          testID="passwordInput"
           />
 
           {!dentro && <Text style={{marginLeft: 10, color:'red', fontSize: 16}}>Error al ingresar. Introduce bien tus datos.</Text>}
           
 
           <View style={styles.LogInButton}>
-            <Pressable onPress ={() => checkLog()}>
+            <Pressable onPress ={() => checkLog()} testID="logInButton">
                 <Text style={{fontSize: 18, color: '#EEE9E9', fontFamily:'Mukta_Regular'}}>Ingresar</Text> 
             </Pressable>
           </View>
-          <View style={styles.LogInButton}>
+          <View style={styles.LogInButton} testID="registerButton">
             <Pressable onPress = {() => {props.navigation.navigate('Register')}}>
                 <Text style={{fontSize: 18, color: '#EEE9E9', fontFamily:'Mukta_Regular'}}>Registrarse</Text> 
             </Pressable>
