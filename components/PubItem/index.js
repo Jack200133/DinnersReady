@@ -53,24 +53,28 @@ const Gradient = (dificultad) => {
         case 'Fácil':
             return (
                 <View style={styles.TextBack}>
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
                 </View>
             )
         case 'Medio':
             return (
                 <View style={styles.TextBack}>
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
                 </View>
             )
-        default:
+        case 'Difícil':
             return (
                 <View style={styles.TextBack}>
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
-                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image testID='sarten' style={styles.Dificult} source={sarte} resizeMode="contain" />
                 </View>
             )
+        
+        default:
+                <View style={styles.TextBack}>
+                </View>
     
 
     }
