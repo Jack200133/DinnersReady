@@ -55,17 +55,18 @@ function HomeAlacena(props) {
     //const usuario = await getData()
     const usuario = 'pez'
     const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
+    // const url = 'http://localhost:5000/recomendacionA/'+usuario
     const response = await fetch(url, {
       method: 'GET'
     })
     const responseJSON = await response.json()
     
     const listaId = responseJSON
-    console.log(listaId)
     let lista = []
     for (let i = 0; i < listaId.final.length; i++)
     {
       const url3 = 'http://3.132.195.25/dinner/recetas/' + listaId.final[i]
+      // const url3 = 'http://localhost:5000/recetas/' + listaId.final[i]
       const response3 = await fetch(url3, {
         method: 'GET'
       })

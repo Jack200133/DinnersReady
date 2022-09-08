@@ -11,6 +11,11 @@
     "test": "jest",
     "tests": "jest --coverage"
   },
+  "jest":{
+    "collectCoverage": true,
+    "coverageReporters": ["lcov"],
+    "coverageDirectory": "./output/code-coverage/"
+  },
   "dependencies": {
     "@babel/preset-env": "^7.18.10",
     "@expo-google-fonts/montserrat": "^0.2.2",
