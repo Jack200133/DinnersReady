@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Pressable } from 'react-native';
 import ModaleditProfile from '../components/ModalEditProfile/modaleditProfile';
-import StyledButton from '../components/StyledButton';
+
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar'
 import { Button } from 'react-native-web';

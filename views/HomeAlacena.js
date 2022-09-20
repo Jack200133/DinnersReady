@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import StyledButton from '../components/StyledButton';
+
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
@@ -106,7 +106,6 @@ function HomeAlacena(props) {
                     recetas.map((e) => 
                     <PubItem testID="receta" id={e.id} key={e.id}
                       image={e.imagen} 
-                      color ={colors(e.dificultad)} 
                       dificultad={e.dificultad} 
                       saved={savedrecipe.includes(e.id) ? Saved:Savednt}
                       cH={clickHandler} 
@@ -125,18 +124,6 @@ function HomeAlacena(props) {
   );
 }
 
-const colors = (dif) =>{
-  let color = ''
-  if(dif === "Fácil"){
-    color = '#5DE8F0'
-  }else if(dif==='Medio'){
-    color = '#5AE6C6'
-  }else{
-    color = '#5A6FE6'
-  }
-
-  return color
-}
 
 const styles = StyleSheet.create({
   container: {

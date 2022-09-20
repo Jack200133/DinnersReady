@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground,ScrollView } from 'react-native';
 
-import StyledButton from '../components/StyledButton';
+
 import NavBar from '../components/NavBar';
 import TitleBar from '../components/TitleBar';
 import IconBar from '../components/IconBar';
