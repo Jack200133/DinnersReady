@@ -10,6 +10,34 @@ import NavBar from '../components/NavBar';
 import { render } from 'react-dom';
 import PubItem from '../components/PubItem';
 import Ingred from '../components/Ingred';
+const Gradient = (dificultad) => {
+    const sarte = require('../assets/images/sarten.png')
+    switch (dificultad) {
+        case 'Fácil':
+            return (
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
+            )
+        case 'Medio':
+            return (
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
+            )
+        default:
+            return (
+                <View style={styles.TextBack}>
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                    <Image style={styles.Dificult} source={sarte} resizeMode="contain" />
+                </View>
+            )
+    
+
+    }
+}
 
 const getData = async () => {
     try {
@@ -26,11 +54,12 @@ export default function RecipeView(props) {
     //const navigate = useNavigate()
 
     const star = require('../assets/images/star.png')
-    const image = require('../assets/images/hamburguesa_temporal.jpg')
     const saved = require('../assets/images/bookmark.png')
+    const savednt = require('../assets/images/bookmarkN.png')
     const arrow = require('../assets/images/left-arrow.png')
-    const ingredientes = ['zanahoria', 'pollo', 'pan', 'arroz', 'tomate', 'lechuga']
+    
     const [info, setInfo] = React.useState({})
+    const [ingredients, setIngredients] = React.useState([])
 
     useEffect( async () => {
         const receta = await getData()
@@ -40,6 +69,20 @@ export default function RecipeView(props) {
         })
         const responseJSON = await response.json()
         setInfo(responseJSON[0])
+        console.log("DATOS: ",responseJSON[0])
+
+
+
+        const id_receta = responseJSON[0].id
+        const url2 = `http://3.132.195.25/dinner/ingredientes_receta/${id_receta}`
+        //const url2 = `http://localhost:5000/ingredientes_receta/${id_receta}`
+        const response2 = await fetch(url2, {
+            method: 'GET',
+        })
+        const responseJSON2 = await response2.json()
+        setIngredients(responseJSON2)
+
+        console.log("DATOS2: ",responseJSON2)
     }, [])
 
     return (
@@ -52,10 +95,11 @@ export default function RecipeView(props) {
             <ScrollView contentContainerStyle = {styles.container}>
                 
                 <View style={styles.vistas}>
-                    
-                        <View style = {{...styles.TextBack,backgroundColor: '#4ECF66'}}>
-                            <Text style={styles.Dificult} >{info.dificultad}</Text>
-                        </View>
+                        <View style={styles.dificultad}>
+                        {
+                            Gradient(info.dificultad)
+                        }
+                            </View>
                         <View style = {styles.SavedContainer}>
                             <Image source={saved} 
                             resizeMode="contain" style={styles.Image}>  
@@ -63,7 +107,7 @@ export default function RecipeView(props) {
                             </Image>
                         </View>
                 </View>
-                <Image source={image} resizeMode="contain" style={styles.background}>
+                <Image source={info.imagen} resizeMode="contain" style={styles.background}>
                     </Image>   
                 <Text style={styles.name}>Por: {info.autor}</Text>
                 <View style = {styles.TitleContainer}>
@@ -71,7 +115,7 @@ export default function RecipeView(props) {
                     
                     <View style = {styles.Stars}>
                         
-                        <View style = {styles.SavedContainer}>
+                        <View style = {styles.StarContainer}>
                             <Image source={star} 
                             resizeMode="contain" style={styles.Estrella}>  
                                 
@@ -85,7 +129,10 @@ export default function RecipeView(props) {
                 <View>
                     <Text style={styles.Arr}>{"Ingredientes"}</Text>
                     <View style={styles.ingredContainer}> 
-                        {ingredientes.map((ingredient, index) => <Ingred key = {ingredient} text = {ingredient} index = {index}/>)}
+                        {ingredients.map((index) => 
+                        <Text key = {index} text = {index.nombre_ingrediente} index = {index}>
+                            {`${index.nombre_ingrediente } --> ${index.cantidad}`}
+                        </Text>)}
                     </View>
                 </View>
                 <Text style={styles.Arr}>{"Pasos"}</Text>
@@ -107,31 +154,49 @@ const styles = StyleSheet.create({
         backgroundColor: '#D0F0F8',
         paddingBottom: 35
     },
+    dificultad:{
+        display:'flex',
+        flexDirection: "row",
+        width: "200px",
+    },
     ingredContainer: {
         display: 'flex',
-        flexDirection:'row',
+        flexDirection:'coloumn',
+        marginLeft:10,
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
         paddingHorizontal: 15
     },
     vistas:{
-        width: "100%",
+        width: "90vw",
         height: 30,
         display: 'flex',
         flexDirection: "row",
-        marginTop: 15,
-        marginLeft: 10,
-        paddingRight:20,
-        marginBottom: 10,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight:20,
+        marginBottom: 20,
         justifyContent: 'space-between',
         alignContent: "center",
-        paddingHorizontal: 10,
+        paddingHorizontal: 0,
     },
     SavedContainer : {
-        marginRight: 7,
-        height: 30,
-        width: 30
+        display: 'flex',
+        backgroundColor: '#5EA3DB',
+        alignItems: "center",
+        justifyContent: "center",
+        height: 45,
+        width: 45,
+        borderRadius: 15,
     },  
+    StarContainer:{
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: "center",
+        height: 45,
+        width: 45,
+        borderRadius: 15,
+    },
     background:{
         width: "90%",
         height: 200,
@@ -151,7 +216,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textAlignVertical: 'center',
         padding: 5,
-        height: 20,
+        height: 30,
+        width: 30,
         
     },
     TitleContainer:{
@@ -183,13 +249,15 @@ const styles = StyleSheet.create({
         alignSelf:'center',
     },
     TextBack:{
-        width:"30%",
-        height:30,
+        width:200,
+        height:40,
         borderRadius:10,
         borderWidth:1,
+        backgroundColor: '#5EA3DB',
         alignSelf:'center',
         display:"flex",
-        alignContent: 'center',
+        flexDirection: "row",
+        alignItems: 'center',
         justifyContent: 'center',
     },
     Hashtag:{
