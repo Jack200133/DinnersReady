@@ -75,7 +75,7 @@ function LogIn(props) {
           testID="passwordInput"
           />
 
-          {!dentro && <Text style={{marginLeft: 10, color:'red', fontSize: 16}}>Error al ingresar. Introduce bien tus datos.</Text>}
+          {!dentro && <Text testID='texto_dentro' style={{marginLeft: 10, color:'red', fontSize: 16}}>Error al ingresar. Introduce bien tus datos.</Text>}
           
 
           <View style={styles.LogInButton}>
