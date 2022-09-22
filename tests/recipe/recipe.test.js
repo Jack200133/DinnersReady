@@ -75,6 +75,7 @@ describe('crear receta', () => {
         const inter = component.getByTestId('Intermedio')
         fireEvent(inter, 'press')
         fireEvent(button, 'press')
+        expect(component.queryAllByTestId("sms").length).toEqual(0);
     })
 })
 
@@ -83,5 +84,6 @@ describe('Ingredientes', () => {
         component =  render(<RecipeScreen/>)
         const ing = component.getByTestId('ing')
         fireEvent(ing, 'press')
+        expect(component.queryAllByTestId("ing").length).toEqual(1);
     })
 })
