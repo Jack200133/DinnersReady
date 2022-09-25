@@ -36,9 +36,8 @@ function HomeAlacena(props) {
   }
 
   const clickHandler = (id) =>{
-    console.log(id)
+    //console.log(id)
     if(savedrecipe.length != 0){
-      console.log('ID',id)
       
       if (savedrecipe.includes(id)){
         setSaved(savedrecipe.filter(e => e !== id))
@@ -106,7 +105,7 @@ function HomeAlacena(props) {
                     
                     recetas.map((e) => 
                     {
-                      console.log(e.id)
+                      //console.log(e.id)
                       return(
                         
                       <PubItem id={e.id} key={e.id}

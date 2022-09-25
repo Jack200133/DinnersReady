@@ -24,7 +24,7 @@ function LogIn(props) {
   //const navigate = useNavigate()
 
   const checkLog = async() => {
-      console.log(contraseña)
+      //console.log(contraseña)
       const fet = 'http://3.132.195.25/dinner/login/'+contraseña+'/'+correo
       const response = await fetch(fet)
         .then((response) => {return response.json()}

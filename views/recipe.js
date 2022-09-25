@@ -31,7 +31,7 @@ export default function RecipeScreen(props) {
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('@Usuario')
-      console.log(value)
+      //console.log(value)
       if(value !== null) {
         return value
       }
@@ -49,7 +49,7 @@ export default function RecipeScreen(props) {
       aspect: [4, 3],
       quality: 1,
     });
-    console.log(result);
+    //console.log(result);
 
     if (!result.cancelled) {
       setImage(result)
@@ -83,7 +83,7 @@ export default function RecipeScreen(props) {
       alert('Please select image first');
       return;
     }
-    console.log(image.uri)
+    //console.log(image.uri)
     RNS3.put(
       {
         // `uri` can also be a file system path (i.e. file://)
@@ -106,7 +106,7 @@ export default function RecipeScreen(props) {
       console.log(progress.loaded / progress.total)
      )
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         if (response.status !== 201)
           alert('Failed to upload image to S3');
         imageU.current = 'https://dinnersready.s3.us-east-2.amazonaws.com/recipe/' + imageURL
@@ -158,7 +158,7 @@ export default function RecipeScreen(props) {
   }
 
   const img = require('../assets/images/add-image.png');
-  console.log(ingredientes)
+  //console.log(ingredientes)
   
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -203,7 +203,7 @@ export default function RecipeScreen(props) {
             <Text style={styles.titles}>Tus ingredientes</Text>
             <View style={styles.ing}>
               {
-                ingredientes.map((current, index) => <Ingrediente ingrediente={current.ing} cantidad={current.cantidad} index={index} state={ingredientes} setState={setIngredientes} />)
+                ingredientes.map((current, index) => <Ingrediente key={index} ingrediente={current.ing} cantidad={current.cantidad} index={index} state={ingredientes} setState={setIngredientes} />)
               }
             </View>
             <View style={styles.AddItem}>
