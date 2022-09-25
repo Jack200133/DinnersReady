@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     },
     ingredContainer: {
         display: 'flex',
-        flexDirection:'coloumn',
+        flexDirection:'column',
         marginLeft:10,
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
