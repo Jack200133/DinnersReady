@@ -6,5 +6,7 @@ module.exports ={
     testEnvironment: 'jsdom', 
     "transformIgnorePatterns": [
         "node_modules/(?!(jest-)?@react-native|react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|@ui-kitten)"
-    ]
+    ],
+    "collectCoverageFrom": ["./tests/AppTest/**" , "./components/NavSearch/**", "./components/PubItem/**", "./views/App.js"
+                                , "./views/LogIn.js", "./views/recipe.js", "./views/HomeAlacena.js"],
 }

@@ -9,7 +9,7 @@ import AppLoading from 'expo-app-loading';
 describe('App', () => {    
     it('Creacion de los fonts', async () => {
         const render = new ShallowRenderer();
-        render.render(<App/>)
+        render.render(<AppP />)
         component =  render.getRenderOutput();
         await expect(component.type).toBe(AppLoading);
     })
