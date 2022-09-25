@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import renderer, { act } from 'react-test-renderer';
 import {render, screen, fireEvent} from '@testing-library/react-native';
 import RecipeScreen from '../../views/recipe.js'
-import MockStorage from './asyncMock.js';
 
 
 describe('Receta facil', () => {    
@@ -54,10 +53,10 @@ describe('crear receta', () => {
     })
 
     it('crea receta con informacion completa', () => {
-        const storageCache = {}
+        /*const storageCache = {}
         const AsyncStorage = new MockStorage(storageCache)
 
-        jest.setMock('@react-native-async-storage/async-storage/', () => AsyncStorage)
+        jest.setMock('@react-native-async-storage/async-storage/', () => AsyncStorage)*/
         const component =  render(<RecipeScreen/>)
         const button = component.getByTestId('publish')
         const input = component.getByTestId('titulo')
