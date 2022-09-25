@@ -12,7 +12,6 @@ describe('App', () => {
         render.render(<App/>)
         component =  render.getRenderOutput();
         await expect(component.type).toBe(AppLoading);
-        expect(await component.type).toBe(GestureHandlerRootView);
     })
   })
 
