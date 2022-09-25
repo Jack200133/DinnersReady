@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { act } from 'react-test-renderer';
+import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import LogIn from '../../views/LogIn.js';
 
 const fetch1 = ()=> Promise.resolve({
@@ -19,13 +20,18 @@ describe('Iniciar sesion correctamente', () => {
       fetch.mockClear();
     });
     it('Logra iniciar sesion correctamente', async () => {
-        await (async () => {
-        component =  render(<LogIn />)
+      component = await waitFor(() =>
+        render(<LogIn />)
+      )
+      await act( async () => {
         const button =  component.getByTestId("logInButton");
         fireEvent(button, 'press')
 
         expect(await component.queryAllByTestId("texto_dentro").length).toEqual(0);
-    })
+      })
+      /*await (async () => {
+      component =  render(<LogIn />)
+      })*/
       
     })
   })
