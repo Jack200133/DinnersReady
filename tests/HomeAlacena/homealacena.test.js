@@ -63,33 +63,6 @@ const fetch4 = ()=> Promise.resolve({
   )
 })
 
-
-
-/*describe('<App />', () => {
-
-    global.fetch = jest.fn()
-    global.fetch.mockReturnValueOnce(fetch2()).mockReturnValueOnce(fetch1()).mockReturnValueOnce(fetch3()).mockReturnValueOnce(fetch2()).mockReturnValueOnce(fetch1()).mockReturnValueOnce(fetch3())
-    beforeEach(() => {
-      fetch.mockClear();
-    });
-    
-  //})
-  
-      
-  
-  it('it shows right recipes', async () => {
-    await act( async () => {
-      component = await waitFor(() =>
-        render(<HomeAlacena />)
-      )
-      expect(component.queryAllByTestId("HomeAlacena").length).toEqual(1);
-      expect(component.queryAllByTestId("receta_contenedor").length).toEqual(1);
-    })
-  })
-})*/
-
-
-
 describe('not change saved', () => {
 
   global.fetch = jest.fn()
@@ -107,6 +80,7 @@ it('it changes saved state', async () => {
   await act( async () => {
     const input2 = await component.getByTestId('pub')
     fireEvent(input2, 'press')
+    expect(component.queryAllByTestId("pub").length).toEqual(1);
   })
 })
 })
