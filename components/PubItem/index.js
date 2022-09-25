@@ -92,7 +92,7 @@ const PubItem = ({id,image,color,dificultad,saved,cH,NameRecipe,stars,hash,desc,
                         {
                             Gradient(dificultad)
                         }
-                        <Pressable  onPress={()=> {console.log('IDPUB',id);cH(id);send(id)}}>
+                        <Pressable testID='pub'  onPress={()=> {console.log('IDPUB',id);cH(id);send(id)}}>
                             <View style = {styles.SavedContainer}>
                                 <Image source={saved} 
                                 resizeMode="contain" style={styles.Image} >  
