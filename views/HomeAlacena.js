@@ -36,6 +36,7 @@ function HomeAlacena(props) {
   }
 
   const clickHandler = (id) =>{
+    console.log(id)
     if(savedrecipe.length != 0){
       console.log('ID',id)
       
@@ -104,7 +105,11 @@ function HomeAlacena(props) {
                   {
                     
                     recetas.map((e) => 
-                    <PubItem testID="receta" id={e.id} key={e.id}
+                    {
+                      console.log(e.id)
+                      return(
+                        
+                      <PubItem id={e.id} key={e.id}
                       image={e.imagen} 
                       dificultad={e.dificultad} 
                       saved={savedrecipe.includes(e.id) ? Saved:Savednt}
@@ -114,7 +119,9 @@ function HomeAlacena(props) {
                       hash={'#love'} 
                       desc={e.descripcion} 
                       autor={e.autor} 
-                      navigation = {props.navigation}/>)
+                      navigation = {props.navigation}/>
+                      )
+                    })
                   }
                 </View> 
             </ScrollView>
