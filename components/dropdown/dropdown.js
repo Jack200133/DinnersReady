@@ -6,8 +6,9 @@ import styles from './styles.js';
 
 
 const Opcion = ({ texto, select }) => {
+    // console.log(texto)
     return (
-        <Pressable onPress={select}>
+        <Pressable testID={texto} onPress={select}>
             <View style={styles.opcion}>
                 <Text style={styles.opcionTexto}>{texto}</Text>
             </View>
@@ -33,7 +34,7 @@ const Dropdown = ({setDificultad}) =>{
 
     return(
     <View>
-        <Pressable onPress={onClick}>
+        <Pressable testID="drop" onPress={onClick}>
             <View  style={styles.container}>
                 <Text style={{fontSize:18}}>{eleccion}</Text>
             </View>

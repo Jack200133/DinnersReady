@@ -24,22 +24,9 @@ export default function RecipeScreen(props) {
   const imageU = useRef('')
 
   
-  const handleChange = (event) => {
+  /*const handleChange = (event) => {
     setValue(event.target.value);
-  };
-
-  const Publish = () => {
-
-    if(image==null || titulo=='' ||descripcion==''||pasos==''||categorias==''||dificultad==''){
-      setSms("Campos incompletos")
-    }
-    else
-    {
-      setSms("")
-      //fetch
-    }
-
-  };
+  };*/
 
   const getData = async () => {
     try {
@@ -137,29 +124,37 @@ export default function RecipeScreen(props) {
   };
 
   const uploadRecipe = async() => {
-    const usuario = await getData()
-    await uploadFile()
-    const url = 'http://3.132.195.25/dinner/crear_receta/'
-    const json = {
-      nombre:titulo,
-      descripcion:descripcion,
-      dificultad:dificultad,
-      estrellas:5,
-      autor: usuario,
-      link: imageU.current,
-      ingredientes: ingredientes
+    if(/*image==null ||*/ titulo=='' ||descripcion==''||pasos==''||categorias==''||dificultad==''){
+      setSms("Campos incompletos")
     }
+    else
+    {
+      setSms("")
+      const usuario = await getData()
+      await uploadFile()
+      const url = 'http://3.132.195.25/dinner/crear_receta/'
+      const json = {
+        nombre:titulo,
+        descripcion:descripcion,
+        dificultad:dificultad,
+        estrellas:5,
+        autor: usuario,
+        link: imageU.current,
+        ingredientes: ingredientes
+      }
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(json)
+      const options = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(json)
+      }
+      const resp = await fetch(url, options)
+      .then((response) => {return response.json()})
+      .then((responseInJSON) => { return responseInJSON })
     }
-    const resp = await fetch(url, options)
-    .then((response) => {return response.json()})
-    .then((responseInJSON) => { return responseInJSON })
+    
   }
 
   const img = require('../assets/images/add-image.png');
@@ -174,9 +169,9 @@ export default function RecipeScreen(props) {
         <View style={styles.top}></View>
         <View style={styles.padContainer}>
           <ScrollView style={styles.scrollCont} contentContainerStyle={styles.scrollContainer}>
-            <Text style={styles.text}>Ingresa tu nueva receta</Text>
+            <Text style={styles.text} testID='texto'>Ingresa tu nueva receta</Text>
             <View style={styles.imagePicker}>
-              <Pressable style={styles.button} onPress={pickImage}>
+              <Pressable testID='picker' style={styles.button} onPress={pickImage}>
               {
                   image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} 
                   source = {{uri: image.uri}}/> :
@@ -193,6 +188,7 @@ export default function RecipeScreen(props) {
               placeholder="Ingresa el título..."
               keyboardType="default"
               fontFamily='Arial'
+              testID='titulo'
             />
             <Text style={styles.titles}>Descripción</Text>
             <TextInput
@@ -202,7 +198,7 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa la descripción de la receta..."
               keyboardType="default"
-              
+              testID='descripcion'
             />
             <Text style={styles.titles}>Tus ingredientes</Text>
             <View style={styles.ing}>
@@ -211,7 +207,7 @@ export default function RecipeScreen(props) {
               }
             </View>
             <View style={styles.AddItem}>
-              <Pressable onPress={addInput}>
+              <Pressable testID='ing' onPress={addInput}>
                 <Text>+ Añade ingredientes</Text> 
               </Pressable>
             </View>
@@ -223,7 +219,7 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa los pasos de la receta..."
               keyboardType="default"
-              
+              testID='pasos'
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
             <Dropdown setDificultad = {setDificultad}/>
@@ -235,15 +231,15 @@ export default function RecipeScreen(props) {
               multiline={true}
               placeholder="Ingresa las categorías de tu receta..."
               keyboardType="default"
-              
+              testID='cat'
             />
             
             <View style={styles.publish}>
-              <Pressable onPress={() => uploadRecipe()}>
+              <Pressable testID='publish' onPress={() => uploadRecipe()}>
                 <Text style={{fontSize: 18, color: '#fff', fontFamily:'Arial',}}>Publicar receta</Text> 
               </Pressable>
             </View>
-            {sms!="" && <Text style={styles.Sms}>{sms}</Text>}
+            {sms!="" && <Text testID='sms' style={styles.Sms}>{sms}</Text>}
             <View style={{ height: 70 }} />
           </ScrollView>
         </View>
