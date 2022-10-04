@@ -7,14 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const star = require('../../assets/images/star.png')
 const sarte = require('../../assets/images/sarten.png')
 const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Usuario')
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
 const storeData = async (value) => {
     try {

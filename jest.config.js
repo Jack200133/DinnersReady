@@ -9,4 +9,7 @@ module.exports ={
     ],
     "collectCoverageFrom": ["./tests/AppTest/**" , "./components/NavSearch/**", "./components/PubItem/**", "./views/App.js"
                                 , "./views/LogIn.js", "./views/recipe.js", "./views/HomeAlacena.js"],
+    
+    "setupFiles": ["./jestSetupFile.js"],
+    "transformIgnorePatterns" : ["/node_modules/@react-native-community/async-storage/(?!(lib))"]
 }

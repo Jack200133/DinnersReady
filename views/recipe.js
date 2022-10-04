@@ -29,15 +29,8 @@ export default function RecipeScreen(props) {
   };*/
 
   const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Usuario')
-      //console.log(value)
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
 
 

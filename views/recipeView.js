@@ -40,13 +40,8 @@ const Gradient = (dificultad) => {
 }
 
 const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Receta')
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
 
 export default function RecipeView(props) {

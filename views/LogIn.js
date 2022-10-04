@@ -8,11 +8,7 @@ import TitleBar from '../components/TitleBar';
 //import {useNavigate} from 'react-router-dom';
 
 const storeData = async (value) => {
-  try {
-    await AsyncStorage.setItem('@Usuario', value)
-  } catch (e) {
-    // saving error
-  }
+  await AsyncStorage.setItem('@Usuario', value)
 }
 
 function LogIn(props) {
@@ -31,6 +27,7 @@ function LogIn(props) {
         ).then((responseInJSON) => {return responseInJSON})
 
       const loged = response.completado
+      console.log(loged)
 
       if(loged){
         storeData(correo)

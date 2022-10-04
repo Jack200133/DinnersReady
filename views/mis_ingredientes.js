@@ -16,14 +16,8 @@ function Mis_ingredientes(props) {
   const [ingredientes, setIngredientes] = React.useState([]);
 
   const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Usuario')
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
 
 
