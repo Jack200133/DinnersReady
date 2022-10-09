@@ -4,8 +4,17 @@ import { SearchBar } from "react-native-elements";
 import Styles from './style';
 const SearchBart = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
+    const [exists, setExists] = React.useState(false)
     //const [value, setValue] = React.useState('');
     const onChangeSearch = query => setSearchQuery(query);
+
+    const element = (exist) => {
+      if (exist) {
+        return (
+          <p testID="search_bar_active"></p>
+        )
+      }
+    }
 
   return (
     <SafeAreaView style = {Styles.container}>
@@ -17,12 +26,12 @@ const SearchBart = () => {
             placeholderTextColor = '#05182A'
             rightIconContainerStyle = {Styles.icon}
             onKeyPress={(e) => {
-              if (e.key=='Enter'){
-                //setValue(e.target.value)
-                //En vez del console iria un query
-                // Deberiamos mandar una funcion en props para que busque dependiendo de donde este.
-                // Similar al press y long press de alacena.
-              }  
+              if (e =='Enter'){
+                setExists(true)
+                //exists.current = true
+              } else {
+                setExists(false)
+              } 
             }}
             round = {true}
             inputStyle={Styles.input}
@@ -33,7 +42,9 @@ const SearchBart = () => {
             inputContainerStyle = {Styles.input}
              
         />
-        
+        {
+          element(exists)
+        }
     </SafeAreaView>
     
   );
