@@ -15,7 +15,6 @@ describe('<SearchBart />', () => {
     expect(await expect(navSearch.queryByTestId('search_bar_active'))).toBeTruthy();
   })
   
-  
   it('on escape press sets the value, else', async () => {
 
     const navSearch = render(<SearchBart/>)

@@ -8,7 +8,8 @@ module.exports ={
         "node_modules/(?!(jest-)?@react-native|react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|@ui-kitten)"
     ],
     "collectCoverageFrom": ["./tests/AppTest/**" , "./components/NavSearch/**", "./components/PubItem/**", "./views/App.js"
-                                , "./views/LogIn.js", "./views/recipe.js", "./views/HomeAlacena.js"],
+                                , "./views/LogIn.js", "./views/recipe.js", "./views/HomeAlacena.js", "./components/TitleBar/**",
+                                "./components/dropdown/**", "./components/RecetaItem/**", ],
     
     "setupFiles": ["./jestSetupFile.js"],
     "transformIgnorePatterns" : ["/node_modules/@react-native-community/async-storage/(?!(lib))"]
