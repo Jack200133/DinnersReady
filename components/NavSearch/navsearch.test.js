@@ -8,11 +8,22 @@ describe('<SearchBart />', () => {
 
     const navSearch = render(<SearchBart/>)
     const searchBar = navSearch.getByTestId('search_bar')
-  
+    
     fireEvent(searchBar,'changeText', 'test')
     fireEvent(searchBar, 'keyPress', 'Enter')
-
-    expect(searchBar.props.value).toEqual('test')
+    await new Promise(r=>setTimeout(()=>r(), 0));
+    expect(await expect(navSearch.queryByTestId('search_bar_active'))).toBeTruthy();
   })
   
+  
+  it('on escape press sets the value, else', async () => {
+
+    const navSearch = render(<SearchBart/>)
+    const searchBar = navSearch.getByTestId('search_bar')
+  
+    fireEvent(searchBar,'changeText', 'test')
+    fireEvent(searchBar, 'keyPress', 'Escape')
+    
+    expect(navSearch.queryByTestId('search_bar_active')).toBeNull()
+  })
 })
