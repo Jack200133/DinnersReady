@@ -14,5 +14,4 @@ describe('<SearchBart />', () => {
 
     expect(searchBar.props.value).toEqual('test')
   })
-  
 })

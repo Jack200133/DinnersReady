@@ -22,7 +22,7 @@ const SearchBart = () => {
                 //En vez del console iria un query
                 // Deberiamos mandar una funcion en props para que busque dependiendo de donde este.
                 // Similar al press y long press de alacena.
-              } 
+              }  
             }}
             round = {true}
             inputStyle={Styles.input}

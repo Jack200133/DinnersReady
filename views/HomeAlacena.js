@@ -35,7 +35,7 @@ function HomeAlacena(props) {
       if (savedrecipe.includes(id)){
         setSaved(savedrecipe.filter(e => e !== id))
       }
-      else if(id!==undefined){
+      else {
         setSaved([...savedrecipe, id])
       }
     }
