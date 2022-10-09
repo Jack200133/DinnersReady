@@ -26,15 +26,15 @@ export default function AppP() {
     headerTransparent:true,
     headerLeft: null
   }
-  if (!fontsLoaded) {
-    return (
-      <AppLoading
-        startAsync={LoadFonts}
-        onFinish={() => setFontsLoaded(true)}
-        onError={(error) => console.log(error)}
-      />
-    );
-  }
+  //if (!fontsLoaded) {
+  return (
+    <AppLoading
+      startAsync={LoadFonts}
+      onFinish={() => setFontsLoaded(true)}
+      onError={(error) => console.log(error)}
+    />
+  );
+  //}
 
 
   return (

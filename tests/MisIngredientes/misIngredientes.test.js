@@ -87,3 +87,10 @@ describe('<App />', () => {
     })
   })
 })
+
+describe('async', () => {
+  
+  it('it mocks', async () => {
+    console.log("hola")
+  })
+})

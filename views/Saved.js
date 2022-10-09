@@ -13,15 +13,8 @@ function SavedScreen(props) {
   const [saved, setSaved] = useState([])
 
   const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@Usuario')
-      console.log(value)
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
   const clickHandlerBye = (id) =>{
     setSaved(saved.filter(e => e !== id)) 

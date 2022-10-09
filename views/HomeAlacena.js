@@ -24,15 +24,8 @@ function HomeAlacena(props) {
 
 
   const getData = async () => {
-    try {
-
-      const value = await AsyncStorage.getItem('@Usuario')
-      if(value !== null) {
-        return value
-      }
-    } catch(e) {
-      // error reading value
-    }
+    const value = await AsyncStorage.getItem('@Usuario')   
+    return value
   }
 
   const clickHandler = (id) =>{
@@ -52,10 +45,9 @@ function HomeAlacena(props) {
   useEffect( async () => {
     
     
-    //const usuario = await getData()
-    const usuario = 'pez'
+    const usuario = await getData()
+    
     const url = 'http://3.132.195.25/dinner/recomendacionA/'+usuario
-    // const url = 'http://localhost:5000/recomendacionA/'+usuario
     const response = await fetch(url, {
       method: 'GET'
     })
@@ -87,10 +79,6 @@ function HomeAlacena(props) {
 
   },[])
 
-  function Pruebaset(Prueba_Recetas) {
-
-    setRecetas(Prueba_Recetas)
-  }
   
   return (
     
