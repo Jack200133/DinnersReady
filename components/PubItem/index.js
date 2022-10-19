@@ -38,8 +38,7 @@ const send = async(id) =>{
         body: JSON.stringify(json)
     }
     const resp = await fetch('http://3.132.195.25/dinner/save/', options)
-    .then((response) => {return response.json()})
-    .then((responseInJSON) => { return responseInJSON })
+    const responseJSON = await resp.json()
 }
 
 const Gradient = (dificultad) => {
