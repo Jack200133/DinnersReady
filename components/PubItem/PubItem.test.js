@@ -90,3 +90,35 @@ describe('Receta facil', () => {
       
     })
   })
+
+  describe('Saved', () => {
+
+    const Navigation = {
+      navigate: (e) =>{
+       return 0
+     }
+   }
+   
+  it('Se guarda una receta', async () => {
+    component =  render(<PubItem 
+      id={1} key={1}
+      image={"https://s1.eestatic.com/2015/05/11/cocinillas/cocinillas_32506750_116175093_1706x960.jpg"} 
+      color ={"red"} 
+      dificultad={"Difícil"} 
+      saved={0}
+      cH={null} 
+      NameRecipe={"Sushi"} 
+      stars ={3} 
+      hash={'#love'} 
+      desc={"descripcion"} 
+      autor={"Sebastian"} 
+      navigation = {Navigation}
+/>)
+  
+    await act( async () => {
+      const input = await component.getByTestId('Guardado')
+      fireEvent(input, 'press')
+      expect(component.queryAllByTestId("pub").length).toEqual(1);
+    })
+  })
+  })
