@@ -26,7 +26,7 @@ export default function AppP() {
     headerTransparent:true,
     headerLeft: null
   }
-  //if (!fontsLoaded) {
+  if (!fontsLoaded) {
   return (
     <AppLoading
       startAsync={LoadFonts}
@@ -34,7 +34,7 @@ export default function AppP() {
       onError={(error) => console.log(error)}
     />
   );
-  //}
+  }
 
 
   return (
