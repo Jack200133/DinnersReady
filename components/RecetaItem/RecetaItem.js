@@ -7,7 +7,7 @@ const RecetaItem = ({receta, rating}) => {
     const star = require('../../assets/images/star.png')
 
     return (
-        <View style = {styles.container}>
+        <View style = {styles.container} testID="receta_item">
             <Text style={{fontSize: 17, fontFamily:'Mukta_Bold'}}>{receta}</Text>
             <View style={styles.containerRating}>
                 <Text style={{fontSize: 17, fontFamily:'Mukta_Bold'}}>{rating}</Text>
