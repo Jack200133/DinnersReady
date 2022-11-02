@@ -59,6 +59,7 @@ function LogIn(props) {
             placeholder="Ingrese su correo"
             keyboardType="default"
             testID="userInput"
+            nativeID="usuario"
             />
           <Text style={styles.desctext}>Contraseña:</Text>
 
@@ -70,13 +71,14 @@ function LogIn(props) {
           placeholder="Ingrese su contraseña"
           keyboardType="default"
           testID="passwordInput"
+          nativeID="password"
           />
 
           {!dentro && <Text style={{marginLeft: 10, color:'red', fontSize: 16}}>Error al ingresar. Introduce bien tus datos.</Text>}
           
 
           <View style={styles.LogInButton}>
-            <Pressable onPress ={() => checkLog()} testID="logInButton">
+            <Pressable nativeID="loginButton" onPress ={() => checkLog()} testID="logInButton">
                 <Text style={{fontSize: 18, color: '#EEE9E9', fontFamily:'Mukta_Regular'}}>Ingresar</Text> 
             </Pressable>
           </View>
