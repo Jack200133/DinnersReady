@@ -16,7 +16,7 @@ const NavBar = (props) => {
            <NavButton url={alacena}/>
            <NavButton url={newrecipe}/>
            <NavButton url={home}/>
-           <NavButton url={bookmarks}/>
+           <NavButton nativeID="guardado" url={bookmarks}/>
            <NavButton url={profile}/>
         </SafeAreaView>
     );
