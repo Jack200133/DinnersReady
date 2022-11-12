@@ -1,5 +1,5 @@
 describe("Borrar ingrediente", () => {
-    it("reaches adds ingredients", () => {
+    it("delete ingredient", () => {
         cy.visit("http://localhost:19006/")
         cy.contains("Dinner's Ready")
         cy.visit("http://localhost:19006/")
