@@ -1,4 +1,4 @@
-describe("agregar ingrediente", () => {
+describe("Borrar ingrediente", () => {
     it("reaches adds ingredients", () => {
         cy.visit("http://localhost:19006/")
         cy.contains("Dinner's Ready")
