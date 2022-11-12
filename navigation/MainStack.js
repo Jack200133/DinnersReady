@@ -35,6 +35,7 @@ export default function MyTabs(){
                 name = 'MyIng' 
                 component = {Ingredients}
                 options = {{
+                    tabBarTestID: "myIng",
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ()=>(
