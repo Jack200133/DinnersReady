@@ -100,9 +100,10 @@ export default function MyTabs(){
                     blur: () => navigation.setParams({ screen: undefined }),
                 })}/>
             <Tab.Screen 
-                name = 'profile' 
+                name = 'profile'
                 component = {ProfileScreen}
                 options = {{
+                    tabBarTestID: "profile",
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ()=>(
