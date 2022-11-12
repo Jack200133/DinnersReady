@@ -40,7 +40,7 @@ const Gradient = (dificultad) => {
 }
 
 const getData = async () => {
-    const value = await AsyncStorage.getItem('@Usuario')   
+    const value = await AsyncStorage.getItem('@Receta')   
     return value
   }
 
@@ -94,7 +94,7 @@ export default function RecipeView(props) {
                         {
                             Gradient(info.dificultad)
                         }
-                            </View>
+                        </View>
                         <View style = {styles.SavedContainer}>
                             <Image source={saved} 
                             resizeMode="contain" style={styles.Image}>  
