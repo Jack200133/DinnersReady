@@ -49,6 +49,7 @@ export default function NavIngredients(){
                 name = 'AddIng' 
                 component = {() => <AddIngredients />}
                 options = {{
+                    tabBarTestID: "addIng",
                     tabBarLabel: '',
                     headerShown: false,
                     tabBarIcon: ({focused}) =>(

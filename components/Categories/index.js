@@ -13,7 +13,7 @@ export default function Categories({indexC, name, ingredients, clicked, handleCl
                 
                     <Text style={{fontSize: 20,color: '#05182A', paddingLeft:20, fontFamily:'Mukta_Bold'}}>{name}</Text>
                     
-                    <Pressable style={styles.button} onPress = { () => {handleClick(indexC)}}>
+                    <Pressable style={styles.button} nativeID={'boton'+name} onPress = { () => {handleClick(indexC)}}>
                         <Image style={styles.arrow} source={require('../../assets/images/arrow.png')}></Image>
                     </Pressable>
             
