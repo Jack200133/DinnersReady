@@ -6,7 +6,7 @@ import styles from './style';
 const Ingred = ({text, index, removeIngred, AddIngrediente,IndexC}) => {
     
     return (
-        <Pressable style = {styles.container} onPress={() => AddIngrediente(text,IndexC,index)}  onLongPress={() => removeIngred(text)}>
+        <Pressable nativeID={text} style = {styles.container} onPress={() => AddIngrediente(text,IndexC,index)} onLongPress={() => removeIngred(text)}>
             <Text  style = {{fontFamily:'Mulish_Regular'}}>{text}</Text>
         </Pressable>
     );
