@@ -52,6 +52,7 @@ export default function MyTabs(){
                 component = {RecipeScreen}
                 options = {{
                     tabBarLabel: '',
+                    tabBarTestID: "recipe",
                     headerShown: false,
                     tabBarIcon: ({focused}) =>(
                         <Image source={newrecipe}

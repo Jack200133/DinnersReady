@@ -12,6 +12,7 @@ import {RNS3} from 'react-native-aws3';
 import Ingrediente from '../components/ingrediente';
 
 export default function RecipeScreen(props) {
+  const img = require('../assets/images/add-image.png');
 
   const [image, setImage] = useState(null);
   const [titulo, setTitulo] = useState('');
@@ -42,7 +43,7 @@ export default function RecipeScreen(props) {
       aspect: [4, 3],
       quality: 1,
     });
-    //console.log(result);
+    console.log(result);
 
     if (!result.cancelled) {
       setImage(result)
@@ -72,11 +73,12 @@ export default function RecipeScreen(props) {
 
   const uploadFile = async () => {
     const imageURL = await getImageURL()
-    if (Object.keys(image).length == 0) {
-      alert('Please select image first');
-      return;
+    if (image===null || Object.keys(image).length == 0) {
+      //imageU.current =  'https://dinnerbucket.s3.us-east-2.amazonaws.com/default.png'
+      imageU.current =  'https://dinnersready.s3.us-east-2.amazonaws.com/recipe/panqueques.png'
+      return
     }
-    //console.log(image.uri)
+    console.log('IMG URI',image.uri)
     RNS3.put(
       {
         // `uri` can also be a file system path (i.e. file://)
@@ -122,6 +124,7 @@ export default function RecipeScreen(props) {
     }
     else
     {
+      console.log("ENTRE")
       setSms("")
       const usuario = await getData()
       await uploadFile()
@@ -146,11 +149,14 @@ export default function RecipeScreen(props) {
       const resp = await fetch(url, options)
       .then((response) => {return response.json()})
       .then((responseInJSON) => { return responseInJSON })
+
+      console.log(resp)
     }
     
   }
 
-  const img = require('../assets/images/add-image.png');
+  
+  
   //console.log(ingredientes)
   
   return (
@@ -166,14 +172,14 @@ export default function RecipeScreen(props) {
             <View style={styles.imagePicker}>
               <Pressable testID='picker' style={styles.button} onPress={pickImage}>
               {
-                  image ? <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} 
-                  source = {{uri: image.uri}}/> :
-                  <Image resizeMode='contain' style={styles.addImage} 
-                  source = {img}/>
+                  image?
+                    <Image resizeMode='cover' style={{width: '100%', height: '100%', borderRadius: 30}} source = {{uri: image.uri}}/> 
+                    :
+                    <Image resizeMode='contain' style={styles.addImage} source = {img}/>
               }
               </Pressable>
             </View>
-            <Text style={styles.titles}>Titulo de receta</Text>
+            <Text style={styles.titles} >Titulo de receta</Text>
             <TextInput
               style={styles.input}
               onChangeText={(e) => setTitulo(e)}
@@ -182,6 +188,7 @@ export default function RecipeScreen(props) {
               keyboardType="default"
               fontFamily='Arial'
               testID='titulo'
+              nativeID="titulo"
             />
             <Text style={styles.titles}>Descripción</Text>
             <TextInput
@@ -192,6 +199,7 @@ export default function RecipeScreen(props) {
               placeholder="Ingresa la descripción de la receta..."
               keyboardType="default"
               testID='descripcion'
+              nativeID="descripcion"
             />
             <Text style={styles.titles}>Tus ingredientes</Text>
             <View style={styles.ing}>
@@ -200,7 +208,7 @@ export default function RecipeScreen(props) {
               }
             </View>
             <View style={styles.AddItem}>
-              <Pressable testID='ing' onPress={addInput}>
+              <Pressable testID='ing' onPress={addInput} nativeID="ingredientes">
                 <Text>+ Añade ingredientes</Text> 
               </Pressable>
             </View>
@@ -213,9 +221,10 @@ export default function RecipeScreen(props) {
               placeholder="Ingresa los pasos de la receta..."
               keyboardType="default"
               testID='pasos'
+              nativeID="pasos"
             />
             <Text style={styles.titles}>Dificultad de la receta</Text>
-            <Dropdown setDificultad = {setDificultad}/>
+            <Dropdown nativeID='dificultad' testID='dificultad' setDificultad = {setDificultad} />
             <Text style={styles.titles}>Categorías</Text>
             <TextInput
               style={styles.cat}
@@ -225,10 +234,11 @@ export default function RecipeScreen(props) {
               placeholder="Ingresa las categorías de tu receta..."
               keyboardType="default"
               testID='cat'
+              nativeID="cat"
             />
             
             <View style={styles.publish}>
-              <Pressable testID='publish' onPress={() => uploadRecipe()}>
+              <Pressable testID='publish'nativeID='publish' onPress={() => uploadRecipe()}>
                 <Text style={{fontSize: 18, color: '#fff', fontFamily:'Arial',}}>Publicar receta</Text> 
               </Pressable>
             </View>
