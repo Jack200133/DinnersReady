@@ -16,11 +16,10 @@ const changeCant = (state, setState, index, e) => {
 }
 
 const Ingrediente = ({ingrediente, cantidad, index, state, setState}) => {
-    console.log(ingrediente, 'aafafaf')
     return (
         <View style={styles.container}>
-            <TextInput onChangeText={(e) => changeIng(state, setState, index, e)} style={styles.input} value={ingrediente} placeholder='Ingresa tu ingrediente' />
-            <TextInput onChangeText={(e) => changeCant(state, setState, index, e)} style={styles.input} value={cantidad} placeholder='Ingresa su cantidad' />
+            <TextInput onChangeText={(e) => changeIng(state, setState, index, e)} style={styles.input} value={ingrediente} placeholder='Ingresa tu ingrediente'  nativeID={`iningre${index}`} testID='iningre' />
+            <TextInput onChangeText={(e) => changeCant(state, setState, index, e)} style={styles.input} value={cantidad} placeholder='Ingresa su cantidad' nativeID={`incat${index}`} testID='incat' />
         </View>
     )
 }
