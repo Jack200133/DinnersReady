@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const star = require('../../assets/images/star.png')
 const sarte = require('../../assets/images/sarten.png')
 
-let guardadoID = "Guardar"
+let guardadoID = "Guardar "
 const getData = async () => {
     const value = await AsyncStorage.getItem('@Usuario')   
     return value
@@ -87,9 +87,9 @@ const PubItem = ({id,image,color,dificultad,saved,cH,NameRecipe,stars,hash,desc,
                         {
                             Gradient(dificultad)
                         }
-                        <Pressable nativeID={guardadoID.concat({NameRecipe})} testID='pub'  onPress={()=> {console.log('IDPUB',id);cH(id);send(id)}}>
-                            <View style = {styles.SavedContainer}>
-                                <Image source={saved} 
+                        <Pressable nativeID={NameRecipe.replace(/\s+/g, '')} testID='pub'  onPress={()=> {console.log('IDPUB',id);cH(id);send(id)}}>
+                            <View  style = {styles.SavedContainer}>
+                                <Image  source={saved} 
                                 resizeMode="contain" style={styles.Image} >  
                                     
                                 </Image>

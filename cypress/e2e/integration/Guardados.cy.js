@@ -1,16 +1,24 @@
-describe("login", () => {
+describe("Guardar", () => {
 
-    it("login user", () => {
+    it("Agregar una receta a favoritos", () => {
         cy.visit("http://localhost:19006/")
         cy.get("#usuario").type("Aristondo01")
         cy.get("#password").type("Prueba")
         cy.contains("Ingresar").click()
-        cy.get("#password").type("Prueba")
-        cy.get("#Pollo con Lorocoguardado").click()
-        cy.contains("bookmark").click()
+        cy.wait(4000)
+        cy.get('#PolloconLoroco').click()
+        cy.get('[data-testid="bookmark"]').click()
+        cy.wait(4000)
         cy.contains("Pollo con Loroco")
-        cy.get("#Pollo con Lorocoguardado").click()
+        
+    })
 
-
+    it("Quitar una receta a favoritos", () => {
+        cy.visit("http://localhost:19006/")
+        cy.get("#usuario").type("Aristondo01")
+        cy.get("#password").type("Prueba")
+        cy.contains("Ingresar").click()
+        cy.get('#PolloconLoroco').click()
     })
 })
+
