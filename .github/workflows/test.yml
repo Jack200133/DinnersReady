@@ -30,4 +30,4 @@ jobs:
         npm install -g newman --force
     - name: Run integration tests
       run: newman run ${{ secrets.COLLECTION_LINK }} -e 
-            ${{ secrets.ENVIRONMENT_JSON }}
+            Test_Dinners.postman_environment.json
