@@ -28,6 +28,6 @@ jobs:
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo apt install ./google-chrome-stable_current_amd64.deb  
     - name: Install expo
-      run: npm install — global expo-cli --force
+      run: npm install -g expo-cli --force
     - name: Run app
       run: npm run web  
