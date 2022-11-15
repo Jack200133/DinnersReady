@@ -31,3 +31,10 @@ jobs:
     - name: Run integration tests
       run: newman run ${{ secrets.COLLECTION_LINK }} -e 
             Test_Dinners.postman_environment.json
+    - name: Install chrome
+      run: |
+        set -ex
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt install ./google-chrome-stable_current_amd64.deb    
+    - name: Run app
+      run: npm run web  
