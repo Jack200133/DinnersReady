@@ -86,6 +86,7 @@ export default function MyTabs(){
                 component = {SavedScreen}
                 options = {{
                     tabBarLabel: '',
+                    tabBarTestID: "bookmark",
                     unmountOnBlur: true,
                     headerShown: false,
                     tabBarIcon: ()=>(
