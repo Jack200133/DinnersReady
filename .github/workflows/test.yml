@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: [pipeline2]
+    branches: [develop]
   workflow_dispatch:
     inputs:
         environment:
