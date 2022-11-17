@@ -1,8 +1,6 @@
 describe("Borrar ingrediente", () => {
     it("delete ingredient", () => {
-        cy.visit("http://localhost:19006/")
-        cy.contains("Dinner's Ready")
-        cy.visit("http://localhost:19006/")
+        cy.visit("http://dinnersdevelop.s3-website.us-east-2.amazonaws.com")
         cy.get("#usuario").type("Aristondo01")
         cy.get("#password").type("Prueba")
         cy.contains("Ingresar").click()
