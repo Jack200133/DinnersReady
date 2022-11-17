@@ -11,7 +11,8 @@
     "test": "jest",
     "tests": "jest --coverage",
     "cypress:open": "cypress open",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "web:build": "expo build:web"
   },
   "jest": {
     "collectCoverage": true,
