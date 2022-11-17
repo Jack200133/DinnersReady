@@ -1,0 +1,35 @@
+name: Tests
+
+on:
+  push:
+    branches: [pipeline]
+  workflow_dispatch:
+    inputs:
+        environment:
+          type: string
+          default: DEV
+          required: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install --force
+    - name: Install chrome
+      run: |
+        set -ex
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt install ./google-chrome-stable_current_amd64.deb  
+    - name: Install expo and screen
+      run: |
+        npm install -g expo-cli --force
+        sudo apt install screen
+    - name: Run app
+      run: screen npm run web  
